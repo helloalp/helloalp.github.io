@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helloalp的测试网站</title>
+        <script>
+        if (!localStorage.getItem('passwordVerified')) {
+            window.location.href = 'password.html';
+        }
+    </script>
 </head>
 <body>
     你好，这是测试内容
