@@ -9,8 +9,12 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: Courier New, monospace;
+            background-color: black;
+            background-image: url('/indexbackground.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .header {
@@ -20,48 +24,37 @@
 
         .title {
             font-size: 3em;
-            color: #333;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .introduction {
             text-align: center;
             font-style: italic;
             margin: 20px 0;
-            color: #666;
+            color: #ddd;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        .branch-list {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 20px;
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ddd;
+        .code-container {
+            margin: 30px auto;
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .branch-name {
-            flex: 1;
-            font-weight: bold;
-        }
-
-        .jump-button {
-            padding: 5px 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .custom-text {
-            color: #888;
-            margin-right: 10px;
+        .code {
+            font-size: 1.2em;
+            color: #00ff00;
+            white-space: pre-line;
         }
 
         .footer {
             text-align: center;
             padding: 20px;
-            background-color: #333;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
         }
     </style>
@@ -73,23 +66,15 @@
         <div class="introduction">欢迎来到NAU组织的主页</div>
     </div>
 
-    <div class="branch-list">
-        <div class="branch-name">NAU组织对外官网</div>
-        <button class="jump-button" onclick="location.href='teamoutsideindex.html'">跳转</button>
-        <div class="custom-text">20230820上线</div>
+    <div class="code-container">
+        <div class="code">
+            <pre>
+                <code>
+print Team NAU
+                </code>
+            </pre>
+        </div>
     </div>
-
-    <div class="branch-list">
-        <div class="branch-name">NAU组织内部官网</div>
-        <button class="jump-button" onclick="location.href='password.html'">跳转</button>
-        <div class="custom-text">20230819上线</div>
-    </div>
-<div class="branch-list">
-        <div class="branch-name">网站缓存清理页面</div>
-        <button class="jump-button" onclick="location.href='clean.html'">跳转</button>
-        <div class="custom-text">20230820上线</div>
-    </div>
-    <br>
 
     <div class="footer">
         &copy; 2023 Helloalp. All rights reserved.
