@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helloalp的网站</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .title {
+            font-size: 3em;
+            color: #333;
+        }
+
+        .introduction {
+            text-align: center;
+            font-style: italic;
+            margin: 20px 0;
+            color: #666;
+        }
+
+        .branch-list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .branch-name {
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .jump-button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .custom-text {
+            color: #888;
+            margin-right: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">NAU组织</div>
+        <div class="introduction">欢迎来到NAU组织的主页</div>
+    </div>
+
+    <div class="branch-list">
+        <div class="branch-name">NAU组织对外官网</div>
+        <button class="jump-button" onclick="location.href='teamoutsideindex.html'">跳转</button>
+        <div class="custom-text">20230820上线</div>
+    </div>
+
+    <div class="branch-list">
+        <div class="branch-name">NAU组织内部官网</div>
+        <button class="jump-button" onclick="location.href='password.html'">跳转</button>
+        <div class="custom-text">20230819上线</div>
+    </div>
+
+    <br>
+
+    <div class="footer">
+        &copy; 2023 Helloalp. All rights reserved.
+    </div>
+</body>
+</html>
