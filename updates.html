@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新日志</title>
+    <link rel="icon" type="image/x-icon" href="/icon.ico">
+    <style>
+        
+
+        .timeline {
+            position: relative;
+            width: 10px;
+            background-color: #00FF00;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .timeline::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            background-color: #00FF00;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 20px;
+            border: 2px solid #00FF00;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            color: #00FF00;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">更新日志</div>
+    </div>
+
+    <!-- 时间轴 -->
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-date">2023-08-20</div>
+            <div class="timeline-content">
+                更新内容一
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2023-08-19</div>
+            <div class="timeline-content">
+                更新内容二
+            </div>
+        </div>
+        
+    </div>
+
+    <br>
+
+    <div class="footer">
+        &copy; 2023 Helloalp. All rights reserved.
+    </div>
+</body>
+</html>
