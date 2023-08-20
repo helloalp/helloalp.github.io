@@ -9,12 +9,10 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Courier New, monospace;
-            background-color: black;
-            background-image: url('/indexbackground.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            font-family: "Courier New", monospace;
+            background-color: #000;
+            color: #00FF00;
+            overflow: hidden;
         }
 
         .header {
@@ -24,41 +22,76 @@
 
         .title {
             font-size: 3em;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #00FF00;
+            animation: blink-caret 0.75s step-end infinite;
         }
 
         .introduction {
             text-align: center;
             font-style: italic;
             margin: 20px 0;
-            color: #ddd;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            color: #666;
         }
 
         .code-container {
-            margin: 30px auto;
-            max-width: 800px;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
         .code {
-            font-size: 1.2em;
-            color: #00ff00;
-            white-space: pre-line;
+            white-space: pre-wrap;
+            border-right: 2px solid #00FF00;
+            margin-right: -2px;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        .branch-list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            padding: 10px;
+            background-color: #000;
+            border: 1px solid #00FF00;
+        }
+
+        .branch-name {
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .jump-button {
+            padding: 5px 10px;
+            background-color: #00FF00;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .jump-button:hover {
+            background-color: #007bff;
+        }
+
+        .custom-text {
+            color: #888;
+            margin-right: 10px;
         }
 
         .footer {
             text-align: center;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
+            background-color: #333;
+            color: #00FF00;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-right-color: transparent; }
+            50% { border-right-color: #00FF00; }
         }
     </style>
-    <script src="content-management.js"></script>
 </head>
 <body>
     <div class="header">
@@ -67,17 +100,50 @@
     </div>
 
     <div class="code-container">
-        <div class="code">
-            <pre>
-                <code>
-print Team NAU
-                </code>
-            </pre>
-        </div>
+        <pre class="code">
+            print Team NAU
+        </pre>
     </div>
+
+    <div class="branch-list">
+        <div class="branch-name">NAU组织对外官网</div>
+        <button class="jump-button" onclick="location.href='teamoutsideindex.html'">跳转</button>
+        <div class="custom-text">20230820上线</div>
+    </div>
+
+    <div class="branch-list">
+        <div class="branch-name">NAU组织内部官网</div>
+        <button class="jump-button" onclick="location.href='password.html'">跳转</button>
+        <div class="custom-text">20230819上线</div>
+    </div>
+
+    <div class="branch-list">
+        <div class="branch-name">网站缓存清理页面</div>
+        <button class="jump-button" onclick="location.href='clean.html'">跳转</button>
+        <div class="custom-text">20230820上线</div>
+    </div>
+
+    <br>
 
     <div class="footer">
         &copy; 2023 Helloalp. All rights reserved.
     </div>
+
+    <script>
+        // 模拟输入效果
+        const codeElement = document.querySelector(".code");
+        const codeText = "print Team NAU";
+        let currentText = "";
+
+        function typeEffect() {
+            if (currentText.length < codeText.length) {
+                currentText += codeText[currentText.length];
+                codeElement.textContent = currentText;
+                setTimeout(typeEffect, 100);
+            }
+        }
+
+        typeEffect();
+    </script>
 </body>
 </html>
