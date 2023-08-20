@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAU组织-缓存清理页面</title>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 100px;">
+        <button id="clearCacheButton">清除本地缓存</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        // 获取按钮元素和消息元素
+        var clearCacheButton = document.getElementById("clearCacheButton");
+        var messageElement = document.getElementById("message");
+
+        // 给按钮添加点击事件监听器
+        clearCacheButton.addEventListener("click", function() {
+            // 清除本地存储的密码校验信息
+            localStorage.removeItem("passwordVerified");
+
+            // 获取当前时间
+            var currentTime = new Date().toLocaleString();
+
+            // 显示成功清除的提示，以及当前时间
+            messageElement.textContent = "你于 " + currentTime + " 成功清除了本地缓存";
+        });
+    </script>
+</body>
+</html>
