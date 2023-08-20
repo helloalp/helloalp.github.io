@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAU组织下载中心</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            text-align: center;
+            padding: 100px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .download-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px;
+            color: #333;
+        }
+
+        .download-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .download-item img {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+        }
+
+        .download-item .info {
+            flex: 1;
+        }
+
+        .download-item a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎来到NAU组织下载中心</h1>
+        <p>向下滑动或拖动以查看下载内容</p>
+    </div>
+
+    <div class="scroll-down">
+        <p>向下滑动</p>
+    </div>
+
+    <div class="download-list">
+        <!-- 下载内容列表 --!>
+        <div class="download-item">
+            <img src="/organization/file1.jpg" alt="nau组织提供的hack">
+            <div class="info">
+                <h2>BleachHack1.19.4</h2>
+                <p>文件大小：6</p>
+                <p>发布者：NAU组织官方</p>
+                <a href="/organization/archives/nau001.jar">下载</a>
+            </div>
+        </div>
+
+        <div class="download-item">
+            <img src="file2.jpg" alt="文件2">
+            <div class="info">
+                <h2>彗星客户端1.19.4</h2>
+                <p>文件大小：xmb</p>
+                <p>发布者：NAU组织官方</p>
+                <a href="/organization/archives/nau171.jar">下载</a>
+            </div>
+        </div>
+
+        <!-- 添加更多下载内容项 -->
+    </div>
+</body>
+</html>
