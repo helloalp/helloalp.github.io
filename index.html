@@ -25,7 +25,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 80vh; /* 调整最小高度，以便留出空间给版权声明 */
+            min-height: 80vh; /* 调整最小高度，留出空间给版权声明 */
             padding-bottom: 100px; /* 添加底部空间，以防止遮挡 */
         }
 
@@ -94,6 +94,13 @@
             border: none;
             cursor: pointer;
         }
+            .content {
+            display: none;
+        }
+
+        .page-active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -106,7 +113,7 @@
                
                 showPageContent(pageNumber);
             } else {
-                alert("请输入有效的页数（1-10）");
+                alert("额，请输入有效的页数（1-10）");
             }
         }
 
@@ -122,7 +129,7 @@
     <div id="audio-player"></div>
 
 
-    
+    <div id="page1" class="content page-active" data-page="1">
     
     <!-- 表格部分 -->
     <div class="table-container">
@@ -172,12 +179,17 @@
                 <td><button class="jump-button" onclick="location.href='/encrypt.html'">跳转</button></td>
                 <td>20230821上线</td>
             </tr>
+        </table>
+            </div>
+        <div id="page2" class="content" data-page="2">
+            <table>
             <tr>
                 <td>公开档案库</td>
                 <td><button class="jump-button" onclick="location.href='/archive/home.html'">跳转</button></td>
                 <td>20230821上线</td>
             </tr>
         </table>
+            </div>
     </div>
 
 
