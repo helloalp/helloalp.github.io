@@ -3,34 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AES加解密</title>
+    <title>AES加密</title>
     <script src="/crypto-js.js"></script>
 </head>
 <body>
     <div>
-        <h2>NAU组织官网提供</h2>
-        <button onclick="encryptAndShow()">加密并显示</button>
-        <p id="encryptedInfo" style="display: none;"></p>
-        <p id="decryptedInfo" style="display: none;"></p>
+        <h2>AES加密示例</h2>
+        <div>
+            <label for="contentInput">待加密内容：</label>
+            <input type="text" id="contentInput">
+        </div>
+        <div>
+            <label for="keyInput">密钥：</label>
+            <input type="text" id="keyInput">
+        </div>
+        <div>
+            <label for="modeSelect">加密模式：</label>
+            <select id="modeSelect">
+                <option value="CBC">CBC</option>
+                <option value="ECB">ECB</option>
+                <!-- 添加更多模式 -->
+            </select>
+        </div>
+        <div>
+            <label for="paddingSelect">填充方式：</label>
+            <select id="paddingSelect">
+                <option value="Pkcs7">PKCS7</option>
+                <option value="Iso97971">ISO9797-1</option>
+                <!-- 添加更多填充方式 -->
+            </select>
+        </div>
+        <button onclick="encrypt()">加密</button>
+        <div id="output" style="display: none;"></div>
+    </div>
+
+    <hr>
+
+    <div>
+        <h2>默认参数加密</h2>
+        <button onclick="defaultEncrypt()">加密</button>
+        <div id="defaultOutput" style="display: none;"></div>
     </div>
 
     <script>
-        const secretKey = "my-secret-key"; // AES密钥
+        const defaultKey = "my-default-key"; // 默认密钥
 
-        function encryptAndShow() {
-            const plaintext = "www.aqdpapa.com"; // 待加密的内容
+        function encrypt() {
+            const content = document.getElementById("contentInput").value;
+            const key = document.getElementById("keyInput").value;
+            const mode = document.getElementById("modeSelect").value;
+            const padding = document.getElementById("paddingSelect").value;
 
-            const encryptedBytes = CryptoJS.AES.encrypt(plaintext, secretKey);
-            const encryptedText = encryptedBytes.toString();
+            const encryptedBytes = CryptoJS.AES.encrypt(content, key, {
+                mode: CryptoJS.mode[mode],
+                padding: CryptoJS.pad[padding]
+            });
 
-            document.getElementById("encryptedInfo").textContent = "加密后内容：" + encryptedText;
-            document.getElementById("encryptedInfo").style.display = "block";
+            document.getElementById("output").textContent = "加密后内容：" + encryptedBytes.toString();
+            document.getElementById("output").style.display = "block";
+        }
 
-            const decryptedBytes = CryptoJS.AES.decrypt(encryptedText, secretKey);
-            const decryptedText = decryptedBytes.toString(CryptoJS.enc.Utf8);
+        function defaultEncrypt() {
+            const content = document.getElementById("contentInput").value;
 
-            document.getElementById("decryptedInfo").textContent = "解密后内容：" + decryptedText;
-            document.getElementById("decryptedInfo").style.display = "block";
+            const encryptedBytes = CryptoJS.AES.encrypt(content, defaultKey);
+
+            document.getElementById("defaultOutput").textContent = "加密后内容：" + encryptedBytes.toString();
+            document.getElementById("defaultOutput").style.display = "block";
         }
     </script>
 </body>
