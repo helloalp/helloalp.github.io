@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AES加解密示例</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+</head>
+<body>
+    <div>
+        <h2>AES加解密示例</h2>
+        <button onclick="encryptAndShow()">加密并显示</button>
+        <p id="encryptedInfo" style="display: none;"></p>
+        <p id="decryptedInfo" style="display: none;"></p>
+    </div>
+
+    <script>
+        const secretKey = "my-secret-key"; // AES密钥
+
+        function encryptAndShow() {
+            const plaintext = "www.aqdpapa.com"; // 待加密的内容
+
+            const encryptedBytes = CryptoJS.AES.encrypt(plaintext, secretKey);
+            const encryptedText = encryptedBytes.toString();
+
+            document.getElementById("encryptedInfo").textContent = "加密后内容：" + encryptedText;
+            document.getElementById("encryptedInfo").style.display = "block";
+
+            const decryptedBytes = CryptoJS.AES.decrypt(encryptedText, secretKey);
+            const decryptedText = decryptedBytes.toString(CryptoJS.enc.Utf8);
+
+            document.getElementById("decryptedInfo").textContent = "解密后内容：" + decryptedText;
+            document.getElementById("decryptedInfo").style.display = "block";
+        }
+    </script>
+</body>
+</html>
