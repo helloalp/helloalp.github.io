@@ -127,9 +127,22 @@
     </div>
 
     <script>
-        // 模拟输入效果，保持不变
+       
+// 模拟输入效果
+        const codeElement = document.querySelector(".code");
+        const codeText = "print Team NAU";
+        let currentText = "";
 
-        // 版权声明效果，保持不变
+        function typeEffect() {
+            if (currentText.length < codeText.length) {
+                currentText += codeText[currentText.length];
+                codeElement.textContent = currentText;
+                setTimeout(typeEffect, 100);
+            }
+        }
+
+        typeEffect();
+        
     </script>
 </body>
 </html>
