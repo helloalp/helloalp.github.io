@@ -7,11 +7,7 @@
     <link rel="icon" type="image/x-icon" href="/icon.ico">
     <link rel="stylesheet" href="/plyr.css" />
     <script src="/plyr.js"></script>
-    <script>
-    const player = new Plyr('#audio-player', {
-        controls: ['play', 'progress', 'current-time', 'mute', 'volume']
-    });
-    </script>
+    
     <style>
         body {
             margin: 0;
@@ -83,20 +79,10 @@
     </style>
 </head>
 <body>
-    
-<script>
-    const player = new Plyr('#audio-player', {
-        controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
-        sources: [
-            {
-                src: '/archive/music.mp3',
-                type: 'audio/mp3'
-            }
-        ]
-    });
-</script>
-
     <div id="audio-player"></div>
+
+
+    
     
     <!-- 表格部分 -->
     <div class="table-container">
@@ -160,7 +146,17 @@
             <span id="typedText"></span><span class="cursor">&#9608;</span>
         </div>
     </div>
-
+<script>
+    const player = new Plyr('#audio-player', {
+        controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
+        sources: [
+            {
+                src: '/archive/music.mp3',
+                type: 'audio/mp3'
+            }
+        ]
+    });
+</script>
     <script>
         // 模拟输入效果
         const typedTextElement = document.getElementById("typedText");
