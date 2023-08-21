@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组织成员个人页面-怪盗君的页面</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #image-container {
+            position: relative;
+            text-align: center;
+        }
+
+        #image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="image-container">
+        <img id="image" src="/organization/memberspic1.jpg" alt="怪盗君的收款码">
+    </div>
+
+    <script>
+        
+        window.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+            alert("NAU组织提醒您，此图片受版权保护，未经授权禁止保存或使用。");
+        });
+    </script>
+</body>
+</html>
