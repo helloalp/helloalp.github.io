@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高级博客</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .blog-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .blog-card {
+            width: calc(33.33% - 20px);
+            background-color: #f5f5f5;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .blog-card:hover {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 20px;
+            display: none;
+        }
+
+        .blog-card.expanded .blog-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>每日一语</h1>
+    </div>
+
+    <div class="blog-list">
+        <div class="blog-card">
+            <h2>2023-08-21</h2>
+            <div class="blog-content">
+                <p>   </p>
+            </div>
+        </div>
+        <div class="blog-card">
+            <h2>2023-08-20</h2>
+            <div class="blog-content">
+                <p>   </p>
+            </div>
+        </div>
+        <div class="blog-card">
+            <h2>2023-08-19</h2>
+            <div class="blog-content">
+                <p>   </p>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        blogCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('expanded');
+            });
+        });
+    </script>
+</body>
+</html>
