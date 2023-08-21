@@ -5,10 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helloalp的网站</title>
     <link rel="icon" type="image/x-icon" href="/icon.ico">
-    <link rel="stylesheet" href="/plyr.css" />
-    <script src="/plyr.js"></script>
-    
-    <style>
+    <link rel="stylesheet" href="plyr.css" />
+    <script src="plyr.js"></script>
+    <script>
+    const player = new Plyr('#audio-player', {
+        controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
+        sources: [
+            {
+                src: '/archive/music.mp3',
+                type: 'audio/mp3'
+            }
+        ]
+    });
+</script>
+        <style>
         body {
             margin: 0;
             padding: 0;
@@ -20,12 +30,13 @@
             overflow: hidden;
         }
 
-        /* 新增表格样式 */
+        
         .table-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 80vh; /* 调整最小高度，以便留出空间给版权声明 */
+            padding-bottom: 100px; /* 添加底部空间，以防止遮挡 */
         }
 
         table {
@@ -45,7 +56,7 @@
             background-color: #000;
             color: #00FF00;
         }
-
+        
         .footer {
             text-align: center;
             padding: 20px;
@@ -92,7 +103,7 @@
                 <th>上线日期</th>
             </tr>
             <tr>
-                <td>Helloalp的个人博客</td>
+                <td>Helloalp的每日一语</td>
                 <td><button class="jump-button" onclick="location.href='/personal/blog.html'">跳转</button></td>
                 <td>20230821上线</td>
             </tr>
