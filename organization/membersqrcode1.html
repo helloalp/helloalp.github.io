@@ -24,6 +24,26 @@
             max-width: 100%;
             height: auto;
         }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #00FF00;
+            text-align: center;
+            padding: 10px;
+            font-style: italic;
+        }
+
+        .cursor {
+            display: inline-block;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-right-color: transparent; }
+            50% { border-right-color: #00FF00; }
+        }
     </style>
 </head>
 <body>
@@ -37,6 +57,49 @@
             e.preventDefault();
             alert("NAU组织提醒您，此图片受版权保护，未经授权禁止保存或使用。");
         });
+    </script>
+    <div class="footer">
+        <span id="typedText"></span><span class="cursor">&#9608;</span>
+    </div>
+
+    <script>
+        const typedTextElement = document.getElementById("typedText");
+        const copyrightText = "© 2023 Helloalp & Team NAU. All rights reserved.";
+        let currentText = "";
+        let isDeleting = false;
+        let charIndex = 0;
+
+        function typeEffect() {
+            const char = copyrightText[charIndex];
+
+            if (isDeleting) {
+                currentText = currentText.slice(0, -1);
+            } else {
+                currentText += char;
+            }
+
+            typedTextElement.textContent = currentText;
+
+            if (isDeleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            if (charIndex >= copyrightText.length) {
+                isDeleting = true;
+            }
+
+            if (charIndex === 0 && isDeleting) {
+                isDeleting = false;
+                currentText = "";
+            }
+
+            const typingSpeed = isDeleting ? 50 : 150;
+            setTimeout(typeEffect, typingSpeed);
+        }
+
+        typeEffect();
     </script>
 </body>
 </html>
