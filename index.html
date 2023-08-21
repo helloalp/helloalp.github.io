@@ -6,7 +6,7 @@
     <title>Helloalp的网站</title>
     <link rel="icon" type="image/x-icon" href="/icon.ico">
     <style>
-         body {
+        body {
             margin: 0;
             padding: 0;
             font-family: "Courier New", monospace;
@@ -17,7 +17,14 @@
             overflow: hidden;
         }
 
-     
+        /* 新增表格样式 */
+        .table-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
         table {
             border-collapse: collapse;
             border: 1px solid #00FF00;
@@ -35,17 +42,18 @@
             background-color: #000;
             color: #00FF00;
         }
-    
 
-        .table-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            
+        /* 版权声明样式 */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #00FF00;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
         }
 
-        
         .copyright {
             position: relative;
             text-align: center;
@@ -68,7 +76,7 @@
     </style>
 </head>
 <body>
-    
+    <!-- 表格部分 -->
     <div class="table-container">
         <table>
             <tr>
@@ -107,7 +115,7 @@
                 <td>20230820上线</td>
             </tr>
             <tr>
-                 <td>加密器</td>
+                <td>加密器</td>
                 <td><button class="jump-button" onclick="location.href='/encrypt.html'">跳转</button></td>
                 <td>20230821上线</td>
             </tr>
@@ -127,22 +135,44 @@
     </div>
 
     <script>
-       
-// 模拟输入效果
-        const codeElement = document.querySelector(".code");
-        const codeText = "print Team NAU";
+        // 模拟输入效果
+        const typedTextElement = document.getElementById("typedText");
+        const copyrightText = "© 2023 Helloalp. All rights reserved.";
         let currentText = "";
+        let isDeleting = false;
+        let charIndex = 0;
 
         function typeEffect() {
-            if (currentText.length < codeText.length) {
-                currentText += codeText[currentText.length];
-                codeElement.textContent = currentText;
-                setTimeout(typeEffect, 100);
+            const char = copyrightText[charIndex];
+
+            if (isDeleting) {
+                currentText = currentText.slice(0, -1);
+            } else {
+                currentText += char;
             }
+
+            typedTextElement.textContent = currentText;
+
+            if (isDeleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            if (charIndex >= copyrightText.length) {
+                isDeleting = true;
+            }
+
+            if (charIndex === 0 && isDeleting) {
+                isDeleting = false;
+                currentText = "";
+            }
+
+            const typingSpeed = isDeleting ? 50 : 150;
+            setTimeout(typeEffect, typingSpeed);
         }
 
         typeEffect();
-        
     </script>
 </body>
 </html>
