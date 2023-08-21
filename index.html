@@ -76,9 +76,49 @@
             from, to { border-right-color: transparent; }
             50% { border-right-color: #00FF00; }
         }
+
+            .input-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            font-family: "Courier New", monospace;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #333;
+            color: #00FF00;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <script>
+        function jumpToPage() {
+            const input = document.getElementById("pageNumberInput");
+            const pageNumber = parseInt(input.value);
+
+            if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= 10) {
+               
+                showPageContent(pageNumber);
+            } else {
+                alert("请输入有效的页数（1-10）");
+            }
+        }
+
+        function showPageContent(pageNumber) {
+            const content = document.querySelector("p");
+            content.textContent = `这是第 ${pageNumber} 页的内容。`;
+        }
+    </script>
+    <div class="input-container">
+        <input type="text" id="pageNumberInput" placeholder="输入页数">
+        <button onclick="jumpToPage()">跳转</button>
+    </div>
     <div id="audio-player"></div>
 
 
