@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>萌新求带555的个人主页</title>
+	<script src="https://helloalp.github.io/content-management.js"></script>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #F2F2F2;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #333;
+        color: #FFFFFF;
+    }
+
+    .header-title {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .return-home {
+        background-color: #333;
+        color: #FFFFFF;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .main-content {
+        display: flex;
+        margin: 20px;
+    }
+
+    .quote {
+        flex: 2;
+        padding: 20px;
+        background-color: #FFFFFF;
+        line-height: 1.6;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .quote p {
+        margin: 0;
+    }
+
+    .image-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image {
+        max-height: 80vh;
+        max-width: 100%;
+        border: 1px solid #333;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+	
+	.footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: #00FF00;
+            text-align: center;
+            padding: 10px;
+            font-style: italic;
+        }
+
+        .cursor {
+            display: inline-block;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-right-color: transparent; }
+            50% { border-right-color: #00FF00; }
+        }
+</style>
+
+</head>
+<body>
+    <div class="header">
+        <h1 class="header-title">萌新求带555的主页</h1>
+        <button class="return-home" onclick="location.href='/teaminsideindex.html'">返回组织主页</button>
+    </div>
+
+    <div class="main-content">
+        <div class="quote">
+            <p></p>
+        </div>
+        <div class="image-container">
+            <img src="/organization/memberspic2.png" alt="萌新求带555的个人微信收款码" class="image">
+        </div>
+    </div>
+	
+	<div class="footer">
+        <span id="typedText"></span><span class="cursor">&#9608;</span>
+    </div>
+
+    <script>
+        const typedTextElement = document.getElementById("typedText");
+        const copyrightText = "© 2023 Helloalp & Team NAU. All rights reserved.";
+        let currentText = "";
+        let isDeleting = false;
+        let charIndex = 0;
+
+        function typeEffect() {
+            const char = copyrightText[charIndex];
+
+            if (isDeleting) {
+                currentText = currentText.slice(0, -1);
+            } else {
+                currentText += char;
+            }
+
+            typedTextElement.textContent = currentText;
+
+            if (isDeleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            if (charIndex >= copyrightText.length) {
+                isDeleting = true;
+            }
+
+            if (charIndex === 0 && isDeleting) {
+                isDeleting = false;
+                currentText = "";
+            }
+
+            const typingSpeed = isDeleting ? 50 : 150;
+            setTimeout(typeEffect, typingSpeed);
+        }
+
+        typeEffect();
+    </script>
+</body>
+</html>
