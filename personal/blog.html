@@ -19,33 +19,39 @@
         }
 
         .blog-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
             padding: 20px;
         }
 
         .blog-card {
-            width: calc(33.33% - 20px);
             background-color: #f5f5f5;
             margin-bottom: 20px;
             border-radius: 5px;
-            overflow: hidden;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            cursor: pointer;
         }
 
         .blog-card:hover {
-            transform: scale(1.05);
+            background-color: #e0e0e0;
+        }
+
+        .blog-title {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
         }
 
         .blog-content {
+            max-height: 0;
+            overflow: hidden;
             padding: 20px;
-            display: none;
+            transition: max-height 0.3s ease-in-out;
         }
 
         .blog-card.expanded .blog-content {
-            display: block;
+            max-height: 300px; /* 根据需要调整内容最大高度 */
         }
 
         /* 版权声明样式 */
@@ -75,19 +81,25 @@
 
     <div class="blog-list">
         <div class="blog-card">
-            <h2>2023-08-21</h2>
+            <div class="blog-title">2023-08-22</div>
+            <div class="blog-content">
+                <p>要开学，糟糕透顶（这不是今天的每日一语:）</p>
+            </div>
+        </div>
+        <div class="blog-card">
+            <div class="blog-title">2023-08-21</div>
             <div class="blog-content">
                 <p>今天是一个新的开始，让我们迎接新的挑战。</p>
             </div>
         </div>
         <div class="blog-card">
-            <h2>2023-08-20</h2>
+            <div class="blog-title">2023-08-20</div>
             <div class="blog-content">
                 <p>在平凡的日子里，也能发现美丽的存在。</p>
             </div>
         </div>
         <div class="blog-card">
-            <h2>2023-08-19</h2>
+            <div class="blog-title">2023-08-19</div>
             <div class="blog-content">
                 <p>生活的意义在于不断探寻，不断成长。</p>
             </div>
@@ -95,7 +107,7 @@
     </div>
 
     <div class="footer">
-        <p><span class="typed-text">© 2023 每日一语。保留所有权利。</span></p>
+        <p><span class="typed-text">© 2023 Helloalp。保留所有权利。</span></p>
     </div>
 
     <script>
