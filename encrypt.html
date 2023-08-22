@@ -1,77 +1,34 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AES加密</title>
-    <script src="/crypto-js.js"></script>
+    <title>加密解密器</title>
+    <link rel="stylesheet" href="encrypter.css">
 </head>
 <body>
-    <div>
-        <h2>AES加密模块</h2>
-        <h3>Helloalp提供</h3>
-        <div>
-            <label for="contentInput">待加密内容：</label>
-            <input type="text" id="contentInput">
+    <div class="container">
+        <h1>AES加密解密</h1>
+
+        <div class="section">
+            <h2>加密</h2>
+            <textarea id="encryptInput" placeholder="请输入要加密的内容"></textarea>
+            <input type="text" id="encryptKey" placeholder="加密秘钥">
+            <button id="encryptButton">加密</button>
+            <div class="output" id="encryptedOutput"></div>
         </div>
-        <div>
-            <label for="keyInput">密钥：</label>
-            <input type="text" id="keyInput">
+
+        <div class="section">
+            <h2>解密</h2>
+            <textarea id="decryptInput" placeholder="请输入要解密的内容"></textarea>
+            <input type="text" id="decryptKey" placeholder="解密秘钥">
+            <button id="decryptButton">解密</button>
+            <div class="output" id="decryptedOutput"></div>
         </div>
-        <div>
-            <label for="modeSelect">加密模式：</label>
-            <select id="modeSelect">
-                <option value="CBC">CBC</option>
-                <option value="ECB">ECB</option>
-                <!-- 更多模式 -->
-            </select>
-        </div>
-        <div>
-            <label for="paddingSelect">填充方式：</label>
-            <select id="paddingSelect">
-                <option value="Pkcs7">PKCS7</option>
-                <option value="Iso97971">ISO9797-1</option>
-                <!-- 更多填充方式 -->
-            </select>
-        </div>
-        <button onclick="encrypt()">加密</button>
-        <div id="output" style="display: none;"></div>
     </div>
 
-    <hr>
+    <a class="home-button" href="#">返回主页</a>
 
-    <div>
-        <h2>默认参数加密</h2>
-        <button onclick="defaultEncrypt()">加密</button>
-        <div id="defaultOutput" style="display: none;"></div>
-    </div>
-
-    <script>
-        const defaultKey = "my-default-key"; // 默认密钥
-
-        function encrypt() {
-            const content = document.getElementById("contentInput").value;
-            const key = document.getElementById("keyInput").value;
-            const mode = document.getElementById("modeSelect").value;
-            const padding = document.getElementById("paddingSelect").value;
-
-            const encryptedBytes = CryptoJS.AES.encrypt(content, key, {
-                mode: CryptoJS.mode[mode],
-                padding: CryptoJS.pad[padding]
-            });
-
-            document.getElementById("output").textContent = "加密后内容：" + encryptedBytes.toString();
-            document.getElementById("output").style.display = "block";
-        }
-
-        function defaultEncrypt() {
-            const content = document.getElementById("contentInput").value;
-
-            const encryptedBytes = CryptoJS.AES.encrypt(content, defaultKey);
-
-            document.getElementById("defaultOutput").textContent = "加密后内容：" + encryptedBytes.toString();
-            document.getElementById("defaultOutput").style.display = "block";
-        }
-    </script>
+    <script src="/aesencrypt.js"></script>
 </body>
 </html>
