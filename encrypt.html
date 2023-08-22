@@ -5,6 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>加密解密器</title>
     <link rel="stylesheet" href="encrypter.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #00FF00;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #00FF00;
+            color: #333;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        #encryptedText {
+            font-size: 18px;
+            margin-top: 20px;
+        }
 </head>
 <body>
     <div class="container">
@@ -26,7 +65,31 @@
             <div class="output" id="decryptedOutput"></div>
         </div>
     </div>
-
+    <script src="https://helloalp.github.io/crypto-js.min.js"></script>
+    
+    
+    <h1>Base64加密页面</h1>
+    
+    <label for="inputText">待加密内容：</label>
+    <input type="text" id="inputText">
+    
+    <br><br>
+    
+    <button id="encryptButton">加密</button>
+    
+    <div id="encryptedText"></div>
+    
+    <script>
+        document.getElementById("encryptButton").addEventListener("click", () => {
+            const inputText = document.getElementById("inputText").value;
+            
+            // 使用 Base64 进行加密
+            const encryptedText = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(inputText));
+            
+            // 显示加密后的内容
+            document.getElementById("encryptedText").innerHTML = `<p>加密后的内容：</p><p>${encryptedText}</p>`;
+        });
+    </script>
     <a class="home-button" href="#">返回主页</a>
 
     <script src="/aesencrypt.js"></script>
