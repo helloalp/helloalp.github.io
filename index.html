@@ -7,7 +7,18 @@
     <link rel="icon" type="image/x-icon" href="/icon.ico">
     <link rel="stylesheet" href="plyr.css" />
     <script src="plyr.js"></script>
-    
+    <script>
+    function jumpToPage() {
+    const input = document.getElementById("pageNumberInput");
+    const pageNumber = parseInt(input.value);
+
+    if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= 10) {
+        showPageContent(pageNumber);
+    } else {
+        alert("请输入有效的页数（1-10）");
+    }
+}
+    </script>
         <style>
         body {
             margin: 0;
@@ -104,24 +115,7 @@
     </style>
 </head>
 <body>
-    <script>
-        function jumpToPage() {
-            const input = document.getElementById("pageNumberInput");
-            const pageNumber = parseInt(input.value);
-
-            if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= 10) {
-               
-                showPageContent(pageNumber);
-            } else {
-                alert("额，请输入有效的页数（1-10）");
-            }
-        }
-
-        function showPageContent(pageNumber) {
-            const content = document.querySelector("p");
-            content.textContent = `这是第 ${pageNumber} 页的内容。`;
-        }
-    </script>
+    
     <div class="input-container">
         <input type="text" id="pageNumberInput" placeholder="输入页数">
         <button onclick="jumpToPage()">跳转</button>
