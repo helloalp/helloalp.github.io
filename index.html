@@ -5,136 +5,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helloalp的网站</title>
     <link rel="icon" type="image/x-icon" href="/icon.ico">
-    <link rel="stylesheet" href="plyr.css" />
-    <script src="plyr.js"></script>
-    <script>
-    function jumpToPage() {
-    const input = document.getElementById("pageNumberInput");
-    const pageNumber = parseInt(input.value);
-
-    if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= 10) {
-        showPageContent(pageNumber);
-    } else {
-        alert("请输入有效的页数（1-10）");
-    }
+    
+    <style>
+	.header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: #00FF00;
 }
-    </script>
-        <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Courier New", monospace;
-            background-color: #000;
-            background-image: url('/indexbackground.jpg'); 
-            background-size: cover;
-            color: #00FF00;
-            overflow: hidden;
-        }
 
+.logo {
+    width: 50px; /* logo尺寸调整 */
+    height: auto;
+    margin-right: 10px;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+	color: #00FF00;
+	font-family: "Courier New", monospace;
+}
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Courier New", monospace;
+        background-color: #000;
+        background-image: url('/indexbackground.jpg');
+        background-size: cover;
+        color: #00FF00;
+        overflow: hidden;
+    }
+
+    .table-container {
+	text-align: center; 
+        margin-top: 150px; /* 垂直居中的间距 */
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding-bottom: 100px;
+		
+    }
+
+    table {
+        border-collapse: collapse;
+        border: 1px solid #00FF00;
+        width: 90%; /* 调整表格宽度 */
+        max-width: 1000px; /* 添加最大宽度，以防止过于宽大屏幕上显示不友好 */
+        margin: 0 auto; 
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    th, td {
+        border: 1px solid #00FF00;
+        padding: 13px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #000;
+        color: #00FF00;
+    }
+
+    .footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #00FF00;
+    position: fixed; /* 改为 fixed */
+    bottom: 0;
+    width: 100%;
+    z-index: 9999; /* 添加一个较高的 z-index 以确保在顶部显示 */
+}
+
+
+
+    .copyright {
+        position: relative;
+        text-align: center;
+        font-style: italic;
+        color: #00FF00;
+        font-size: 1.2em;
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+    .cursor {
+        display: inline-block;
+        animation: blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes blink-caret {
+        from, to { border-right-color: transparent; }
+        50% { border-right-color: #00FF00; }
+    }
+
+    .input-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    input[type="text"] {
+        padding: 5px;
+        font-family: "Courier New", monospace;
+    }
+
+    button {
+        padding: 5px 10px;
+        background-color: #333;
+        color: #00FF00;
+        border: none;
+        cursor: pointer;
+    }
+
+    .content {
+        display: none;
+    }
+
+    .page-active {
+        display: block;
+    }
+</style>
+
+    
         
-        .table-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 80vh; /* 调整最小高度，留出空间给版权声明 */
-            padding-bottom: 100px; /* 添加底部空间，以防止遮挡 */
-        }
-
-        table {
-            border-collapse: collapse;
-            border: 1px solid #00FF00;
-            width: 80%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        th, td {
-            border: 1px solid #00FF00;
-            padding: 10px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #000;
-            color: #00FF00;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: #00FF00;
-            position: bottom;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .copyright {
-            position: relative;
-            text-align: center;
-            font-style: italic;
-            color: #00FF00;
-            font-size: 1.2em;
-            overflow: auto;
-            white-space: nowrap;
-        }
-
-        .cursor {
-            display: inline-block;
-            animation: blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes blink-caret {
-            from, to { border-right-color: transparent; }
-            50% { border-right-color: #00FF00; }
-        }
-
-            .input-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        input[type="text"] {
-            padding: 5px;
-            font-family: "Courier New", monospace;
-        }
-
-        button {
-            padding: 5px 10px;
-            background-color: #333;
-            color: #00FF00;
-            border: none;
-            cursor: pointer;
-        }
-            .content {
-            display: none;
-        }
-
-        .page-active {
-            display: block;
-        }
-    </style>
 </head>
 <body>
-    
+    <div class="header">
+        <img src="/logo.png" alt="Logo" class="logo">
+        <h1 class="site-title">Helloalp的网站</h1>
+    </div>
     <div class="input-container">
+        <button onclick="prevPage()" id="prevButton">上一页</button>
         <input type="text" id="pageNumberInput" placeholder="输入页数">
         <button onclick="jumpToPage()">跳转</button>
-    </div>
-    <div id="audio-player"></div>
+        <button onclick="nextPage()" id="nextButton">下一页</button>
+        <p id="errorText" style="color: red;"></p>
+    </div>                                                                       <!--跳转上下页按钮--!>
+   
 
 
    
     
     <!-- 表格部分 -->
-    <div id="Page1" class="content page-active" data-page="1">
+    
     <div class="table-container">
+	<div class="page" id="page1">
         <table>
             <tr>
                 <th>分支名称</th>
                 <th>跳转</th>
                 <th>上线日期</th>
             </tr>
+			
+			
              
+			
             <tr>
                 <td>Helloalp的每日一语</td>
                 <td><button class="jump-button" onclick="location.href='/personal/blog.html'">跳转</button></td>
@@ -176,12 +205,18 @@
                 <td>20230821上线</td>
             </tr>
         </table>
-            </div>
-    </div>
-    <div id="Page2" class="content" data-page="2">
-    <div class="table-container">
-        
+		</div>
+		
+           
+   
+   
+        <div class="page" id="page2">
             <table>
+			<tr>
+                <th>分支名称</th>
+                <th>跳转</th>
+                <th>上线日期</th>
+            </tr>
             <tr>
                 <td>公开档案库</td>
                 <td><button class="jump-button" onclick="location.href='/archive/home.html'">跳转</button></td>
@@ -193,8 +228,8 @@
                 <td>20230822上线</td>
             </tr>
         </table>
-            </div>
-    </div>
+     </div>
+	 </div>
 
 
     <div class="footer">
@@ -202,17 +237,7 @@
             <span id="typedText"></span><span class="cursor">&#9608;</span>
         </div>
     </div>
-<script>
-    const player = new Plyr('#audio-player', {
-        controls: ['play', 'progress', 'current-time', 'mute', 'volume'],
-        sources: [
-            {
-                src: 'https://helloalp.github.io/archive/music.mp3',
-                type: 'audio/mp3'
-            }
-        ]
-    });
-</script>
+
     <script>
         // 模拟输入效果
         const typedTextElement = document.getElementById("typedText");
@@ -253,5 +278,64 @@
 
         typeEffect();
     </script>
+	<script>
+        const pages = document.querySelectorAll('.page');
+        const pageNumberInput = document.getElementById('pageNumberInput');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const errorText = document.getElementById('errorText');
+
+        let currentPage = 1;
+
+        function showPage(pageNumber) {
+            pages.forEach(page => {
+                page.style.display = 'none';
+            });
+            document.getElementById(`page${pageNumber}`).style.display = 'block';
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+                updatePaginationButtons();
+                errorText.textContent = '';
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < pages.length) {
+                currentPage++;
+                showPage(currentPage);
+                updatePaginationButtons();
+                errorText.textContent = '';
+            }
+        }
+
+        function jumpToPage() {
+            const input = pageNumberInput.value;
+            if (input.match(/^\d+$/)) {
+                const pageNumber = parseInt(input);
+                if (pageNumber >= 1 && pageNumber <= pages.length) {
+                    currentPage = pageNumber;
+                    showPage(currentPage);
+                    updatePaginationButtons();
+                    errorText.textContent = '';
+                } else {
+                    errorText.textContent = '请输入有效的页数！';
+                }
+            } else {
+                errorText.textContent = '请输入数字！';
+            }
+        }
+
+        function updatePaginationButtons() {
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage === pages.length;
+        }
+
+        showPage(currentPage);
+        updatePaginationButtons();
+    </script> <!-- 页面切换脚本，这是原创禁止复制，这么废物吗连这个都写不出来的无能 --!>
 </body>
 </html>
