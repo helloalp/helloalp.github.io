@@ -10,7 +10,12 @@
             padding: 0;
             font-family: Arial, sans-serif;
         }
-
+.sub-title {
+            font-style: italic;
+            color: #777;
+            text-align: center;
+            margin-top: -10px; /* 调整副标题与标题的间距 */
+        }
         .header {
             background-color: #333;
             color: white;
@@ -20,26 +25,26 @@
 
         .blog-list {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; /* 调整标题间距 */
             padding: 20px;
         }
 
         .blog-card {
-            width: calc(33.33% - 20px);
             background-color: #f5f5f5;
-            margin-bottom: 20px;
             border-radius: 5px;
-            overflow: hidden;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            overflow: hidden;
             cursor: pointer;
-            transform-origin: center center;
+            max-width: 300px;
+            margin: 0 auto;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
         }
 
         .blog-card:hover {
             background-color: #e0e0e0;
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
 
         .blog-title {
@@ -48,13 +53,14 @@
             padding: 10px;
             text-align: center;
             font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
-        .sub-title {
-            font-style: italic;
-            color: #777;
-            text-align: center;
-            margin-top: -10px; /* 调整副标题与标题的间距 */
+
+        .blog-title:hover {
+            background-color: #444;
         }
+
         .blog-content {
             max-height: 0;
             overflow: hidden;
@@ -63,7 +69,7 @@
         }
 
         .blog-card.expanded .blog-content {
-            max-height: 300px; /* 根据需要调整内容最大高度 */
+            max-height: 500px; 
         }
 
         /* 版权声明样式 */
@@ -89,12 +95,11 @@
 <body>
     <div class="header">
         <h1>每日一语</h1>
-    </div>
-    <div class="header">
-        <h2>每日一语</h2>
-        <p class="sub-title">投稿请联系QQ2827264223</p>
+         <p class="sub-title">投稿请QQ2827264223</p>
     </div>
 
+       
+   
     <div class="blog-list">
         <div class="blog-card">
             <div class="blog-title">2023-08-21</div>
@@ -124,7 +129,10 @@
         const blogCards = document.querySelectorAll('.blog-card');
 
         blogCards.forEach(card => {
-            card.addEventListener('click', () => {
+            const title = card.querySelector('.blog-title');
+            const content = card.querySelector('.blog-content');
+
+            title.addEventListener('click', () => {
                 card.classList.toggle('expanded');
             });
         });
