@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHA 在线加密器</title>
+    <script src="https://helloalp.github.io/crypto-js.js"></script>
+</head>
+<body>
+    <h1>SHA 加密器</h1>
+    
+    
+    <label for="input">待加密文本：</label>
+    <input type="text" id="input" placeholder="输入要加密的文本">
+    <br><br>
+    
+   
+    <label for="caseOption">大小写转换：</label>
+    <select id="caseOption">
+        <option value="uppercase">大写</option>
+        <option value="lowercase">小写</option>
+    </select>
+    <br><br>
+    
+    <label for="hashOption">SHA 加密方式：</label>
+    <select id="hashOption">
+        <option value="SHA-1">SHA-1</option>
+        <option value="SHA-256">SHA-256</option>
+        <option value="SHA-512">SHA-512</option>
+    </select>
+    <br><br>
+    
+    
+    <button onclick="encrypt()">加密</button>
+    
+    
+    <button onclick="copyToClipboard('input')">复制待加密文本</button>
+    
+    
+    <h2>加密结果：</h2>
+    <textarea id="output" rows="5" cols="50" readonly></textarea>
+    
+    
+    <button onclick="copyToClipboard('output')">复制加密结果</button>
+    
+    <script>
+        
+        function encrypt() {
+            const inputText = document.getElementById("input").value;
+            const caseOption = document.getElementById("caseOption").value;
+            const hashOption = document.getElementById("hashOption").value;
+            
+            let encryptedText = "";
+            
+            switch (hashOption) {
+                case "SHA-1":
+                    encryptedText = CryptoJS.SHA1(inputText).toString();
+                    break;
+                case "SHA-256":
+                    encryptedText = CryptoJS.SHA256(inputText).toString();
+                    break;
+                case "SHA-512":
+                    encryptedText = CryptoJS.SHA512(inputText).toString();
+                    break;
+                default:
+                    encryptedText = "无效的加密方式";
+            }
+            
+            if (caseOption === "uppercase") {
+                encryptedText = encryptedText.toUpperCase();
+            } else {
+                encryptedText = encryptedText.toLowerCase();
+            }
+            
+            document.getElementById("output").value = encryptedText;
+        }
+        
+        // 复制到剪贴板函数
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            element.select();
+            document.execCommand("copy");
+            alert("已复制到剪贴板！");
+        }
+    </script>
+</body>
+</html>
