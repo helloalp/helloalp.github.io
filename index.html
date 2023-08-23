@@ -80,21 +80,17 @@ p {
         color: #00FF00;
     }
 
-    .footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: #00FF00;
-    position: fixed; /* 改为 fixed */
-    bottom: 0;
-    width: 100%;
-    z-index: 9999; /* 添加一个较高的 z-index 以确保在顶部显示 */
-}
-
-
+   .footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #00FF00;
+        position: relative; /* 相对定位 */
+        width: 100%;
+        z-index: 9999;
+    }
 
     .copyright {
-        position: relative;
         text-align: center;
         font-style: italic;
         color: #00FF00;
@@ -112,7 +108,6 @@ p {
         from, to { border-right-color: transparent; }
         50% { border-right-color: #00FF00; }
     }
-
     .input-container {
         text-align: center;
         margin-top: 20px;
