@@ -303,75 +303,64 @@
         typeEffect();
     </script>
 	<script>
-        const pages = document.querySelectorAll('.page');
-        const pageNumberInput = document.getElementById('pageNumberInput');
-        const prevButton = document.getElementById('prevButton');
-        const nextButton = document.getElementById('nextButton');
-        const errorText = document.getElementById('errorText');
+        // 初始化页数和总页数
+        let currentPageNumber = 1;
+        const totalPages = document.getElementsByClassName("page").length;
 
-        let currentPage = 1;
-
-        function showPage(pageNumber) {
-            pages.forEach(page => {
-                page.style.display = 'none';
-            });
-            document.getElementById(`page${pageNumber}`).style.display = 'block';
+        // 更新显示当前页数和总页数的内容
+        function updatePageNumbers() {
+            document.getElementById("currentPage").textContent = currentPageNumber;
+            document.getElementById("totalPages").textContent = totalPages;
         }
 
+        // 上一页
         function prevPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                showPage(currentPage);
-                updatePaginationButtons();
-                errorText.textContent = '';
+            if (currentPageNumber > 1) {
+                currentPageNumber--;
+                updatePageNumbers();
+                updatePageVisibility();
             }
         }
 
+        // 下一页
         function nextPage() {
-            if (currentPage < pages.length) {
-                currentPage++;
-                showPage(currentPage);
-                updatePaginationButtons();
-                errorText.textContent = '';
+            if (currentPageNumber < totalPages) {
+                currentPageNumber++;
+                updatePageNumbers();
+                updatePageVisibility();
             }
         }
 
+        // 跳转到指定页
         function jumpToPage() {
-            const input = pageNumberInput.value;
-            if (input.match(/^\d+$/)) {
-                const pageNumber = parseInt(input);
-                if (pageNumber >= 1 && pageNumber <= pages.length) {
-                    currentPage = pageNumber;
-                    showPage(currentPage);
-                    updatePaginationButtons();
-                    errorText.textContent = '';
-                } else {
-                    errorText.textContent = '请输入有效的页数！';
-                }
+            const pageNumberInput = document.getElementById("pageNumberInput").value;
+            const newPageNumber = parseInt(pageNumberInput);
+
+            if (newPageNumber >= 1 && newPageNumber <= totalPages) {
+                currentPageNumber = newPageNumber;
+                updatePageNumbers();
+                document.getElementById("pageNumberInput").value = "";
+                document.getElementById("errorText").textContent = "";
+                updatePageVisibility();
             } else {
-                errorText.textContent = '请输入数字！';
+                document.getElementById("errorText").textContent = "无效的页数";
             }
         }
 
-        function updatePaginationButtons() {
-            prevButton.disabled = currentPage === 1;
-            nextButton.disabled = currentPage === pages.length;
+        // 更新页面可见性
+        function updatePageVisibility() {
+            for (let i = 1; i <= totalPages; i++) {
+                const pageElement = document.getElementById(`page${i}`);
+                if (i === currentPageNumber) {
+                    pageElement.style.display = "block";
+                } else {
+                    pageElement.style.display = "none";
+                }
+            }
         }
 
-        showPage(currentPage);
-        updatePaginationButtons();
-
-		// 初始化页数和总页数
-let currentPageNumber = 1;
-const totalPages = document.getElementsByClassName("page").length;
-
-// 更新显示当前页数和总页数的内容
-function updatePageNumbers() {
-    document.getElementById("currentPage").textContent = currentPageNumber;
-    document.getElementById("totalPages").textContent = totalPages;
-}
-
-		updatePageNumbers(); // 初始化显示当前页数和总页数
+        updatePageNumbers(); // 初始化显示当前页数和总页数
+        updatePageVisibility(); // 初始化页面可见性
     </script> <!-- 页面切换脚本，这是原创禁止复制，这么废物吗连这个都写不出来的无能 --!>
 </body>
 </html>
