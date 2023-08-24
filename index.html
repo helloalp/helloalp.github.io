@@ -80,35 +80,7 @@ p {
         color: #00FF00;
     }
 
-   .footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #333;
-        color: #00FF00;
-        position: fixed; /* relative相对定位 */
-	   bottom: 0;
-        width: 100%;
-       
-    }
-
-    .copyright {
-        text-align: center;
-        font-style: italic;
-        color: #00FF00;
-        font-size: 1.2em;
-        overflow: auto;
-        white-space: nowrap;
-    }
-
-    .cursor {
-        display: inline-block;
-        animation: blink-caret 0.75s step-end infinite;
-    }
-
-    @keyframes blink-caret {
-        from, to { border-right-color: transparent; }
-        50% { border-right-color: #00FF00; }
-    }
+  
     .input-container {
         text-align: center;
         margin-top: 20px;
@@ -268,46 +240,7 @@ p {
         </div>
     </div>
 
-    <script>
-        // 模拟输入效果
-        const typedTextElement = document.getElementById("typedText");
-        const copyrightText = "© 2023 Helloalp. All rights reserved.";
-        let currentText = "";
-        let isDeleting = false;
-        let charIndex = 0;
-
-        function typeEffect() {
-            const char = copyrightText[charIndex];
-
-            if (isDeleting) {
-                currentText = currentText.slice(0, -1);
-            } else {
-                currentText += char;
-            }
-
-            typedTextElement.textContent = currentText;
-
-            if (isDeleting) {
-                charIndex--;
-            } else {
-                charIndex++;
-            }
-
-            if (charIndex >= copyrightText.length) {
-                isDeleting = true;
-            }
-
-            if (charIndex === 0 && isDeleting) {
-                isDeleting = false;
-                currentText = "";
-            }
-
-            const typingSpeed = isDeleting ? 50 : 150;
-            setTimeout(typeEffect, typingSpeed);
-        }
-
-        typeEffect();
-    </script>
+    
 	<script>
         // 初始化页数和总页数
         let currentPageNumber = 1;
