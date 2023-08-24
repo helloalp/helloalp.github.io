@@ -20,8 +20,9 @@
 
         // 给按钮添加点击事件监听器
         clearCacheButton.addEventListener("click", function() {
-            // 清除本地存储的密码校验信息
+           
             localStorage.removeItem("passwordVerified");
+            localStorage.removeItem("password2Verified");
 
             // 获取当前时间
             var currentTime = new Date().toLocaleString();
