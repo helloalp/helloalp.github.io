@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安全验证</title>
+    <script src="content-management.js"></script>
+    <link rel="icon" type="image/x-icon" href="/icon.ico">
+    <script src="crypto-js.js"></script> <!-- 确保闭合 script 标签 -->
+</head>
+<body>
+    
+    <div style="text-align: center; margin-top: 100px;">
+        <h2>请输入访问密码</h2>
+        <form id="passwordForm">
+            <input type="password" id="passwordInput" placeholder="密码">
+            <button type="button" onclick="checkPassword()">提交</button>
+        </form>
+        <p id="errorMessage" style="color: red;"></p>
+    </div>
+
+    <script>
+        function encryptPassword(password) {
+            
+            return CryptoJS.SHA256(password).toString();
+        }
+
+        function checkPassword() {
+            var enteredPassword = document.getElementById("passwordInput").value;
+            var encryptedEnteredPassword = encryptPassword(enteredPassword);
+            var encryptedCorrectPassword = "a4bdf4962009ee3191ff2ba17f025f5e0f7a85d8c7d2187336150df1af1f6f98"; 
+
+            if (encryptedEnteredPassword === encryptedCorrectPassword) {
+                
+                localStorage.setItem('passwordVerified', 'true');
+                alert("验证完成");
+                window.location.href = 'https://helloalp.github.io/archive/home.html'; 
+            } else {
+                document.getElementById("errorMessage").textContent = "你没有访问许可";
+                alert("杂种")
+            }
+        }
+    </script>
+</body>
+</html>
