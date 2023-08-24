@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAU档案库</title>
-    <style>
+    <script src="content-management.js"></script>
+    <title>验证</title>
+	<style>
         body {
             margin: 0;
             padding: 0;
@@ -35,7 +36,7 @@
             color: #9a7f4a;
         }
 
-        .content {
+        .verified-content {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -68,14 +69,25 @@
         }
     </style>
 </head>
+
 <body>
-    <div class="header">
+    <div class="other-content" style="display: none;">
+        <!-- 这里是本页面的其他内容 -->
+        这里是本页面的其他内容。您尚未验证密码。
+		<div class="header">
         <div class="title">NAU档案库</div>
         <div class="subtitle">NAU Organizational Archive Repository</div>
     </div>
+    </div>
 
-    <div class="content">
-        <table>
+    <div class="verified-content" style="display: none;">
+        <!-- 这里是已验证专属内容 -->
+        欢迎前往已验证专属页面！
+		<div class="header">
+        <div class="title">NAU档案库</div>
+        <div class="subtitle">NAU Organizational Archive Repository</div>
+    </div>
+		<table>
             <tr>
                 <th>档案名</th>
                 <th>提供者</th>
@@ -122,8 +134,29 @@
         </table>
     </div>
 
-    <div class="footer">
-        &copy; 2023 NAU档案库. All rights reserved.
-    </div>
+    <script>
+        if (!localStorage.getItem('password2Verified')) {
+            var shouldVerify = confirm("您尚未验证密码，是否前往验证？");
+            if (shouldVerify) {
+                window.location.href = 'https://helloalp.github.io/auth/authpw2.html'; 
+            } else {
+                
+                var otherContentDiv = document.querySelector('.other-content');
+                otherContentDiv.style.display = 'block';
+            }
+        } else {
+            
+            var goToVerified = confirm("是否前往已验证专属内容？");
+            if (goToVerified) {
+                
+                var verifiedContentDiv = document.querySelector('.verified-content');
+                verifiedContentDiv.style.display = 'block';
+            } else {
+               
+                var otherContentDiv = document.querySelector('.other-content');
+                otherContentDiv.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
