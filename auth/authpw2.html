@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>安全验证</title>
-    <script src="content-management.js"></script>
+    <script src="https://helloalp.github.io/content-management.js"></script>
     <link rel="icon" type="image/x-icon" href="/icon.ico">
-    <script src="crypto-js.js"></script> <!-- 确保闭合 script 标签 -->
+    <script src="https://helloalp.github.io/crypto-js.js"></script> <!-- 确保闭合 script 标签 -->
 </head>
 <body>
     
@@ -32,7 +32,7 @@
 
             if (encryptedEnteredPassword === encryptedCorrectPassword) {
                 
-                localStorage.setItem('passwordVerified', 'true');
+                localStorage.setItem('password2Verified', 'true');
                 alert("验证完成");
                 window.location.href = 'https://helloalp.github.io/archive/home.html'; 
             } else {
