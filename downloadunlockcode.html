@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>解锁码下载</title>
+    <style>
+        #progress-bar-container {
+            display: none;
+            margin-top: 10px;
+            width: 100%;
+            background-color: #f0f0f0;
+        }
+        #progress-bar {
+            width: 0;
+            height: 20px;
+            background-color: #4CAF50;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>点击按钮下载文件</h1>
+    <button onclick="startDownload()">下载文件</button>
+    <div id="progress-bar-container">
+        <div id="progress-bar">0%</div>
+    </div>
+
+    <script>
+        function startDownload() {
+            var progressBarContainer = document.getElementById('progress-bar-container');
+            var progressBar = document.getElementById('progress-bar');
+
+            progressBarContainer.style.display = 'block';
+
+            var xhr = new XMLHttpRequest();
+            xhr.responseType = 'blob'; // 指定响应类型为二进制数据
+            xhr.open('GET', 'https://helloalp.github.io/archivepasswords.txt', true);
+
+            xhr.onprogress = function (event) {
+                if (event.lengthComputable) {
+                    var percentComplete = (event.loaded / event.total) * 100;
+                    progressBar.style.width = percentComplete + '%';
+                    progressBar.innerText = percentComplete.toFixed(2) + '%';
+                }
+            };
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var blob = xhr.response;
+                    var url = window.URL.createObjectURL(blob);
+
+                    // 创建一个隐藏的链接并设置文件名
+                    var a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'archivepasswords.txt';
+
+                    // 模拟点击下载链接
+                    document.body.appendChild(a);
+                    a.click();
+
+                    // 清理
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+
+                    // 隐藏进度条
+                    progressBarContainer.style.display = 'none';
+                }
+            };
+
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
