@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日微语</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="fullscreen-modal" id="confirm-modal">
+        <div class="modal-content">
+            <h2>用户协议</h2>
+            <!-- 用户协议内容 -->
+            <button id="accept-btn">同意</button>
+        </div>
+    </div>
+    <header>
+        <h1>每日微语</h1>
+        <div class="settings">
+            <!-- 网页设置功能 -->
+            <label for="display-count">每页显示：</label>
+            <select id="display-count">
+                <option value="2">2 条</option>
+                <option value="4">4 条</option>
+                <option value="6">6 条</option>
+            </select>
+        </div>
+    </header>
+    <main>
+        <div class="pagination">
+            <button id="prev-page">上一页</button>
+            <span class="current-page">1</span>
+            <span class="total-pages">/ 5</span>
+            <button id="next-page">下一页</button>
+            <label for="page-number">跳转到：</label>
+            <input type="text" id="page-number" />
+            <button id="go-to-page">跳转</button>
+        </div>
+        <div class="content">
+            
+            <div class="message-box">
+                <h3>微语标题 1</h3>
+                <p>微语内容 1...</p>
+                <img src="关闭按钮图像路径" alt="关闭" class="close-button">
+            </div>
+            
+        </div>
+    </main>
+    <script src="/realblogscript.js"></script>
+</body>
+</html>
