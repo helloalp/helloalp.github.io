@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My Hugo Blog</title>
+    <link>https://yourblog.com/posts/</link>
+    <description>Recent content in Posts on My Hugo Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 30 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yourblog.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的自定义文章</title>
+      <link>https://yourblog.com/posts/test1/</link>
+      <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourblog.com/posts/test1/</guid>
+      <description>这是一个示例的自定义文章内容。你可以在这里编写你的博客内容，使用 Markdown 语法进行格式化。
+这是一个标题 这是一段文本。你可以添加链接 示例链接，以及列表：
+项目 1 项目 2 如果你的主题支持特殊的 Markdown 标记或短代码，也可以在这里使用它们。</description>
+    </item>
+    
+  </channel>
+</rss>
