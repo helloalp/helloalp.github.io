@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on My Hugo Blog</title>
+    <link>https://yourblog.com/tags/</link>
+    <description>Recent content in Tags on My Hugo Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 30 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yourblog.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>示例</title>
+      <link>https://yourblog.com/tags/%E7%A4%BA%E4%BE%8B/</link>
+      <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourblog.com/tags/%E7%A4%BA%E4%BE%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>自定义</title>
+      <link>https://yourblog.com/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/</link>
+      <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yourblog.com/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
