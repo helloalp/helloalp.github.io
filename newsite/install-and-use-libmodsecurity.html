@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+   <head>
+      <meta name="theme-color">
+      <meta charset="UTF-8">
+      <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+      <link rel="stylesheet" href="https://s.nmxc.ltd/sakurairo_vision/@2.6/fontawesome/css/all.min.css" type="text/css" media="all" />
+      <meta name="description" content="Libmodsecurity 是 ModSecurity v3 项目的一个组成部分。该库代码库作为 ModSecurity 连接器的接口，接收 Web 流量并应用传统的 ModSecurity 处理。总体而言，它提供了加载/解释以 ModSecurity SecRules 格式编写的规则并将其应用于通过连接器提供的 HTTP 内…" />
+      <meta name="keywords" content="libmodsecurity,OWASP,其他," />
+      <link rel="shortcut icon" href="https://networkos.club/wp-content/uploads/2021/01/favicon.png" />
+      <meta http-equiv="x-dns-prefetch-control" content="on">
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <link media="all" href="https://helloalp.top/newsite/css/auto.css" rel="stylesheet">
+      <title>Libmodsecurity的安装与使用 - 不明のNetWorkOS</title>
+      <link rel="canonical" href="https://networkos.club/archives/install-and-use-libmodsecurity.html" />
+      <meta property="og:locale" content="zh_CN" />
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content="Libmodsecurity的安装与使用 - 不明のNetWorkOS" />
+      <meta property="og:description" content="Libmodsecurity 是 ModSecurity v3 项目的一个组成部分。该库代码库作为 ModSecurity 连接器 ..." />
+      <meta property="og:url" content="https://networkos.club/archives/install-and-use-libmodsecurity.html" />
+      <meta property="og:site_name" content="不明のNetWorkOS" />
+      <meta property="article:published_time" content="2023-06-04T06:22:44+00:00" />
+      <meta property="article:modified_time" content="2023-06-04T06:23:12+00:00" />
+      <meta name="author" content="不明" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:label1" content="作者" />
+      <meta name="twitter:data1" content="不明" />
+      <meta name="twitter:label2" content="预计阅读时间" />
+      <meta name="twitter:data2" content="1分" />
+      <script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://networkos.club/archives/install-and-use-libmodsecurity.html#article","isPartOf":{"@id":"https://networkos.club/archives/install-and-use-libmodsecurity.html"},"author":{"name":"不明","@id":"https://networkos.club/#/schema/person/fe100eacc46dafb08c90ae9d416f295d"},"headline":"Libmodsecurity 的安装与使用","datePublished":"2023-06-04T06:22:44+00:00","dateModified":"2023-06-04T06:23:12+00:00","mainEntityOfPage":{"@id":"https://networkos.club/archives/install-and-use-libmodsecurity.html"},"wordCount":42,"commentCount":0,"publisher":{"@id":"https://networkos.club/#/schema/person/fe100eacc46dafb08c90ae9d416f295d"},"keywords":["libmodsecurity","OWASP"],"articleSection":["其他"],"inLanguage":"zh-CN","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://networkos.club/archives/install-and-use-libmodsecurity.html#respond"]}]},{"@type":"WebPage","@id":"https://networkos.club/archives/install-and-use-libmodsecurity.html","url":"https://networkos.club/archives/install-and-use-libmodsecurity.html","name":"Libmodsecurity的安装与使用 - 不明のNetWorkOS","isPartOf":{"@id":"https://networkos.club/#website"},"datePublished":"2023-06-04T06:22:44+00:00","dateModified":"2023-06-04T06:23:12+00:00","breadcrumb":{"@id":"https://networkos.club/archives/install-and-use-libmodsecurity.html#breadcrumb"},"inLanguage":"zh-CN","potentialAction":[{"@type":"ReadAction","target":["https://networkos.club/archives/install-and-use-libmodsecurity.html"]}]},{"@type":"BreadcrumbList","@id":"https://networkos.club/archives/install-and-use-libmodsecurity.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://networkos.club/"},{"@type":"ListItem","position":2,"name":"Libmodsecurity 的安装与使用"}]},{"@type":"WebSite","@id":"https://networkos.club/#website","url":"https://networkos.club/","name":"不明のNetWorkOS","description":"","publisher":{"@id":"https://networkos.club/#/schema/person/fe100eacc46dafb08c90ae9d416f295d"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://networkos.club/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"zh-CN"},{"@type":["Person","Organization"],"@id":"https://networkos.club/#/schema/person/fe100eacc46dafb08c90ae9d416f295d","name":"不明","image":{"@type":"ImageObject","inLanguage":"zh-CN","@id":"https://networkos.club/#/schema/person/image/","url":"https://weavatar.com/avatar/acdf539333f4943c4ecc80f921c7448a?s=96&d=mm&r=g","contentUrl":"https://weavatar.com/avatar/acdf539333f4943c4ecc80f921c7448a?s=96&d=mm&r=g","caption":"不明"},"logo":{"@id":"https://networkos.club/#/schema/person/image/"},"description":"著名轮子整合商","sameAs":["https://networkos.club"]}]}</script> <script type="text/javascript" id="wp-statistics-tracker-js-extra">var WP_Statistics_Tracker_Object = {"hitRequestUrl":"https:\/\/networkos.club\/wp-json\/wp-statistics\/v2\/hit?wp_statistics_hit_rest=yes&track_all=1&current_page_type=post&current_page_id=236&search_query&page_uri=L2FyY2hpdmVzL2luc3RhbGwtYW5kLXVzZS1saWJtb2RzZWN1cml0eS5odG1s","keepOnlineRequestUrl":"https:\/\/networkos.club\/wp-json\/wp-statistics\/v2\/online?wp_statistics_hit_rest=yes&track_all=1&current_page_type=post&current_page_id=236&search_query&page_uri=L2FyY2hpdmVzL2luc3RhbGwtYW5kLXVzZS1saWJtb2RzZWN1cml0eS5odG1s","option":{"dntEnabled":false,"cacheCompatibility":""}};</script> <script type="text/javascript" src="https://networkos.club/wp-content/plugins/wp-statistics/assets/js/tracker.js?ver=6.3.1" id="wp-statistics-tracker-js"></script> 
+      <link rel="https://api.w.org/" href="https://networkos.club/wp-json/" />
+      <link rel="alternate" type="application/json" href="https://networkos.club/wp-json/wp/v2/posts/236" />
+      <link rel="shortlink" href="https://networkos.club/?p=236" />
+      <link rel="alternate" type="application/json+oembed" href="https://networkos.club/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetworkos.club%2Farchives%2Finstall-and-use-libmodsecurity.html" />
+      <link rel="alternate" type="text/xml+oembed" href="https://networkos.club/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetworkos.club%2Farchives%2Finstall-and-use-libmodsecurity.html&#038;format=xml" />
+      <link rel="stylesheet" href="https://cdn2.tianli0.top/fonts/css?family=Noto+Serif|Noto+Serif+SC|Noto+Sans+SC|Dela+Gothic+One|Fira+Code&display=swap" media="all">
+      <script type="text/javascript">if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+         alert('朋友，IE浏览器未适配哦~\n如果是 360、QQ 等双核浏览器，请关闭 IE 模式！');
+         }
+      </script> 
+   </head>
+   <body class="post-template-default single single-post postid-236 single-format-standard chinese-font  ">
+      <div class="scrollbar" id="bar"></div>
+      <header class="site-header no-select" role="banner">
+         <div class="site-top">
+            <div class="site-branding">
+               <div class="site-title"> <a href="https://networkos.club"><img src="https://networkos.club/wp-content/uploads/2021/01/logo.png"></a></div>
+            </div>
+            <div class="header-user-avatar">
+               <a href="https://networkos.club/wp-login.php"> <img src="https://s.nmxc.ltd/sakurairo_vision/@2.5/basic/topavatar.png" width="30" height="30"> </a>
+               <div class="header-user-menu">
+                  <div class="header-user-name no-logged"> <a id="login-link" href="https://networkos.club/wp-login.php" data-no-pjax style="font-weight:bold;text-decoration:none">登录</a></div>
+               </div>
+            </div>
+            <div class="searchbox js-toggle-search"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="lower">
+               <nav>
+                  <ul id="menu-%e8%8f%9c%e5%8d%95" class="menu">
+                     <li><a href="https://networkos.club/">首页</a></li>
+                     <li>
+                        <a href="https://networkos.club/">分类</a>
+                        <ul class="sub-menu">
+                           <li><a href="https://networkos.club/%e7%bd%91%e7%bb%9c%e5%ae%89%e5%85%a8/">网络安全</a></li>
+                           <li><a href="https://networkos.club/%e4%b8%aa%e4%ba%ba%e9%a1%b9%e7%9b%ae/">个人项目</a></li>
+                           <li><a href="https://networkos.club/php/">PHP</a></li>
+                           <li><a href="https://networkos.club/linux%e8%bf%90%e7%bb%b4/">Linux 运维</a></li>
+                           <li><a href="https://networkos.club/javascript/">JavaScript</a></li>
+                           <li><a href="https://networkos.club/python/">Python</a></li>
+                           <li><a href="https://networkos.club/vue/">vue</a></li>
+                           <li><a href="https://networkos.club/laravel/">Laravel</a></li>
+                        </ul>
+                     </li>
+                     <li><a href="https://networkos.club/links/">友链</a></li>
+                     <li><a href="https://networkos.club/archives/">时光轴</a></li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+      </header>
+      <div class="openNav no-select">
+         <div class="iconflat no-select" style="padding: 30px;">
+            <div class="icon"></div>
+         </div>
+      </div>
+      <section id="main-container">
+         <div class="headertop filter-dot">
+            <div id="banner_wave_1"></div>
+            <div id="banner_wave_2"></div>
+            <figure id="centerbg" class="centerbg">
+               <div class="focusinfo">
+                  <div class="header-tou"><a href="https://networkos.club"><img loading="lazy" src="https://networkos.club/wp-content/uploads/2021/01/head.jpg"></a></div>
+                  <div class="header-container">
+                     <div class="header-info">
+                        <i class="fa-solid fa-quote-left"></i> <span class="element">Moon Without The Stars</span> <i class="fa-solid fa-quote-right"></i> <span class="element"></span> <script type="application/json" id="typed-js-initial">{"strings":["Moon Without The Stars"],"typeSpeed":140,"backSpeed":50,"loop":false,"showCursor":true}</script> 
+                        <p></p>
+                     </div>
+                  </div>
+                  <div class="top-social">
+                     <li id="bg-pre"><img src="https://s.nmxc.ltd/sakurairo_vision/@2.6/display_icon/flat_colorful/pre.png" loading="lazy" alt="上一篇" /></li>
+                     <li><a href="https://space.bilibili.com/34181452" target="_blank" class="social-bili" title="bilibili"><img alt="bilibili" loading="lazy" src="https://s.nmxc.ltd/sakurairo_vision/@2.6/display_icon/flat_colorful/bilibili.png" /></a></li>
+                     <li><a href="https://github.com/NotMings" target="_blank" class="social-github" title="github"><img alt="github" loading="lazy" src="https://s.nmxc.ltd/sakurairo_vision/@2.6/display_icon/flat_colorful/github.png" /></a></li>
+                     <li id="bg-next"><img loading="lazy" src="https://s.nmxc.ltd/sakurairo_vision/@2.6/display_icon/flat_colorful/next.png" alt="下一篇" /></li>
+                  </div>
+               </div>
+            </figure>
+            <div class="headertop-down" onclick="headertop_down()">
+               <span>
+                  <svg t="1682342753354" class="homepage-downicon" viewBox="0 0 1843 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="21355" width="80px" height="80px">
+                     <path d="M1221.06136021 284.43250057a100.69380037 100.69380037 0 0 1 130.90169466 153.0543795l-352.4275638 302.08090944a100.69380037 100.69380037 0 0 1-130.90169467 0L516.20574044 437.48688007A100.69380037 100.69380037 0 0 1 647.10792676 284.43250057L934.08439763 530.52766665l286.97696258-246.09516608z" fill="rgba(255,255,255,0.8)" p-id="21356"></path>
+                  </svg>
+               </span>
+            </div>
+         </div>
+         <div id="page" class="site wrapper">
+            <div class="blank"></div>
+            <div id="content" class="site-content">
+               <div id="primary" class="content-area">
+                  <main id="main" class="site-main" role="main">
+                     <div class="has-toc have-toc"></div>
+                     <article id="post-236" class="post-236 post type-post status-publish format-standard hentry category-1 tag-libmodsecurity tag-owasp">
+                        <header class="entry-header">
+                           <h1 class="entry-title">Libmodsecurity 的安装与使用</h1>
+                           <p class="entry-census">发布于 2023-06-04&nbsp;&nbsp;183 次阅读</p>
+                           <hr>
+                        </header>
+                        
+                        
+                        
+                        <div class="entry-content">
+                           <p>正文内容</p>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        <footer class="post-footer">
+                           <div class="post-lincenses"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"> <i class="fa-brands fa-creative-commons"></i> </a></div>
+                           <div class="reward-open">
+                              <i class="fa-solid fa-piggy-bank fa-sm"></i>
+                              <div class="reward-main">
+                                 <ul class="reward-row">
+                                    <li class="alipay-code"><img src="https://networkos.club/wp-content/uploads/2021/01/alido.jpg"></li>
+                                    <li class="wechat-code"><img src="https://networkos.club/wp-content/uploads/2021/01/wedo.jpg"></li>
+                                 </ul>
+                              </div>
+                           </div>
+                           <section class="author-profile">
+                              <div class="info" itemprop="author" itemscope itemtype="http://schema.org/Person"> <a href="https://networkos.club/archives/author/adminwelt-2-2/" class="profile gravatar"> <img class="fa-spin" style="--fa-animation-duration: 15s;" src="https://networkos.club/wp-content/uploads/2021/01/head.jpg" itemprop="image" alt="不明" height="30" width="30"> </a></div>
+                              <div class="meta"> <a href="https://networkos.club/archives/author/adminwelt-2-2/" itemprop="url" rel="author">不明</a></div>
+                              <div class="desc"> <i class="fa-solid fa-feather" aria-hidden="true"></i>Francis</div>
+                           </section>
+                           <div class="post-modified-time"> <i class="fa-solid fa-calendar-day" aria-hidden="true"></i>最后更新于 2023-06-04</div>
+                           <div class="post-tags"> <i class="fa-solid fa-tag" aria-hidden="true"></i> <a href="https://networkos.club/archives/tag/libmodsecurity/" rel="tag">libmodsecurity</a> <a href="https://networkos.club/archives/tag/owasp/" rel="tag">OWASP</a></div>
+                        </footer>
+                     </article>
+                     <div class="toc-container">
+                        <div class="toc"></div>
+                     </div>
+                     <section class="post-squares nextprev">
+                        <div class="post-nepre full previous">
+                           <a href="https://networkos.club/archives/deploy-code-using-github-deploy-key.html" rel="prev">
+                              <div class="background lazyload" style="background-image:url(https://s.nmxc.ltd/sakurairo_vision/@2.6/load_svg/outload.svg);" data-src="https://networkos.club/wp-content/uploads/2022/10/github-deploy-key.png"></div>
+                              <span class="label">上一篇文章</span>
+                              <div class="info">
+                                 <h3>使用 GitHub 部署密钥部署代码</h3>
+                                 <hr>
+                              </div>
+                           </a>
+                        </div>
+                        <div class="post-nepre half next"></div>
+                     </section>
+                  </main>
+               </div>
+            </div>
+      
+         </div>
+         <footer id="colophon" class="site-footer" role="contentinfo">
+            <div class="site-info" theme-info="Sakurairo v2.6.2">
+               <div class="footertext">
+                  <div class="img-preload"> <img src="https://s.nmxc.ltd/sakurairo_vision/@2.5/load_svg/ball.svg"></div>
+                  <div class="sakura-icon" style="width:max-content;height:max-content;margin: auto;">
+                     <svg width="30px" height="30px" t="1682340134496" class="sakura-svg" viewBox="0 0 1049 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5240">
+                        <path d="M525.58396628 573.34694353s268.83106938-2.62915481 309.36387092 193.24287089l-76.46458293 21.90962291 12.92667757 84.13295086a214.05701289 214.05701289 0 0 1-96.84053193-4.82011663A224.79272784 224.79272784 0 0 1 525.58396628 578.38615666z" fill="#EE9ca7" p-id="5241"></path>
+                        <path d="M552.75189802 512.4381922s131.45773592-233.7756732 321.63325979-170.89505575L854.2283053 418.66500728l79.31283344 30.89256828a215.59068679 215.59068679 0 0 1-52.58309388 81.50379604 224.57363215 224.57363215 0 0 1-325.35789552-14.67944718z" fill="#EE9ca7" p-id="5242"></path>
+                        <path d="M508.49446078 494.0341093S317.00435871 306.48774025 426.77156822 139.31731943l69.4535037 38.78003191L547.4935884 109.30113636a214.05701289 214.05701289 0 0 1 65.72886796 71.86356201 225.01182435 225.01182435 0 0 1-98.37420505 310.67844912z" fill="#EE9ca7" p-id="5243"></path>
+                        <path d="M473.21996809 525.58396628S242.2925454 661.64272234 109.30113636 512.4381922l55.43134521-57.18411482-53.45947909-65.72886795a213.61882069 213.61882069 0 0 1 86.32391269-43.81924506 224.79272784 224.79272784 0 0 1 274.527572 175.27698099z" fill="#EE9ca7" p-id="5244"></path>
+                        <path d="M481.76472043 566.55496s72.0826585 258.31445093-106.4807652 348.14390364l-40.31370582-68.13892627-78.21735252 34.17901099a212.30424328 212.30424328 0 0 1-20.15685331-94.64956933 224.57363215 224.57363215 0 0 1 241.00584894-219.09622602z" fill="#EE9ca7" p-id="5245"></path>
+                     </svg>
+                  </div>
+                  <p style="color: #666666;">Copyright © 2018-2023 Helloalp.All Rights Reserved
+                  <p>星辰原是世间的人，只是曾经的大海与天空相通，有一人乘筏顺流而下，却去了遥远的天上，于是人成为了天上的星辰</p>
+                  </p>
+               </div>
+               <div class="footer-device function_area"> <span style="color: #b9b9b9;"> 加载耗时 0.138 秒 | 查询 53 次 | 内存使用 17.75 MB <br> <a href="https://github.com/mirai-mamori/Sakurairo" rel="noopener" target="_blank" id="site-info">Helloalp's Blog</a><a href="https://fuukei.org/" rel="noopener" target="_blank" id="site-info"> by Helloalp</a> </span></div>
+            </div>
+         </footer>
+      </section>
+      <div id="mo-nav">
+         <div class="m-avatar"> <img src="https://networkos.club/wp-content/uploads/2021/01/head.jpg"></div>
+         <div class="m-search">
+            <form class="m-search-form" method="get" action="https://networkos.club" role="search"> <input class="m-search-input" type="search" name="s" placeholder="搜索..." required></form>
+         </div>
+         <ul id="menu-%e8%8f%9c%e5%8d%95-1" class="menu">
+            <li><a href="https://networkos.club/">首页</a></li>
+            <li>
+               <a href="https://networkos.club/">分类</a>
+               <ul class="sub-menu">
+                  <li><a href="https://networkos.club/%e7%bd%91%e7%bb%9c%e5%ae%89%e5%85%a8/">网络安全</a></li>
+                  <li><a href="https://networkos.club/%e4%b8%aa%e4%ba%ba%e9%a1%b9%e7%9b%ae/">个人项目</a></li>
+                  <li><a href="https://networkos.club/php/">PHP</a></li>
+                  <li><a href="https://networkos.club/linux%e8%bf%90%e7%bb%b4/">Linux 运维</a></li>
+                  <li><a href="https://networkos.club/javascript/">JavaScript</a></li>
+                  <li><a href="https://networkos.club/python/">Python</a></li>
+                  <li><a href="https://networkos.club/vue/">vue</a></li>
+                  <li><a href="https://networkos.club/laravel/">Laravel</a></li>
+               </ul>
+            </li>
+            <li><a href="https://networkos.club/links/">友链</a></li>
+            <li><a href="https://networkos.club/archives/">时光轴</a></li>
+         </ul>
+      </div>
+      <button id="moblieGoTop" title="回到顶部"><i class="fa-solid fa-caret-up fa-lg"></i></button> <button id="changskin" title="控制面板"><i class="fa-solid fa-compass-drafting fa-lg fa-flip" style="--fa-animation-duration: 3s;"></i></button>
+      <form class="js-search search-form search-form--modal" method="get" action="https://networkos.club" role="search">
+         <div class="search-form__inner">
+            <div class="micro">
+               <p class="micro mb-">想要找点什么呢？</p>
+               <input class="text-input" type="search" name="s" placeholder="搜索" required>
+            </div>
+         </div>
+         <div class="search_close"></div>
+      </form>
+      <script type="text/javascript" src="https://networkos.club/wp-content/themes/Sakurairo/js/smoothscroll.js?ver=2.6.2" id="SmoothScroll-js"></script> <script type="text/javascript" src="https://networkos.club/wp-content/themes/Sakurairo/js/polyfill.js?ver=2.6.2" id="polyfills-js"></script> <script id="app-js-before" type="text/javascript">var _iro = {"pjax":false,"movies":"close","windowheight":"auto","ajaxurl":"https:\/\/networkos.club\/wp-admin\/admin-ajax.php","order":"desc","formpostion":"bottom","api":"https:\/\/networkos.club\/wp-json\/","nonce":"c0963e8aa6","google_analytics_id":"","gravatar_url":"weavatar.com\/avatar","NProgressON":true,"audio":false,"baguetteBox":true,"fancybox":false,"darkmode":true,"email_domain":"","email_name":"","ext_shared_lib":0,"cookie_version_control":"","qzone_autocomplete":false,"site_name":"不明のNetWorkOS","author_name":"不明","template_url":"https:\/\/networkos.club\/wp-content\/themes\/Sakurairo","site_url":"https:\/\/networkos.club","qq_api_url":"https:\/\/networkos.club\/wp-json\/sakura\/v1\/qqinfo\/json","land_at_home":false,"live_search":false,"loading_ph":"https:\/\/s.nmxc.ltd\/sakurairo_vision\/@2.5\/load_svg\/inload.svg","clipboardCopyright":false,"entry_content_style":"sakurairo","random_graphs_mts":true,"code_highlight":"hljs","comment_upload_img":false,"cache_cover":true,"site_bg_as_cover":false,"yiyan_api":["https:\/\/api.maho.cc\/yiyan\/","https:\/\/v1.hitokoto.cn\/"],"skin_bg0":"","skin_bg1":"https:\/\/cdn.jsdelivr.net\/gh\/Fuukei\/Public_Repository@latest\/vision\/background\/foreground\/bg1.png","skin_bg2":"https:\/\/cdn.jsdelivr.net\/gh\/Fuukei\/Public_Repository@latest\/vision\/background\/foreground\/bg2.png","skin_bg3":"https:\/\/cdn.jsdelivr.net\/gh\/Fuukei\/Public_Repository@latest\/vision\/background\/foreground\/bg3.png","skin_bg4":"https:\/\/cdn.jsdelivr.net\/gh\/Fuukei\/Public_Repository@latest\/vision\/background\/foreground\/bg4.png","cover_api":"https:\/\/api.netapi.xyz\/get-random-image","dm_strategy":"time"}</script> <script type="text/javascript" src="https://networkos.club/wp-content/themes/Sakurairo/js/app.js?ver=2.6.2" id="app-js"></script> <script type="text/javascript" src="https://networkos.club/wp-content/themes/Sakurairo/js/page.js?ver=2.6.2" id="app-page-js"></script> <script type="text/javascript" src="https://networkos.club/wp-includes/js/comment-reply.min.js?ver=6.3.1" id="comment-reply-js"></script> 
+      <div class="skin-menu no-select">
+         <div class="theme-controls row-container">
+            <ul class="menu-list">
+               <li id="white-bg" title="浅色模式"> <i class="fa-solid fa-display fa-sm"></i></li>
+               <li id="dark-bg" title="深色模式"> <i class="fa-regular fa-moon"></i></li>
+            </ul>
+            <ul class="menu-list" title="切换页面背景图像">
+               <li id="diy1-bg"><i class="fa-regular fa-heart"></i></li>
+               <li id="diy2-bg"><i class="fa-regular fa-star"></i></li>
+               <li id="diy3-bg"><i class="fa-brands fa-delicious"></i></li>
+               <li id="diy4-bg"><i class="fa-regular fa-lemon"></i></li>
+            </ul>
+            <div class="font-family-controls row-container"> <button type="button" class="control-btn-serif selected" title="切换到字体 A" data-name="serif"> <i class="fa-solid fa-font fa-lg"></i> </button> <button type="button" class="control-btn-sans-serif" title="切换到字体 B" data-name="sans-serif"> <i class="fa-solid fa-bold fa-lg"></i> </button></div>
+         </div>
+      </div>
+   </body>
+</html>
