@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>性能测试说明</title>
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 100px;
+    }
+    #confirmation-text {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    #confirm-button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="confirmation-text">
+      请确认是否进行设备性能测试?<br>
+      此性能测试原理是通过浏览器渲染分级位图瓦片生成一种复杂的图像<br>
+      渲染是持续的，因此会大幅度消耗设备图像渲染和CPU的性能<br>
+      测试不会发出任何声音，不会消耗过多流量(约5Kb)<br>
+      测试时可以关闭浏览器或者关闭此页面来退出<br>
+      测试基于浏览器环境进行，不会对设备造成不可逆影响<br>
+      不推荐2012年以前的设备测试。
+      By Helloalp
+    </div>
+    <button id="confirm-button" onclick="confirmRedirect()">确认测试</button>
+  </div>
+
+  <script>
+    function confirmRedirect() {
+      var confirmation = confirm("最后确认一次，你真的要测试吗？此操作不可逆");
+      if (confirmation) {
+        window.location.href = "/powertest.html";
+      }
+    }
+  </script>
+</body>
+</html>
