@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投稿</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f7f7f7;
+        }
+        .left {
+            padding: 20px;
+        }
+        .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        p {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        img {
+            max-width: 100%;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        #qq {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h2>投稿提示</h2>
+            <p>欢迎向 Helloalp 的网站投稿。请使用以下方式联系我们：</p>
+            <p>Email: <a href="mailto:2827264223@qq.com">2827264223@qq.com</a></p>
+            <p>投稿QQ: <a id="qq" href="tencent://message/?uin=2827264223&Site=Helloalp&Menu=yes">2827264223</a></p>
+        </div>
+        <div class="right">
+            <img src="/newsite/helloalp_qr_code_image.jpg" alt="Helloalp 二维码">
+        </div>
+    </div>
+    <script>
+        document.getElementById("qq").addEventListener("click", function() {
+            const dummyInput = document.createElement("input");
+            document.body.appendChild(dummyInput);
+            dummyInput.setAttribute("value", "your_qq_number");
+            dummyInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummyInput);
+            alert("成功复制");
+        });
+    </script>
+</body>
+</html>
