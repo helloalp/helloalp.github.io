@@ -11,13 +11,13 @@ document.addEventListener('contextmenu', function(e) {
 
         window.addEventListener("contextmenu", function(e) {
             e.preventDefault();
-            alert("NAU组织提醒您，此图片受版权保护，未经授权禁止保存或使用。");
+            alert("NAU组织提醒您，本站内容受版权保护，未经授权禁止保存或使用。");
         });
    
 
         window.addEventListener('keydown', function(event) {
             if (event.keyCode === 123) { 
-                alert("你这个只知道复制粘贴的低能");
+                alert("不是哥们，你生来只会复制粘贴吗？");
             }
         });
         
