@@ -11,7 +11,7 @@ document.addEventListener('contextmenu', function(e) {
 
         window.addEventListener("contextmenu", function(e) {
             e.preventDefault();
-            alert("NAU组织提醒您，本站内容受版权保护，未经授权禁止保存或使用。");
+            alert("本站内容未经授权禁止保存或使用。");
         });
    
 
