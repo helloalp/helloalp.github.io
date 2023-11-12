@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML代码压缩器</title>
+</head>
+<body>
+
+    <textarea id="inputBox" placeholder="在此粘贴HTML代码"></textarea><br>
+
+    <button onclick="processCode()">处理</button>
+    <button onclick="copyToClipboard()">复制</button>
+
+    <textarea id="outputBox" placeholder="处理后的HTML代码将显示在此" readonly></textarea>
+
+    <script>
+        function processCode() {
+            // 获取输入框中的HTML代码
+            var inputCode = document.getElementById('inputBox').value;
+
+            // 处理HTML代码，去除标签之间的空格并进行其他缩短处理
+            var processedCode = removeSpacesBetweenTags(inputCode);
+
+            // 将处理好的内容输出在输出框
+            document.getElementById('outputBox').value = processedCode;
+        }
+
+        function removeSpacesBetweenTags(htmlCode) {
+            // 在这里添加你的代码处理逻辑
+            // 以下是一个简单的例子，去除标签之间的空格
+            return htmlCode.replace(/>\s+</g, '><');
+        }
+
+        function copyToClipboard() {
+            // 复制输出框的内容到剪贴板
+            var outputCode = document.getElementById('outputBox');
+            outputCode.select();
+            document.execCommand('copy');
+        }
+    </script>
+
+</body>
+</html>
