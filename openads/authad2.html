@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="icon" type="image/x-icon" href="/icon.ico">
+
+    <title>广告│暗影小店│站长担保页面</title>
+
+	<script src="/content-management.js"></script>
+	
+   
+    <style>
+
+    
+
+
+
+    .header {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        padding: 20px;
+
+        background-color: #333;
+
+        color: #FFFFFF;
+
+    }
+
+
+
+    .header-title {
+
+        font-size: 1.5em;
+
+        font-weight: bold;
+
+    }
+
+
+
+    .return-insideindex {
+
+        background-color: #333;
+
+        color: #FFFFFF;
+
+        padding: 5px 10px;
+
+        border: none;
+
+        cursor: pointer;
+
+    }
+
+	
+
+	.return-index {
+
+        background-color: #333;
+
+        color: #FFFFFF;
+
+        padding: 5px 10px;
+
+        border: none;
+
+        cursor: pointer;
+
+    }
+
+
+
+    .main-content {
+
+        display: flex;
+
+        margin: 20px;
+
+    }
+
+
+
+    .quote {
+
+        flex: 2;
+
+        padding: 20px;
+
+        background-color: #FFFFFF;
+
+        line-height: 1.5;
+
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+
+	    
+
+    align-items: center;
+
+    }
+
+
+
+    .quote p {
+
+        margin: 0;
+
+	    
+
+    align-items: center;
+
+    }
+
+
+
+  
+ body {
+         margin: 0;
+
+        padding: 0;
+
+        font-family: Arial, sans-serif;
+
+        background-color: #F2F2F2;
+   background:url("/openads/2.jpg")   center center;   /*加载背景图*/   /* 背景图不平铺 */
+   background-size:cover;  /* 让背景图基于容器大小伸缩 */
+   background-repeat:repeat-x
+   background-repeat:repeat-y 
+   background-attachment:fixed;        /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */    //此条属性必须设置否则可能无效/
+   background-color:#F2F2F2;   /* 设置背景颜色，背景图加载过程中会显示背景色 */
+   background-repeat:repeat
+ }
+
+
+	
+
+	.footer {
+
+            position: fixed;
+
+            bottom: 0;
+
+            width: 100%;
+
+            background-color: #333;
+
+            color: #00FF00;
+
+            text-align: center;
+
+            padding: 10px;
+
+            font-style: italic;
+
+        }
+
+
+
+        .cursor {
+
+            display: inline-block;
+
+            animation: blink-caret 0.75s step-end infinite;
+
+        }
+
+
+
+        @keyframes blink-caret {
+
+            from, to { border-right-color: transparent; }
+
+            50% { border-right-color: #00FF00; }
+
+        }
+
+</style>
+
+
+
+</head>
+
+<body>
+
+    <div class="header">
+
+        <h1 class="header-title">暗影小店│本页面站长担保可信可靠</h1>
+
+        <button class="return-insideindex" onclick="location.href='/newsite/publish.html'">投广告点我</button>
+
+		<button class="return-index" onclick="location.href='/404.html'">其他页面</button>
+
+    </div>
+
+ 
+
+    <div class="main-content">
+
+        <div class="quote">
+<h3>
+我暗影也来赚钱了</h3>
+≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡<br>
+超级鸡<br>
+1w以内5块8只，6块10只，10块18只<br>
+16只以上0.3元一只<br>
+【大于5w每多1w总共加1元】<br>
+【末地基地不做】<br>
+【只做基地不负责挂机刷物资】<br>
+</h3>
+<h3><b>加我QQ购买</b><br></h3>
+<h1>点击右边QQ号即可复制 <a id="qq" href="tencent://message/?uin=3464502097&Site=Helloalp&Menu=yes">3464502097</a></h1>
+<br><hr>
+</h4>
+
+        </div>
+
+        
+
+           
+
+       
+
+    </div>
+
+	
+
+	<div class="footer">
+
+        <span id="typedText"></span><span class="cursor">&#9608;</span>
+
+    </div>
+
+
+
+    <script>
+
+        const typedTextElement = document.getElementById("typedText");
+
+        const copyrightText = "想要获得同款自定义广告网页吗？点击页面上分投稿广告即可免费投稿投广告 ";
+
+        let currentText = "";
+
+        let isDeleting = false;
+
+        let charIndex = 0;
+
+
+
+        function typeEffect() {
+
+            const char = copyrightText[charIndex];
+
+
+
+            if (isDeleting) {
+
+                currentText = currentText.slice(0, -1);
+
+            } else {
+
+                currentText += char;
+
+            }
+
+
+
+            typedTextElement.textContent = currentText;
+
+
+
+            if (isDeleting) {
+
+                charIndex--;
+
+            } else {
+
+                charIndex++;
+
+            }
+
+
+
+            if (charIndex >= copyrightText.length) {
+
+                isDeleting = true;
+
+            }
+
+
+
+            if (charIndex === 0 && isDeleting) {
+
+                isDeleting = false;
+
+                currentText = "";
+
+            }
+
+
+
+            const typingSpeed = isDeleting ? 50 : 150;
+
+            setTimeout(typeEffect, typingSpeed);
+
+        }
+
+
+
+        typeEffect();
+
+    </script>
+    <script>
+        document.getElementById("qq").addEventListener("click", function() {
+            const dummyInput = document.createElement("input");
+            document.body.appendChild(dummyInput);
+            dummyInput.setAttribute("value", "3464502097");
+            dummyInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummyInput);
+            alert("成功复制");
+        });
+    </script>
+ <script async defer src="/copyaddon.min.js"></script>
+</body>
+
+</html>
