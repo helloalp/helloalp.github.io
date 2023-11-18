@@ -1,0 +1,28 @@
+#map{
+    width: 800px;
+    height: 600px;
+    background-color: lightgray;
+    position: relative;
+}
+.introduction{
+    position: absolute;
+    left: 830px;
+    top: 0;
+    width: 400px;
+    height: 280px;
+    color: rgb(75, 71, 71);
+    font-size: 14px;
+    background-color: rgb(233, 224, 226);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+}
+
+#score{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: '微软雅黑';
+}
