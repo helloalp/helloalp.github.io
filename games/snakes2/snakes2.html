@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>贪吃蛇</title>
+</head>
+
+<body>
+    <div id="map" style="background: url('./images/map7.jpg');"></div>
+    <div class="prompt">
+        <div class="introduction">
+            贪吃蛇 <br><br>1.通过 ↑ ↓ ← → 方向键控制蛇头的移动方向；
+            <br>2.蛇头碰到边界时游戏结束；<br>3.蛇头碰到蛇身时游戏结束；
+            <br>4.蛇头不能原路返回，即蛇头方向向左时，按右键无效，蛇头方向向下时，按上键无效。
+            <br>5.对蛇头和蛇身进行了美化，蛇头由纯色小方块改成了蛇头图片，而且随着蛇头的移动方向改变，蛇头的朝向也会发生相应的改变。
+            <br>6.对食物进行美化，由纯色小方块改成了苹果图片。
+            <br>7.对地图进行美化，由纯色背景改成了图片背景。
+            <br>8.增加了游戏得分的计数，并实时显示到屏幕。
+        </div>
+        <div id="score">
+            得分：<span id="score_value">0</span>
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
+    
+</body>
+
+</html>
