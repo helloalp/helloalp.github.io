@@ -110,7 +110,6 @@ p {
     .content {
         display: none;
     }
-
     .page-active {
         display: block;
     }
@@ -127,14 +126,10 @@ p {
 	    background-image: url('https://i.postimg.cc/hjjc05wG/indexbgimg.png');
     }
 </style>
-
-    
-        
 </head>
 <body>
 	
     <div class="header">
-        
         <h1 class="site-title">Helloalp的网站│为了无法学习的奥义│&#128512;</h1>
     </div>
     <div class="input-container">
@@ -145,14 +140,7 @@ p {
         <p id="errorText" style="color: red;"></p>
 	    <p>当前页数：<span id="currentPage">1</span>总页数：<span id="totalPages">4</span></p>
 
-    </div>                                                                       <!--跳转上下页按钮--!>
-   
-
-
-   
-    
-    <!-- 表格部分 -->
-    
+    </div>  
     <div class="table-container">
 	<div class="page" id="page1">
         <table>
@@ -170,7 +158,7 @@ p {
                 <td>20231117发布</td>
             </tr>	
             <tr>
-                <td>每日一语</td>
+                <td>每日一语-全新界面</td>
                 <td><button class="jump-button" onclick="location.href='/personal/blog.html'">跳转</button></td>
                 <td>20230821上线</td>
             </tr>
@@ -199,9 +187,6 @@ p {
             </tr>
         </table>
 		</div>
-		
-           
-   
    
         <div class="page" id="page2">
             <table>
@@ -322,12 +307,8 @@ p {
         <div>
             <p class="centered-white-bold-text"><a href="/newsite/publish.html">联系我们</a></p>
 
-		   
-	    
         </div>
     </div>
-
-    
 	<script>
         // 初始化页数和总页数
         let currentPageNumber = 1;
@@ -388,8 +369,6 @@ p {
         updatePageNumbers(); // 初始化显示当前页数和总页数
         updatePageVisibility(); // 初始化页面可见性
     </script> <!-- 页面切换脚本，这是原创禁止复制，这么废物吗连这个都写不出来的无能 --!>
-	    
-
-
+	
 </body>
 </html>
