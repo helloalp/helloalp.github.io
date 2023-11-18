@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>扫雷</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+</head>
+<body>   
+    <div class="flex-container">
+        <div class="game-board">
+            <br>
+                <table id="board"></table>
+        </div>
+    </div>
+        <section id="footer">
+            <div id="start"><img src="images/start.png"></div>
+            <div id="size-btns">
+                <div id="size-btns"><button id="size-9"><img src="images/easy.png"> 简单</button></div> 
+                <div id="size-btns"><button id="size-16"><img src="images/medium.png"> 中等</button></div> 
+                <div id="size-btns"><button id="size-30"><img src="images/hard.png"> 困难</button></div>
+            </div>
+            <div id="clock"><em>按住Shift和点击一下"</em></strong> 来触发 <img src="images/flag.png"></div>
+        </section>
+    <script src="js/cell.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
