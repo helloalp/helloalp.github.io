@@ -9,8 +9,8 @@ const bd = document.getElementById("bd");
 const bl = document.getElementById("bl");
 const br = document.getElementById("br");
 
-const step = 20;
-const size = 20;
+const step = 200;
+const size = 200;
 const bwidth = 2;
 const mazeHeight = 200;
 const mazeWidth = 300;
