@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Page</title>
+    <style>
+        #loading-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
+            opacity: 1;
+        }
+
+        #loading-progress {
+            width: 300px;
+            height: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        #progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #4caf50;
+            transition: width 2s; /* 设置进度条加载速度，这里是2秒 */
+        }
+
+        #content {
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-page">
+        <div id="loading-progress">
+            <div id="progress-bar"></div>
+        </div>
+    </div>
+
+    <div id="content">
+        <!-- 主要内容在这里 -->
+        <h1>Your Website Content</h1>
+        <p>This is the main content of your website.</p>
+    </div>
+
+    <script>
+        // 模拟资源加载
+        function simulateResourceLoad(callback) {
+            // 模拟总资源大小和已加载大小
+            let totalResources = 100; // 假设总共100个单位的资源
+            let loadedResources = 0;
+
+            function resourceLoaded() {
+                loadedResources++;
+                updateProgress(loadedResources / totalResources * 100);
+
+                if (loadedResources === totalResources) {
+                    callback();
+                }
+            }
+
+            // 模拟资源加载过程，这里使用定时器来模拟加载
+            for (let i = 0; i < totalResources; i++) {
+                setTimeout(resourceLoaded, i * 20); // 每个资源加载间隔20毫秒
+            }
+        }
+
+        // 更新进度条
+        function updateProgress(value) {
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = value + '%';
+        }
+
+        // 显示内容
+        function showContent() {
+            const loadingPage = document.getElementById('loading-page');
+            const content = document.getElementById('content');
+
+            loadingPage.style.opacity = 0;
+            setTimeout(() => {
+                loadingPage.style.display = 'none';
+                content.style.display = 'block';
+            }, 500);
+        }
+
+        // 主控制流程
+        document.addEventListener('DOMContentLoaded', () => {
+            const loadingPage = document.getElementById('loading-page');
+            const loadingProgress = document.getElementById('loading-progress');
+            const content = document.getElementById('content');
+
+            // 显示加载进度条
+            loadingProgress.style.display = 'block';
+
+            // 模拟资源加载
+            simulateResourceLoad(() => {
+                // 资源加载完成后显示内容
+                showContent();
+            });
+        });
+    </script>
+</body>
+</html>
