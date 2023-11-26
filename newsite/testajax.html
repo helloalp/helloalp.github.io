@@ -1,22 +1,46 @@
 <!DOCTYPE html>
-<html lang="zh_CN">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加载中...</title>
     <style>
-        #content {
+        #loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: none;
         }
     </style>
 </head>
 <body>
-    <div id="content">
-       <p>高版本妙妙屋leak.zip受害者人员统计</p> <!-- 这里是你需要隐藏直到加载完成后再显示的内容 -->
-    </div>
 
-    <script>
-        (window).on("load", function() {("#content").fadeIn();
-        });
-    </script>
+<div id="loader">
+    <progress id="progress" max="100"></progress>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // 模拟加载时间
+        setTimeout(function () {
+            document.getElementById("loader").style.display = "none";
+            document.title = "你的网页标题";
+            // 这里可以添加其他页面内容
+        }, 10000); // 10秒
+
+        // 更新进度条
+        var progressBar = document.getElementById("progress");
+        var progressValue = 0;
+        var intervalId = setInterval(function () {
+            progressValue += 1;
+            progressBar.value = progressValue;
+            if (progressValue >= 100) {
+                clearInterval(intervalId);
+            }
+        }, 100); // 更新频率：每0.1秒
+    });
+</script>
+
 </body>
 </html>
