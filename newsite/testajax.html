@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>加载中...</title>
+    <title>加载网页需要8秒请等待</title>
     <style>
         #loader {
             position: fixed;
@@ -25,9 +25,9 @@
         // 模拟加载时间
         setTimeout(function () {
             document.getElementById("loader").style.display = "none";
-            document.title = "你的网页标题";
+            document.title = "AJAX异步加载成功";
             // 这里可以添加其他页面内容
-        }, 10000); // 10秒
+        }, 8000); // 10秒
 
         // 更新进度条
         var progressBar = document.getElementById("progress");
