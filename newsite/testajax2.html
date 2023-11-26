@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>加载进度条示例</title>
+  <style>
+    #progress-container {
+      width: 100%;
+      background-color: #f1f1f1;
+    }
+
+    #progress-bar {
+      width: 0;
+      height: 30px;
+      background-color: #4caf50;
+      text-align: center;
+      line-height: 30px;
+      color: white;
+    }
+
+    #content {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-container">
+    <div id="progress-bar">0%</div>
+  </div>
+
+  <div id="content">
+    <!-- 在这里添加你的网页内容 -->
+    <h1>你好，世界！</h1>
+    <p>这是一个简单的加载进度条示例。</p>
+  </div>
+
+  <script>
+    function updateProgressBar(progress) {
+      const progressBar = document.getElementById('progress-bar');
+      progressBar.style.width = progress + '%';
+      progressBar.innerHTML = progress + '%';
+    }
+
+    function showContent() {
+      const progressContainer = document.getElementById('progress-container');
+      const content = document.getElementById('content');
+
+      // 隐藏进度条，显示内容
+      progressContainer.style.display = 'none';
+      content.style.display = 'block';
+    }
+
+    function simulateLoading() {
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.random() * 10;
+
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+          showContent();
+        }
+
+        updateProgressBar(progress);
+      }, 500);
+    }
+
+    // 模拟加载过程
+    simulateLoading();
+  </script>
+</body>
+</html>
