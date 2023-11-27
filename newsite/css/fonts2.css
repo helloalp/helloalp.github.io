@@ -1,12 +1,12 @@
 @font-face {
     font-family: 'NotoSerif_SemiCondensed-Light';
     src: local('NotoSerif_SemiCondensed-Light'), 
-         url('/newsite/fonts/noto-serif-semi-condensed-light.ttf) format('ttf');
+         url('newsite/fonts/NotoSerif_Condensed-Light.ttf') format('ttf');
     font-weight: normal;
     font-style: normal;
     font-display: swap; /* 使用 "swap" 以提供更好的用户体验 */
 }
 
 body {
-    font-family: 'NotoSerif_SemiCondensed-Light', sans-serif;
+    font-family: 'NotoSerif_SemiCondensed-Light' ;
 }
