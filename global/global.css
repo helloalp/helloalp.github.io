@@ -1,7 +1,1 @@
 
-/* 设置所有元素的颜色为黑白，并使用 !important */
-* {
-    color: black !important;
-    background-color: white !important;
-}
-
