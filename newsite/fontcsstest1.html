@@ -11,7 +11,25 @@
       <meta name="description" content=" " />
       <meta name="keywords" content="样式表,测试,字体,CDN" />
 	   <link rel="icon" type="image/x-icon" href="/icon.ico">
-      
+      <style>
+	      #progress-container {
+      width: 100%;
+      background-color: #f1f1f1;
+    }
+
+    #progress-bar {
+      width: 0;
+      height: 30px;
+      background-color: #4caf50;
+      text-align: center;
+      line-height: 30px;
+      color: white;
+    }
+
+    #content {
+      display: none;
+    }
+	      </style>
       <meta http-equiv="x-dns-prefetch-control" content="on">
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <link media="all" href="/newsite/css/cache.css" rel="stylesheet">
@@ -30,6 +48,8 @@
       </script> 
    </head>
    <body class="post-template-default single single-post postid-164 single-format-standard chinese-font  ">
+	   <div id="progress-container">
+    <div id="progress-bar">0%</div><div id="content">
       <div class="scrollbar" id="bar"></div>
       <header class="site-header no-select" role="banner">
          <div class="site-top">
@@ -195,6 +215,41 @@
             <div class="font-family-controls row-container"> <button type="button" class="control-btn-serif selected" title="切换到字体 A" data-name="serif"> <i class="fa-solid fa-font fa-lg"></i> </button> <button type="button" class="control-btn-sans-serif" title="切换到字体 B" data-name="sans-serif"> <i class="fa-solid fa-bold fa-lg"></i> </button></div>
          </div>
       </div>
+    </div>
+		   <script>
+    function updateProgressBar(progress) {
+      const progressBar = document.getElementById('progress-bar');
+      progressBar.style.width = progress + '%';
+      progressBar.innerHTML = progress + '%';
+    }
+
+    function showContent() {
+      const progressContainer = document.getElementById('progress-container');
+      const content = document.getElementById('content');
+
+      // 隐藏进度条，显示内容
+      progressContainer.style.display = 'none';
+      content.style.display = 'block';
+    }
+
+    function simulateLoading() {
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.random() * 10;
+
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+          showContent();
+        }
+
+        updateProgressBar(progress);
+      }, 500);
+    }
+
+    // 模拟加载过程
+    simulateLoading();
+		   </script>
 	   <script src="/copyaddon.min.js"></script>
 	   <script src="/global/global.js"></script>
 	   <script src="/global/control.js"></script>
