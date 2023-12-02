@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加载中...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #progress-container {
+            width: 70%;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        #progress-bar {
+            width: 0;
+            height: 30px;
+            background-color: #4CAF50;
+            color: white;
+            line-height: 30px;
+        }
+
+        #loading-text {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="progress-container">
+        <div id="progress-bar">0%</div>
+    </div>
+    <div id="loading-text">正在加载，请耐心等待一下哦</div>
+
+    <script>
+        // 模拟加载进度
+        let progress = 0;
+        const progressBar = document.getElementById("progress-bar");
+
+        function simulateProgress() {
+            if (progress < 100) {
+                progress++;
+                progressBar.style.width = progress + "%";
+                progressBar.innerText = progress + "%";
+                setTimeout(simulateProgress, 70); // 调整延迟以获得更平滑的进度
+            }
+        }
+
+        // 模拟总共耗时7秒
+        setTimeout(() => {
+            progressBar.style.display = "none";
+            document.getElementById("loading-text").style.display = "none";
+        }, 7000);
+
+        simulateProgress();
+    </script>
+</body>
+</html>
