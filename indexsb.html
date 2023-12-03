@@ -8,16 +8,37 @@
     <link rel="icon" type="image/x-icon" href="/icon.ico">
     
     <style>
-            .nav-toggle {
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 10px;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 2;
-        }
+          .header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: #00FF00;
+    position: relative; /* 添加相对定位 */
+}
+
+.nav-container {
+    position: absolute; /* 添加绝对定位 */
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #00FF00;
+    font-family: "Courier New", monospace;
+}
+
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
 
         .line {
             width: 15px; /* 调整横线长度 */
@@ -64,27 +85,12 @@
             filter: blur(10px); /* 添加虚化效果 */
         }
     
-    
-	.header {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: #333;
-    color: #00FF00;
-}
+   
 
 .logo {
     width: 50px; /* logo尺寸调整 */
     height: auto;
     margin-right: 10px;
-}
-
-.site-title {
-    margin: 0;
-    font-size: 1.5em;
-    font-weight: bold;
-	color: #00FF00;
-	font-family: "Courier New", monospace;
 }
 
     
@@ -184,11 +190,29 @@ p {
 </style>
 </head>
 <body>
-	    <div class="nav-toggle" onclick="toggleNav()">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+	
+
+    
+    <div class="header">
+    <div class="nav-container">
+        <div class="nav-toggle" onclick="toggleNav()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
     </div>
+        <h1 class="site-title">&nbsp;&nbsp;&nbsp;Helloalp的网站│为了无法学习的奥义│&#128512;</h1>
+    </div>
+    <div class="input-container">
+        <button onclick="prevPage()" id="prevButton">上一页</button>
+        <input type="text" id="pageNumberInput" placeholder="输入页数">
+        <button onclick="jumpToPage()">跳转</button>
+        <button onclick="nextPage()" id="nextButton">下一页</button>
+        <p id="errorText" style="color: red;"></p>
+	    <p>当前页数：<span id="currentPage">1</span>总页数：<span id="totalPages">4</span></p>
+
+    </div>  
+        
 
     <div class="nav-list">
         <!-- 你的侧边栏内容放在这里 -->
@@ -209,25 +233,6 @@ p {
         <a href="/newsite/publish.html">联系我们</a>
         <a href="/newsite/">Helloalp的博客</a>
     </div>
-
-    <div class="header">
-        <div class="nav-toggle" onclick="toggleNav()">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-    <div class="header">
-        <h1 class="site-title">     Helloalp的网站│为了无法学习的奥义│&#128512;</h1>
-    </div>
-    <div class="input-container">
-        <button onclick="prevPage()" id="prevButton">上一页</button>
-        <input type="text" id="pageNumberInput" placeholder="输入页数">
-        <button onclick="jumpToPage()">跳转</button>
-        <button onclick="nextPage()" id="nextButton">下一页</button>
-        <p id="errorText" style="color: red;"></p>
-	    <p>当前页数：<span id="currentPage">1</span>总页数：<span id="totalPages">4</span></p>
-
-    </div>  
     <div class="table-container">
 	<div class="page" id="page1">
         <table>
