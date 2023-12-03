@@ -8,35 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/icon.ico">
     
     <style>
-	    @media (max-width: 768px) {
-    .nav-list {
-        display: none;
-    }
-
-    .nav-list {
-        display: none;
-        flex-direction: column;
-        background-color: #333;
-        padding: 10px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 200px;
-        z-index: 1;
-    }
-
-    .nav-list a {
-        color: #00FF00;
-        text-decoration: none;
-        padding: 10px;
-        font-size: 16px;
-    }
-
-    .nav-list a:hover {
-        background-color: rgba(0, 255, 0, 0.2);
-    }
-}
+	    
 
 	.header {
     display: flex;
@@ -157,24 +129,7 @@ p {
 </style>
 </head>
 <body>
-	<div class="nav-list">
-    <a href="#" class="category">分类1</a>
-    <ul>
-        <li><a href="#">链接1.1</a></li>
-        <li><a href="#">链接1.2</a></li>
-    </ul>
-
-    <a href="#" class="category">分类2</a>
-    <ul>
-        <li><a href="#">链接2.1</a></li>
-        <li><a href="#">链接2.2</a></li>
-    </ul>
-
-    <!-- 添加更多分类和链接 -->
-
-    <a href="/newsite/publish.html">联系我们</a>
-    <a href="/newsite/">Helloalp的博客</a>
-</div>
+	
 
     <div class="header">
         <h1 class="site-title">Helloalp的网站│为了无法学习的奥义│&#128512;</h1>
@@ -416,42 +371,6 @@ p {
         updatePageNumbers(); // 初始化显示当前页数和总页数
         updatePageVisibility(); // 初始化页面可见性
     </script> <!-- 页面切换脚本，这是原创禁止复制，这么废物吗连这个都写不出来的无能 --!>
-	<script>
-    $(document).ready(function() {
-        function toggleNav() {
-            $('.nav-list').slideToggle();
-        }
-
-        $('.nav-toggle').click(function() {
-            toggleNav();
-        });
-
-        // Close the nav if a link is clicked
-        $('.nav-list a').click(function() {
-            if ($(window).width() <= 768) {
-                toggleNav();
-            }
-        });
-
-        // Close the nav if clicked outside of it
-        $(document).click(function(event) {
-            if (!$(event.target).closest('.nav-toggle').length &&
-                !$(event.target).closest('.nav-list').length) {
-                if ($(window).width() <= 768) {
-                    $('.nav-list').slideUp();
-                }
-            }
-        });
-
-        // Adjust the nav-list position on window resize
-        $(window).resize(function() {
-            if ($(window).width() > 768) {
-                $('.nav-list').removeAttr('style');
-            }
-        });
-    });
-</script>
-
-	    <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.js"></script>
+	
 </body>
 </html>
