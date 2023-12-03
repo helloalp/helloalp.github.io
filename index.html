@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/icon.ico">
     <link rel="stylesheet" href="/global/global.css" type='text/css' /> 
 	   <link rel="stylesheet" href="/global/control.css" type='text/css' />
+	   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
           .header {
     display: flex;
@@ -66,13 +67,30 @@
         .nav-list a {
             color: #00FF00;
             text-decoration: none;
-            padding: 10px;
-            font-size: 16px;
+            padding: 8px;
+            font-size: 15px;
             transition: background-color 0.3s ease-in-out;
+            width: 100%; /* 让链接占满父容器宽度 */
+            display: block;
         }
 
         .nav-list a:hover {
             background-color: rgba(0, 255, 0, 0.2);
+        }
+
+    .nav-list ul {
+            display: none;
+            padding-left: 2px;
+            list-style: none; /* 移除默认列表样式 */
+        }
+
+        .nav-list ul.active {
+            display: block;
+        }
+
+        .nav-list li {
+            padding-left: 10px;
+            box-sizing: border-box; /* 让 padding 不影响宽度计算 */
         }
 
         .content {
@@ -213,27 +231,62 @@ p {
 	    <p>当前页数：<span id="currentPage">1</span>总页数：<span id="totalPages">4</span></p>
 
     </div>  
+        <script>
+    $(document).ready(function () {
+    $('.category').click(function (event) {
+        event.preventDefault(); // 阻止默认事件
+        event.stopPropagation(); // 停止事件冒泡
+        $(this).next('ul').slideToggle();
+    });
+
+
+    
+    
+
+</script>
+
+<div class="nav-list">
+    <a href="#" class="category">博客</a>
+    <ul>
+        <li><a href="#" class="category">投稿</a>
+        <ul>
+        <li><a href="/newsite/publish.html">常规投稿联系</a></li>
+        <li><a href="/newsite/emergencypublish.html">加急投稿</a></li>
+        </ul>
+        </li>
+        <li><a href="/newsite/">博客主页</a></li>
+    </ul>
+
+    <a href="#" class="category">石室天府相关</a>
+    <ul>
+        <li><a href="#" class="category">食堂相关</a>
         
-
-    <div class="nav-list">
-        <!-- 你的侧边栏内容放在这里 -->
-        <a href="#" class="category">分类1</a>
+        
+        </li>
+        <li><a href="#" class="category">其他相关</a>
         <ul>
-            <li><a href="#">链接1.1</a></li>
-            <li><a href="#">链接1.2</a></li>
+        <li><a href="/newsite/"></a></li>
+        
+        
         </ul>
+        </li>
+        <li><a href="/newsite/why_there_is_a_sstf_topic_in_my_website.html">为什么有这个主题?</a></li>
+    </ul>
 
-        <a href="#" class="category">分类2</a>
+    <a href="#" class="category">分类3</a>
+    <ul>
+        <li><a href="#">链接3.1</a></li>
+        <li><a href="#">链接3.2</a></li>
         <ul>
-            <li><a href="#">链接2.1</a></li>
-            <li><a href="#">链接2.2</a></li>
+            <li><a href="#">链接3.2.1</a></li>
+            <li><a href="#">链接3.2.2</a></li>
         </ul>
+    </ul>
 
-        <!-- 添加更多分类和链接 -->
-
-        <a href="/newsite/publish.html">联系我们</a>
-        <a href="/newsite/">Helloalp的博客</a>
-    </div>
+    <a href="/newsite/publish.html">联系我们</a>
+    <a href="/newsite/">Helloalp的博客</a>
+</div>
+    
     <div class="table-container">
 	<div class="page" id="page1">
         <table>
@@ -464,7 +517,8 @@ p {
         updatePageNumbers(); // 初始化显示当前页数和总页数
         updatePageVisibility(); // 初始化页面可见性
     </script> <!-- 页面切换脚本，这是原创禁止复制，这么废物吗连这个都写不出来的无能 --!>
-<script id="first-script" class="script-tag" src="https://cdn.staticfile.org/jquery/3.6.4/jquery.min.js"></script>
+ 
+
 
 
     <script>
@@ -478,22 +532,28 @@ p {
             content.toggleClass('content-blur', !content.hasClass('content-blur'));
         }
 
-        $(document).ready(function() {
-            $('.nav-list a').click(function() {
-                if ($(window).width() <= 768) {
-                    toggleNav();
-                }
-            });
+$(document).ready(function () {
+    $('.category').click(function (event) {
+        event.preventDefault(); // 阻止默认事件
+        event.stopPropagation(); // 停止事件冒泡
+        $(this).next('ul').slideToggle();
+    });
 
-            $(document).click(function(e) {
-                if (!$(e.target).closest('.nav-toggle, .nav-list').length) {
-                    $('.nav-list').css('right', '-200px');
-                    $('.content').css('margin-left', '20px');
-                    $('.content').removeClass('content-blur');
-                }
-            });
-        });
+    // 点击侧边栏时不关闭
+    $('.nav-list').click(function (event) {
+        event.stopPropagation();
+    });
+
+    // 在文档其他地方点击时关闭侧边栏
+    $(document).click(function (e) {
+        if (!$(e.target).closest('.nav-toggle, .nav-list').length) {
+            $('.nav-list').css('right', '-200px');
+            $('.content').css('margin-left', '20px');
+            $('.content').removeClass('content-blur');
+        }
+    });
+});
+
     </script>
-	
 </body>
 </html>
