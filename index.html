@@ -6,7 +6,9 @@
 	<meta name='description' content='和Francis一起学习新知识，了解科学技术，获得心灵慰籍，这里是每天劳累的放松之地.2024高考倒计时,高三五班加油'>
     <title>Helloalp的网站-为了无法学习的奥义</title>
     <link rel="icon" type="image/x-icon" href="/icon.ico">
-        <link rel="stylesheet" href="/cdn/stylesheet/index/index.css" type='text/css' > 
+    <link rel="stylesheet" href="/global/global.css" type='text/css' /> 
+    <link rel="stylesheet" href="/global/control.css" type='text/css' />
+	   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js" defer></script>
     <style>
           .header {
     display: flex;
@@ -16,6 +18,14 @@
     color: #00FF00;
     position: relative; /* 添加相对定位 */
 }
+
+.nav-container {
+    position: absolute; /* 添加绝对定位 */
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+}
+
 .site-title {
     margin: 0;
     font-size: 1.5em;
@@ -23,6 +33,66 @@
     color: #00FF00;
     font-family: "Courier New", monospace;
 }
+
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+        .line {
+            width: 15px; /* 调整横线长度 */
+            height: 2px; /* 调整横线高度 */
+            background-color: #00FF00;
+            margin: 3px 0; /* 调整横线间距 */
+        }
+
+        .nav-list {
+            display: flex;
+            flex-direction: column;
+            background-color: #333;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            right: -200px; /* 调整初始位置为右侧外 */
+            height: 100%;
+            width: 200px;
+            z-index: 1;
+            transition: right 0.3s ease-in-out;
+            backdrop-filter: blur(10px); /* 添加虚化效果 */
+        }
+
+        .nav-list a {
+            color: #00FF00;
+            text-decoration: none;
+            padding: 8px;
+            font-size: 15px;
+            transition: background-color 0.3s ease-in-out;
+            width: 100%; /* 让链接占满父容器宽度 */
+            display: block;
+        }
+
+        .nav-list a:hover {
+            background-color: rgba(0, 255, 0, 0.2);
+        }
+
+    .nav-list ul {
+            display: none;
+            padding-left: 2px;
+            list-style: none; /* 移除默认列表样式 */
+        }
+
+        .nav-list ul.active {
+            display: block;
+        }
+
+        .nav-list li {
+            padding-left: 10px;
+            box-sizing: border-box; /* 让 padding 不影响宽度计算 */
+        }
+
         .content {
             margin-left: 20px; /* 调整内容左边距 */
             padding: 20px;
@@ -33,6 +103,16 @@
         .content-blur {
             filter: blur(10px); /* 添加虚化效果 */
         }
+    
+   
+
+.logo {
+    width: 50px; /* logo尺寸调整 */
+    height: auto;
+    margin-right: 10px;
+}
+
+    
 
     .table-container {
 	text-align: center; 
@@ -76,10 +156,10 @@ p {
 
 
 .centered-green-bold-text {
-    color: green;       /* 文本颜色为绿色 */
-    font-weight: bold;  /* 文本加粗 */
-    font-size: 24px;    /* 文本字体大小为24像素 */
-    text-align: center; /* 文本居中对齐 */
+    color: green;       /* 设置文本颜色为绿色 */
+    font-weight: bold;  /* 设置文本加粗 */
+    font-size: 24px;    /* 设置文本字体大小为24像素 */
+    text-align: center; /* 设置文本居中对齐 */
 }
 
 	    .centered-white-bold-text {
@@ -88,6 +168,17 @@ p {
     font-size: 30px;    
     text-align: center; 
 }
+
+	    
+    .input-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    input[type="text"] {
+        padding: 5px;
+        font-family: "Courier New", monospace;
+    }
 
     button {
         padding: 5px 10px;
@@ -113,11 +204,14 @@ p {
         color: #00FF00;
         overflow: hidden;
 	    overflow-y: scroll; /* 强制生成竖直滚动条 */
-	    background-image: url('https://i.postimg.cc/Qtk0h5DZ/as4rj-mbghs.webp');
+	    background-image: url('https://i.postimg.cc/hjjc05wG/indexbgimg.png');
     }
 </style>
 </head>
 <body>
+	
+
+    
     <div class="header">
     <div class="nav-container">
         <div class="nav-toggle" onclick="toggleNav()">
@@ -137,6 +231,19 @@ p {
 	    <p>当前页数：<span id="currentPage">1</span>总页数：<span id="totalPages">4</span></p>
 
     </div>  
+        <script>
+    $(document).ready(function () {
+    $('.category').click(function (event) {
+        event.preventDefault(); // 阻止默认事件
+        event.stopPropagation(); // 停止事件冒泡
+        $(this).next('ul').slideToggle();
+    });
+
+
+    
+    
+
+</script>
 
 <div class="nav-list">
     <a href="#" class="category">博客</a>
@@ -348,12 +455,105 @@ p {
 
         </div>
     </div>
-    <script src="/cdn/js/index/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js" ></script>
-	<script src="/global/global.js" defer></script>
-	<script src="/global/control.js" defer></script>
-	    <link rel="stylesheet" href="/global/global.css" type='text/css' async> 
-    <link rel="stylesheet" href="/global/control.css" type='text/css' async>
+	<script src="/global/global.js"></script>
+	   <script src="/global/control.js"></script>
+	<script>
+        // 初始化页数和总页数
+        let currentPageNumber = 1;
+        const totalPages = document.getElementsByClassName("page").length;
 
+        // 更新显示当前页数和总页数的内容
+        function updatePageNumbers() {
+            document.getElementById("currentPage").textContent = currentPageNumber;
+            document.getElementById("totalPages").textContent = totalPages;
+        }
+
+        // 上一页
+        function prevPage() {
+            if (currentPageNumber > 1) {
+                currentPageNumber--;
+                updatePageNumbers();
+                updatePageVisibility();
+            }
+        }
+
+        // 下一页
+        function nextPage() {
+            if (currentPageNumber < totalPages) {
+                currentPageNumber++;
+                updatePageNumbers();
+                updatePageVisibility();
+            }
+        }
+
+        // 跳转到指定页
+        function jumpToPage() {
+            const pageNumberInput = document.getElementById("pageNumberInput").value;
+            const newPageNumber = parseInt(pageNumberInput);
+
+            if (newPageNumber >= 1 && newPageNumber <= totalPages) {
+                currentPageNumber = newPageNumber;
+                updatePageNumbers();
+                document.getElementById("pageNumberInput").value = "";
+                document.getElementById("errorText").textContent = "";
+                updatePageVisibility();
+            } else {
+                document.getElementById("errorText").textContent = "无效的页数";
+            }
+        }
+
+        // 更新页面可见性
+        function updatePageVisibility() {
+            for (let i = 1; i <= totalPages; i++) {
+                const pageElement = document.getElementById(`page${i}`);
+                if (i === currentPageNumber) {
+                    pageElement.style.display = "block";
+                } else {
+                    pageElement.style.display = "none";
+                }
+            }
+        }
+
+        updatePageNumbers(); // 初始化显示当前页数和总页数
+        updatePageVisibility(); // 初始化页面可见性
+    </script> <!-- 页面切换脚本，这是原创禁止复制，这么废物吗连这个都写不出来的无能 --!>
+ 
+
+
+
+    <script>
+        function toggleNav() {
+            const navList = $('.nav-list');
+            const content = $('.content');
+            const isOpen = navList.css('right') === '0px';
+
+            navList.css('right', isOpen ? '-200px' : '0');
+            content.css('margin-left', isOpen ? '20px' : '220px');
+            content.toggleClass('content-blur', !content.hasClass('content-blur'));
+        }
+
+$(document).ready(function () {
+    $('.category').click(function (event) {
+        event.preventDefault(); // 阻止默认事件
+        event.stopPropagation(); // 停止事件冒泡
+        $(this).next('ul').slideToggle();
+    });
+
+    // 点击侧边栏时不关闭
+    $('.nav-list').click(function (event) {
+        event.stopPropagation();
+    });
+
+    // 在文档其他地方点击时关闭侧边栏
+    $(document).click(function (e) {
+        if (!$(e.target).closest('.nav-toggle, .nav-list').length) {
+            $('.nav-list').css('right', '-200px');
+            $('.content').css('margin-left', '20px');
+            $('.content').removeClass('content-blur');
+        }
+    });
+});
+
+    </script>
 </body>
 </html>
