@@ -210,6 +210,22 @@ p {
 </head>
 <body>
 	
+<script>
+function setAdvFlag() {
+    // 设置本地存储标记
+    localStorage.setItem('advFlag', 'true');
+    alert('高级主页已设置！');
+}
+
+// 在页面加载时检查本地存储标记
+document.addEventListener('DOMContentLoaded', function () {
+    var advFlag = localStorage.getItem('advFlag');
+    if (advFlag === 'true') {
+        // 如果有标记，则跳转到高级主页
+        window.location.href = '/indexadv.html';
+    }
+});
+</script>
 
     
     <div class="header">
@@ -220,7 +236,8 @@ p {
             <div class="line"></div>
         </div>
     </div>
-        <h1 class="site-title">&nbsp;&nbsp;&nbsp;Helloalp的网站│为了无法学习的奥义│&#128512;</h1>
+        <h1 class="site-title">&nbsp;&nbsp;&nbsp;Helloalp的网站│为了无法学习的奥义│&#128512;│<a href="#" onclick="setAdvFlag()">点我改为默认访问新版主页</a>
+</h1>
     </div>
     <div class="input-container">
         <button onclick="prevPage()" id="prevButton">上一页</button>
