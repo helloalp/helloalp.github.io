@@ -10,9 +10,25 @@
 <body>
     <div style="text-align: center; margin-top: 100px;">
         <button id="clearCacheButton">清除本地缓存</button>
+        <button id="clearCacheButtonIndex">清除主页样式缓存(恢复默认主页)</button>
         <p id="message"></p>
     </div>
+<script>
+        // 获取按钮元素和消息元素
+        var clearCacheButtonIndex = document.getElementById("clearCacheButtonIndex");
+        var messageElement2 = document.getElementById("message2");
 
+        // 给按钮添加点击事件监听器
+        clearCacheButtonIndex.addEventListener("click", function() {
+            localStorage.removeItem("advFlag");
+
+            // 获取当前时间
+            var currentTime = new Date().toLocaleString();
+
+            // 显示成功清除的提示，以及当前时间
+            messageElement2.textContent = "你于 " + currentTime + " 成功清除了本网站主页样式的本地缓存";
+        });
+</script>
     <script>
         // 获取按钮元素和消息元素
         var clearCacheButton = document.getElementById("clearCacheButton");
@@ -22,13 +38,14 @@
         clearCacheButton.addEventListener("click", function() {
            
             localStorage.removeItem("passwordVerified");
+            localStorage.removeItem("advFlag");
             localStorage.removeItem("password2Verified");
 
             // 获取当前时间
             var currentTime = new Date().toLocaleString();
 
             // 显示成功清除的提示，以及当前时间
-            messageElement.textContent = "你于 " + currentTime + " 成功清除了本地缓存";
+            messageElement.textContent = "你于 " + currentTime + " 成功清除了本网站所有页面的本地缓存";
         });
     </script>
 </body>
