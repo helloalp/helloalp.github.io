@@ -26,99 +26,22 @@
     color: #00FF00;
     font-family: "Courier New", monospace;
 }
-
-.nav-toggle {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    padding: 10px;
-}
 a {color: #00FF00;}
 
-        .line {
-            width: 15px; /* 调整横线长度 */
-            height: 2px; /* 调整横线高度 */
-            background-color: #00FF00;
-            margin: 3px 0; /* 调整横线间距 */
-        }
-
-        .nav-list {
-            display: flex;
-            flex-direction: column;
-            background-color: #333;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            right: -200px; /* 调整初始位置为右侧外 */
-            height: 100%;
-            width: 200px;
-            z-index: 1;
-            transition: right 0.3s ease-in-out;
-            backdrop-filter: blur(10px); /* 添加虚化效果 */
-        }
-
-        .nav-list a {
-            color: #00FF00;
-            text-decoration: none;
-            padding: 8px;
-            font-size: 15px;
-            transition: background-color 0.3s ease-in-out;
-            width: 100%; /* 让链接占满父容器宽度 */
-            display: block;
-        }
-
-        .nav-list a:hover {
-            background-color: rgba(0, 255, 0, 0.2);
-        }
-
-    .nav-list ul {
-            display: none;
-            padding-left: 2px;
-            list-style: none; /* 移除默认列表样式 */
-        }
-
-        .nav-list ul.active {
-            display: block;
-        }
-
-        .nav-list li {
-            padding-left: 10px;
-            box-sizing: border-box; /* 让 padding 不影响宽度计算 */
-        }
-
-        .content {
-            margin-left: 20px; /* 调整内容左边距 */
-            padding: 20px;
-            transition: margin-left 0.3s ease-in-out;
-            filter: blur(0); /* 初始无虚化效果 */
-        }
-
-        .content-blur {
-            filter: blur(10px); /* 添加虚化效果 */
-        }
-    
-   
-
+            
 .logo {
     width: 50px; /* logo尺寸调整 */
     height: auto;
     margin-right: 10px;
 }
-
-    
-
     .table-container {
 	text-align: center; 
         margin-top: 150px; /* 垂直居中的间距 */
         justify-content: center;
         align-items: center;
-       
         padding-bottom: 100px;
-		
     }
-
 p {
-            
             align-items: center;
         }
 
@@ -223,11 +146,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     <div class="header">
     <div class="nav-container">
-        <div class="nav-toggle" onclick="toggleNav()">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
     </div>
         <h1 class="site-title">&nbsp;&nbsp;&nbsp;Helloalp的网站│为了无法学习的奥义│&#128512;│<a href="#" onclick="setAdvFlag()">点我改为默认访问新版主页</a>
 </h1>
