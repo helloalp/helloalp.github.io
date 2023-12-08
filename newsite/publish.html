@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="zh_CN"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>投稿与联系页面</title>
@@ -66,13 +65,9 @@
             
             <p>Email: <a href="mailto:2827264223@qq.com">2827264223@qq.com</a></p>
             <p>投稿QQ:（点击复制） <a id="qq" href="tencent://message/?uin=2827264223&Site=Helloalp&Menu=yes">2827264223</a></p>
+            <a href="/newsite/my_qr_code_image.webp" alt="站长的QQ二维码图片链接" target='_blank'>点击查看站长的QQ二维码</a>
         </div>
-        <div class="right">
-            <a href="/newsite/my_qr_code_image.webp">
-            <img src="/newsite/my_qr_code_image.webp" alt="Helloalp QQ 二维码">
-        </div>
-    </div>
-    <script>
+    </div> <script>
         document.getElementById("qq").addEventListener("click", function() {
             const dummyInput = document.createElement("input");
             document.body.appendChild(dummyInput);
@@ -81,7 +76,4 @@
             document.execCommand("copy");
             document.body.removeChild(dummyInput);
             alert("成功复制");
-        });
-    </script>
-</body>
-</html>
+        }); </script></body></html>
