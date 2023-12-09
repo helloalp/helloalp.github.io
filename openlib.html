@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线查询</title>
+    <script src="/crypto-js.min.js"></script>
+    <style>
+        body {
+            font-family: "Courier New", monospace;
+            text-align: center;
+            margin-top: 100px;
+        }
+        #passwordInput {
+            padding: 10px;
+        }
+        #verifyButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #hiddenFrame {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            border: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div id="instructions">
+    <p>请输入密码以验证身份。</p>
+</div>
+
+<button id="verifyButton" onclick="verifyPassword()">验证密码</button>
+
+<iframe id="hiddenFrame" src="" frameborder="0"></iframe>
+
+<script>
+function verifyPassword() {
+    // 检查是否存在标记
+    const currentTime = new Date().getTime();
+    const tenMinutesAgo = currentTime - 10 * 60 * 1000;
+
+    for (let time = currentTime; time >= tenMinutesAgo; time -= 1000) {
+        const timestamp = new Date(time).toISOString().replace(/[^0-9]/g, ''); // 格式化时间戳
+        const flag = localStorage.getItem(timestamp);
+
+        if (flag) {
+            alert('您在过去十分钟内尝试过验证，请稍后再试。');
+            return;
+        }
+    }
+
+    // 弹出密码输入框
+    const rawPassword = prompt('请输入密码：');
+
+    // 使用SHA256加密
+    const hashedPassword = CryptoJS.SHA256(rawPassword).toString(CryptoJS.enc.Hex);
+
+    // 预先设定的加密后的密码，请替换成你的实际密码
+    const predefinedHashedPassword = '779524d9358b9ab9d4c83a388885c9efe791efdc17f6c848fe0f7a5183124ed4';
+
+    // 验证密码
+    if (hashedPassword === predefinedHashedPassword) {
+        alert('密码验证通过，显示目标网页。');
+        
+        // 更新iframe的src，这里使用了一个示例网页
+        document.getElementById('hiddenFrame').src = 'https%3A%2F%2Flib.scjyzb.net%2Fschool%2FpublicQuery%3FschoolId%3DC3F646D3B072EA5B63D15E5714A15F76';
+        
+        // 显示滚动条
+        document.body.style.overflow = 'auto';
+    } else {
+        // 创建标记
+        const timestamp = new Date().toISOString().replace(/[^0-9]/g, '');
+        localStorage.setItem(timestamp, 'true');
+        alert('密码验证失败，标记已创建。');
+    }
+}
+</script>
+
+</body>
+</html>
