@@ -12,19 +12,14 @@
     
     <address>由Helloalp提供,严禁滥用</address>
 <button onclick="showIframe()">加载查询页面</button>
-
-<!-- iframe 元素，初始时不显示内容 -->
 <iframe id="myIframe" width="100%" height="500px" style="display: none;"></iframe>
 
 <script>
 function showIframe() {
-    // 获取 iframe 元素
     const iframe = document.getElementById('myIframe');
     
     // 设置 iframe 的 src 属性，替换为你的中文网页链接
-    iframe.src = 'https://lib.scjyzb.net/school/publicQuery?schoolId=C3F646D3B072EA5B63D15E5714A15F76'; // 替换成你的中文网页链接
-    
-    // 显示 iframe
+    iframe.src = 'https://lib.scjyzb.net/school/publicQuery?schoolId=C3F646D3B072EA5B63D15E5714A15F76'; 
     iframe.style.display = 'block';
 }
 </script>
