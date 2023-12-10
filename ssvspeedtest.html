@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科研级速度测试程序│Powered By HelloalpSpeedTest Technology</title>
+</head>
+<body>
+
+<h1>SSV科研级联网下行测试</h1>
+<h3>本测试使用一种小样本速率折射算法进行下行速度测试，结果精准可靠，可以在很多特殊情况下测试，简洁但不简单</h3>
+<p>请点击下方按钮开始测试下载速度，点击后等待提示即可<br>Powered By Helloalp &nbsp; 版权所有</p>
+<hr><address>测试结果分为:低速,较低速,中速,高速,至尊高速,至尊超高速.</address>
+
+
+<button onclick="startDownload()">开始测试</button>
+
+<div id="progress-container" style="margin-top: 20px; display: none;">
+    <div id="progress-bar" style="height: 20px; width: 0%; background-color: #4CAF50;"></div>
+</div>
+
+<p id="download-time">线性时间记录：</p>
+<p id="download-speed">下行反馈速率：</p>
+<h2 id="result" style="font-weight: bold;"></h2>
+
+<script>
+function startDownload() {
+    var fileURL = "https://tfs.alipayobjects.com/L1/71/100/and/alipay_wap_dc_64.apk";
+
+    // Get file size using HEAD request
+    getFileSize(fileURL).then(function(fileSize) {
+        var startTime = new Date().getTime();
+
+        downloadFile(fileURL).then(function(blob) {
+            var endTime = new Date().getTime();
+            var totalTime = endTime - startTime;
+
+            // Create a Blob URL
+            var blobUrl = URL.createObjectURL(blob);
+
+            // Trigger download
+            var link = document.createElement("a");
+            link.href = blobUrl;
+            link.download = "QQ_File.exe";
+            link.click();
+
+            // Display download time
+            document.getElementById("download-time").innerText = "测试核心时间区间为：" + totalTime + "毫秒";
+
+            // Calculate download speed in MB/s
+            var downloadSpeed = (fileSize / 1024 / 1024) / (totalTime / 1000); // MB per second
+            document.getElementById("download-speed").innerText = "反馈下行速率为：" + downloadSpeed.toFixed(2) + " MB/秒";
+
+            // Determine result category based on download speed
+            categorizeDownloadSpeed(downloadSpeed);
+
+            // Show completion alert
+            showCompletionAlert();
+        });
+    });
+}
+
+function downloadFile(url) {
+    return new Promise(function(resolve) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.responseType = "blob";
+
+        var progressBar = createProgressBar();
+        document.body.appendChild(progressBar);
+
+        xhr.onprogress = function(event) {
+            if (event.lengthComputable) {
+                var percentComplete = (event.loaded / event.total) * 100;
+                progressBar.style.width = percentComplete + "%";
+            }
+        };
+
+        xhr.onload = function() {
+            resolve(xhr.response);
+            document.body.removeChild(progressBar);
+        };
+
+        xhr.send();
+    });
+}
+
+function getFileSize(url) {
+    return new Promise(function(resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("HEAD", url, true);
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    var fileSize = xhr.getResponseHeader('Content-Length');
+                    resolve(parseInt(fileSize, 10));
+                } else {
+                    reject('错误代码001');
+                }
+            }
+        };
+
+        xhr.send();
+    });
+}
+
+function createProgressBar() {
+    var progressBar = document.createElement("div");
+    progressBar.style.height = "20px";
+    progressBar.style.width = "0%";
+    progressBar.style.backgroundColor = "#4CAF50";
+    progressBar.style.marginTop = "10px";
+    return progressBar;
+}
+
+function categorizeDownloadSpeed(speed) {
+    // Preset values for comparison
+    var categories = [
+            { label: '低速', speed: 1 },
+            { label: '较低速', speed: 2 },
+        { label: '中速', speed: 5 },       // MB per second
+        { label: '快速', speed: 10 },      // MB per second
+        { label: '高速', speed: 20 },      // MB per second
+                { label: '至尊高速', speed: 50 },
+                { label: '至尊超高速', speed: 100 },
+    ];
+
+    var resultElement = document.getElementById("result");
+
+    for (var i = 0; i < categories.length; i++) {
+        if (speed < categories[i].speed) {
+            resultElement.innerHTML = "测试结果：" + '<h2 style="font-weight: bold;">' + categories[i].label + '</h2>';
+            break;
+        }
+    }
+}
+
+function showCompletionAlert() {
+    alert("测试完成！欢迎再来测试");
+}
+</script>
+
+</body>
+</html>
