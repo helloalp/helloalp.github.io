@@ -10,7 +10,7 @@
 <h1>SSV科研级联网下行测试</h1>
 <h3>本测试使用一种小样本速率折射算法进行下行速度测试，结果精准可靠，可以在很多特殊情况下测试，简洁但不简单</h3>
 <p>请点击下方按钮开始测试下载速度，点击后等待提示即可<br>Powered By Helloalp &nbsp; 版权所有</p>
-<hr><address>测试结果分为:低速,较低速,中速,高速,至尊高速,至尊超高速.</address>
+<hr><address>最新版测试结果分为:龟速,低速,较低速,中速,高速,至尊高速,至尊超高速,洪荒超高速,电光石火超高速.</address>
 
 
 <button onclick="startDownload()">开始测试</button>
@@ -118,12 +118,15 @@ function categorizeDownloadSpeed(speed) {
     // Preset values for comparison
     var categories = [
             { label: '低速', speed: 1 },
-            { label: '较低速', speed: 2 },
+            { label: '较低速', speed: 3 },
         { label: '中速', speed: 5 },       // MB per second
         { label: '快速', speed: 10 },      // MB per second
         { label: '高速', speed: 20 },      // MB per second
-                { label: '至尊高速', speed: 50 },
-                { label: '至尊超高速', speed: 100 },
+                { label: '至尊高速', speed: 30 },
+                { label: '至尊超高速', speed: 40 },
+        { label: '洪荒超高速', speed: 50 },
+        { label: '电光石火超高速', speed: 60 },
+        { label: '你突破了历史记录,真正的神', speed: 100 },
     ];
 
     var resultElement = document.getElementById("result");
