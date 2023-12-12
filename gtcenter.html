@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机Memes</title>
+    <!-- 引入 Viewer.js 的样式文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/viewerjs@1.11.6/dist/viewer.min.css">
+    <style>
+        /* 自定义样式 */
+        #loadButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 加载按钮 -->
+<button id="loadButton" onclick="loadRandomMeme()">加载随机Meme</button>
+
+<!-- 图片展示区域 -->
+<div id="images">
+    <!-- 初始展示一张图片 -->
+    <img id="memeImage" src="" alt="Meme">
+</div>
+
+<!-- 引入 Viewer.js 的脚本文件 -->
+<script src="https://cdn.jsdelivr.net/npm/viewerjs@1.11.6/dist/viewer.min.js"></script>
+<script>
+    // 图片路径前缀
+    var imagePathPrefix = '/cdn/pictures/';
+    // 图片总数
+    var totalImages = 11; // 替换为实际的图片总数
+
+    // 初始化 Viewer.js
+    var viewer = new Viewer(document.getElementById('images'), {
+        navbar: false,
+        toolbar: false,
+        // 禁止右键保存
+        inline: true,
+        viewed() {
+            // 禁止右键保存
+            viewer.viewer.draggable(false);
+        },
+    });
+
+    // 加载随机Meme
+    function loadRandomMeme() {
+        // 随机生成图片序号
+        var randomIndex = getRandomInt(1, totalImages);
+
+        // 构造图片路径
+        var imagePath = imagePathPrefix + randomIndex + '.jpg'; // 这里可以根据实际情况调整后缀
+
+        // 更新图片源
+        document.getElementById('memeImage').src = imagePath;
+
+        // 重新初始化 Viewer.js
+        viewer.update();
+    }
+
+    // 生成指定范围内的随机整数
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+</script>
+</body>
+</html>
