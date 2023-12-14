@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>图片查看器</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/viewerjs@1.11.6/dist/viewer.min.css">
+  <style>
+    #loadImageButton {
+      display: block;
+      margin: 0 auto;
+      font-size: 18px; /* 调整按钮大小 */
+      padding: 10px 20px; /* 调整按钮内边距 */
+    }
+  </style>
 </head>
 <body>
 
@@ -24,17 +32,17 @@
         zoomOut: false,
         reset: false,
       },
+      zoom: false,
     });
 
     var loadImageButton = document.getElementById('loadImageButton');
     loadImageButton.addEventListener('click', function () {
-      var randomImageNumber = Math.floor(Math.random() * 10) + 1; // 生成1到10的随机整数
+      var randomImageNumber = Math.floor(Math.random() * 10) + 1;
       var imageUrl = '/cdn/pictures/meme' + randomImageNumber + '.jpeg';
 
-      viewer.destroy(); // 销毁上一个Viewer实例
+      viewer.destroy();
       document.getElementById('imageViewer').innerHTML = '<img src="' + imageUrl + '" alt="Meme Image">';
       
-      // 重新创建Viewer实例
       viewer = new Viewer(document.getElementById('imageViewer'), {
         inline: false,
         button: false,
@@ -45,10 +53,11 @@
           zoomOut: false,
           reset: false,
         },
+        zoom: false,
       });
     });
   });
 </script>
-
+<script src="/global/global.js"></script>
 </body>
 </html>
