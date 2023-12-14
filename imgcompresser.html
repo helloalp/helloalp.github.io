@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片批量压缩工具</title>
+    <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.2.1/dist/compressor.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+</head>
+<body>
+
+<input type="file" id="fileInput" multiple>
+<label for="qualityInput">压缩质量：</label>
+<input type="range" id="qualityInput" min="0" max="1" step="0.1" value="0.6">
+<span id="qualityValue">0.6</span>
+
+<button onclick="compressAndDownload()">压缩并下载</button>
+
+<script>
+    // 选择 input 元素
+    var fileInput = document.getElementById('fileInput');
+    var qualityInput = document.getElementById('qualityInput');
+    var qualityValue = document.getElementById('qualityValue');
+
+    // 当用户选择文件时触发
+    fileInput.addEventListener('change', handleFileSelect);
+
+    // 更新显示压缩质量数值
+    qualityInput.addEventListener('input', function () {
+        qualityValue.textContent = qualityInput.value;
+    });
+
+    // 压缩并下载
+    function compressAndDownload() {
+        var files = fileInput.files;
+
+        if (files.length === 0) {
+            alert('请选择至少一张图片进行压缩！');
+            return;
+        }
+
+        var quality = parseFloat(qualityInput.value);
+
+        var compressedImages = [];
+
+        // 遍历选择的文件
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+
+            var imageCompressor = new ImageCompressor();
+
+            // 使用 Promise 处理压缩过程
+            var compressionPromise = new Promise(function (resolve, reject) {
+                imageCompressor.compress(file, {
+                    quality: quality,
+                    success(result) {
+                        resolve(result);
+                    },
+                    error(e) {
+                        reject(e);
+                    },
+                });
+            });
+
+            compressedImages.push(compressionPromise);
+        }
+
+        // 当所有图片都压缩完成后进行下载
+        Promise.all(compressedImages).then(function (compressedResults) {
+            var zip = new JSZip();
+
+            compressedResults.forEach(function (result, index) {
+                // 将压缩后的图片添加到 zip 文件中
+                zip.file('image_' + index + '.jpg', result);
+            });
+
+            // 生成 zip 文件
+            zip.generateAsync({ type: 'blob' }).then(function (zipBlob) {
+                // 创建下载链接
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(zipBlob);
+                link.download = 'compressed_images.zip';
+
+                // 添加到页面并触发点击
+                document.body.appendChild(link);
+                link.click();
+
+                // 移除下载链接
+                document.body.removeChild(link);
+            });
+        }).catch(function (error) {
+            console.error(error.message);
+        });
+    }
+
+    // 处理文件选择
+    function handleFileSelect(e) {
+        var files = e.target.files;
+        for (var i = 0; i < files.length; i++) {
+            console.log(files[i].name);
+        }
+    }
+</script>
+</body>
+</html>
