@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>梗图乐园</title>
+  <title>图片查看器</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/viewerjs@1.11.6/dist/viewer.min.css">
   <style>
+    #imageViewer {
+      max-width: 100%; /* 图片查看器的最大宽度 */
+      margin: 0 auto;
+    }
+
     #loadImageButton {
       display: block;
-      margin: 0 auto;
-      font-size: 18px; /* 调整按钮大小 */
-      padding: 10px 20px; /* 调整按钮内边距 */
+      margin: 20px auto; /* 调整按钮位置 */
+      font-size: 18px;
+      padding: 10px 20px;
     }
   </style>
 </head>
@@ -33,6 +38,7 @@
         reset: false,
       },
       zoom: false,
+      transition: false, // 禁用过渡动画
     });
 
     var loadImageButton = document.getElementById('loadImageButton');
@@ -43,6 +49,7 @@
       viewer.destroy();
       document.getElementById('imageViewer').innerHTML = '<img src="' + imageUrl + '" alt="Meme Image">';
       
+      // 重新创建Viewer实例，保持图片查看器大小
       viewer = new Viewer(document.getElementById('imageViewer'), {
         inline: false,
         button: false,
@@ -54,6 +61,7 @@
           reset: false,
         },
         zoom: false,
+        transition: false, // 禁用过渡动画
       });
     });
   });
