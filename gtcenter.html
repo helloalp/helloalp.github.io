@@ -46,23 +46,11 @@
       var randomImageNumber = Math.floor(Math.random() * 99) + 1;
       var imageUrl = '/cdn/pictures/meme' + randomImageNumber + '.jpeg';
 
-      viewer.destroy();
+      // 清除现有的图片内容
       document.getElementById('imageViewer').innerHTML = '<img src="' + imageUrl + '" alt="Meme Image">';
-      
-      // 重新创建Viewer实例，保持图片查看器大小
-      viewer = new Viewer(document.getElementById('imageViewer'), {
-        inline: false,
-        button: false,
-        navbar: false,
-        title: false,
-        toolbar: {
-          zoomIn: false,
-          zoomOut: false,
-          reset: false,
-        },
-        zoom: false,
-        transition: false, // 禁用过渡动画
-      });
+
+      // 更新 Viewer 实例的图片
+      viewer.update();
     });
   });
 </script>
