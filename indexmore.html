@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网站总目录</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    .link {
+      flex: 1;
+      max-width: 300px;
+      margin: 10px;
+      padding: 20px;
+      text-align: center;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .link:hover {
+      background-color: #e0e0e0;
+    }
+
+    .date {
+      margin-top: 10px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <div class="link" onclick="navigateTo('page1')">
+    <div>页面1</div>
+    <div class="date">2023-01-01</div>
+  </div>
+  <div class="link" onclick="navigateTo('page2')">
+    <div>页面2</div>
+    <div class="date">2023-02-15</div>
+  </div>
+  <div class="link" onclick="navigateTo('page3')">
+    <div>页面3</div>
+    <div class="date">2023-03-22</div>
+  </div>
+  <div class="link" onclick="navigateTo('page4')">
+    <div>页面4</div>
+    <div class="date">2023-04-10</div>
+  </div>
+  <!-- Add more links as needed -->
+
+  <button onclick="toggleAnimation()">点击有动画</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  var isAnimationEnabled = true;
+
+  function navigateTo(page) {
+    // Add your logic for page navigation here
+    console.log('Navigating to ' + page);
+  }
+
+  function toggleAnimation() {
+    isAnimationEnabled = !isAnimationEnabled;
+    var animationValue = isAnimationEnabled ? 'translateX(100%)' : 'translateX(0)';
+    $('.link').css('transform', animationValue);
+  }
+</script>
+
+</body>
+</html>
