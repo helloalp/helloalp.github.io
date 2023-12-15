@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本站信息│By Helloalp</title>
+  <style>
+    body {
+      font-family: Courier New, monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #runtime {
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="runtime"></div>
+
+<script>
+  var startTime = new Date('2023-08-12T19:00:00');
+
+  function updateRuntime() {
+    var currentTime = new Date();
+    var timeDifference = currentTime - startTime;
+
+    var hours = Math.floor(timeDifference / (1000 * 60 * 60));
+    var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+    document.getElementById('runtime').innerText = "网站已经运行 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒";
+  }
+
+  // 初始加载时更新运行时间
+  updateRuntime();
+
+  // 每秒更新一次
+  setInterval(updateRuntime, 1000);
+</script>
+
+</body>
+</html>
