@@ -44,7 +44,8 @@
     var loadImageButton = document.getElementById('loadImageButton');
     loadImageButton.addEventListener('click', function () {
       var randomImageNumber = Math.floor(Math.random() * 99) + 1;
-      var imageUrl = '/cdn/pictures/meme' + randomImageNumber + '.jpeg';
+      var imageUrl = '/cdn/pictures/meme' + randomImageNumber + '.jpeg?timestamp=' + Date.now();
+
 
       // 清除现有的图片内容
       document.getElementById('imageViewer').innerHTML = '<img src="' + imageUrl + '" alt="Meme Image">';
