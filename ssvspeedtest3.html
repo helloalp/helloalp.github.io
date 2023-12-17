@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科研级速度测试程序│Powered By HelloalpSpeedTest Technology</title>
+</head>
+<body>
+    <p>
+        <button class="jump-button" onclick="location.href='/index.html'">返回网站主页</button>
+        <button class="jump-button" onclick="location.href='/newsite/publish.html'">联系站长</button>
+    </p>
+    <h1>SSV科研级联网下行测试</h1>
+    <h3>本测试使用一种小样本速率折射算法进行下行速度测试，结果精准可靠，可以在很多特殊情况下测试，简洁但不简单</h3>
+    <p>请点击下方按钮开始测试下载速度，点击后等待提示即可<br>Powered By Helloalp &nbsp; 版权所有</p>
+    <hr>
+    <address>最新版测试结果分为:龟速,低速,较低速,中速,快速,高速,至尊高速,至尊超高速,洪荒超高速,电光石火超高速.</address>
+
+    <!-- 新增输入框和确认按钮 -->
+    <label for="fileUrlInput">输入文件链接：</label>
+    <input type="text" id="fileUrlInput" placeholder="https://example.com/file.apk">
+    <button onclick="updateFileUrl()">确认</button>
+
+    <button onclick="startDownload()">开始测试</button>
+
+    <div id="progress-container" style="margin-top: 20px; display: none;">
+        <div id="progress-bar" style="height: 20px; width: 0%; background-color: #4CAF50;"></div>
+    </div>
+
+    <p id="download-time">线性时间记录：</p>
+    <p id="download-speed">下行反馈速率：</p>
+    <h2 id="result" style="font-weight: bold;"></h2>
+
+    <script>
+        var fileURL = "https://tfs.alipayobjects.com/L1/71/100/and/alipay_wap_dc_64.apk";
+
+        // 新增函数，用于更新文件链接
+        function updateFileUrl() {
+            var newFileUrl = document.getElementById("fileUrlInput").value;
+            if (newFileUrl) {
+                fileURL = newFileUrl;
+                alert("文件链接已更新！");
+            } else {
+                alert("请输入文件链接！");
+            }
+        }
+
+        function startDownload() {
+            // 清空可能存在的之前的测试结果
+            document.getElementById("download-time").innerText = "";
+            document.getElementById("download-speed").innerText = "";
+            document.getElementById("result").innerText = "";
+
+            // 获取文件大小并进行下载
+            getFileSize(fileURL).then(function(fileSize) {
+                var startTime = new Date().getTime();
+
+                downloadFile(fileURL).then(function(blob) {
+                    var endTime = new Date().getTime();
+                    var totalTime = endTime - startTime;
+
+                    // Display download time
+                    document.getElementById("download-time").innerText = "测试核心时间区间为：" + totalTime + "毫秒";
+
+                    // Calculate download speed in MB/s
+                    var downloadSpeed = (fileSize / 1024 / 1024) / (totalTime / 1000); // MB per second
+                    document.getElementById("download-speed").innerText = "反馈下行速率为：" + downloadSpeed.toFixed(2) + " MB/秒";
+
+                    // Determine result category based on download speed
+                    categorizeDownloadSpeed(downloadSpeed);
+
+                    // Show completion alert
+                    showCompletionAlert();
+                });
+            });
+        }
+
+        function downloadFile(url) {
+            return new Promise(function(resolve) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", url, true);
+                xhr.responseType = "blob";
+
+                var progressBar = createProgressBar();
+                document.body.appendChild(progressBar);
+
+                xhr.onprogress = function(event) {
+                    if (event.lengthComputable) {
+                        var percentComplete = (event.loaded / event.total) * 100;
+                        progressBar.style.width = percentComplete + "%";
+                    }
+                };
+
+                xhr.onload = function() {
+                    resolve(xhr.response);
+                    document.body.removeChild(progressBar);
+                };
+
+                xhr.send();
+            });
+        }
+
+        function getFileSize(url) {
+            return new Promise(function(resolve, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("HEAD", url, true);
+
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            var fileSize = xhr.getResponseHeader('Content-Length');
+                            resolve(parseInt(fileSize, 10));
+                        } else {
+                            reject('错误代码001');
+                        }
+                    }
+                };
+
+                xhr.send();
+            });
+        }
+
+        function createProgressBar() {
+            var progressBar = document.createElement("div");
+            progressBar.style.height = "20px";
+            progressBar.style.width = "0%";
+            progressBar.style.backgroundColor = "#4CAF50";
+            progressBar.style.marginTop = "10px";
+            return progressBar;
+        }
+
+        function categorizeDownloadSpeed(speed) {
+            // Preset values for comparison
+            var categories = [
+                { label: '龟速', speed: 0.5 },
+                { label: '低速', speed: 1 },
+                { label: '较低速', speed: 3 },
+                { label: '中速', speed: 5 },       // MB per second
+                { label: '快速', speed: 10 },      // MB per second
+                { label: '高速', speed: 20 },      // MB per second
+                { label: '至尊高速', speed: 30 },
+                { label: '至尊超高速', speed: 40 },
+                { label: '洪荒超高速', speed: 50 },
+                { label: '电光石火超高速', speed: 60 },
+                { label: '你突破了历史记录,真正的神', speed: 100 },
+            ];
+
+            var resultElement = document.getElementById("result");
+
+            for (var i = 0; i < categories.length; i++) {
+                if (speed < categories[i].speed) {
+                    resultElement.innerHTML = "测试结果：" + '<h2 style="font-weight: bold;">' + categories[i].label + '</h2>';
+                    break;
+                }
+            }
+        }
+
+        function showCompletionAlert() {
+            alert("测试完成！欢迎再来测试");
+        }
+    </script>
+</body>
+</html>
