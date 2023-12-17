@@ -16,17 +16,18 @@
       flex-wrap: wrap;
       justify-content: space-around;
       padding: 20px;
+      gap: 20px; /* 添加间距 */
     }
 
     .link {
       flex: 1;
       max-width: 300px;
+      width: 100%; /* 修改宽度为100% */
       margin: 10px;
       padding: 20px;
       text-align: center;
       background-color: #f0f0f0;
       border-radius: 10px;
-      transition: transform 0.3s ease-in-out;
       cursor: pointer;
     }
 
@@ -60,8 +61,6 @@
     <div class="date">2023-04-10</div>
   </div>
   <!-- Add more links as needed -->
-
-  <button onclick="toggleAnimation()">点击有动画</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -71,12 +70,6 @@
   function navigateTo(page) {
     // Add your logic for page navigation here
     console.log('Navigating to ' + page);
-  }
-
-  function toggleAnimation() {
-    isAnimationEnabled = !isAnimationEnabled;
-    var animationValue = isAnimationEnabled ? 'translateX(100%)' : 'translateX(0)';
-    $('.link').css('transform', animationValue);
   }
 </script>
 
