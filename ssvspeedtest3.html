@@ -47,9 +47,12 @@
 
         function startDownload() {
             // 清空可能存在的之前的测试结果
-            document.getElementById("download-time").innerText = "";
-            document.getElementById("download-speed").innerText = "";
+            document.getElementById("download-time").innerText = "线性时间记录：";
+            document.getElementById("download-speed").innerText = "下行反馈速率：";
             document.getElementById("result").innerText = "";
+
+            // 显示进度条
+            document.getElementById("progress-container").style.display = "block";
 
             // 获取文件大小并进行下载
             getFileSize(fileURL).then(function(fileSize) {
@@ -59,12 +62,15 @@
                     var endTime = new Date().getTime();
                     var totalTime = endTime - startTime;
 
+                    // 隐藏进度条
+                    document.getElementById("progress-container").style.display = "none";
+
                     // Display download time
-                    document.getElementById("download-time").innerText = "测试核心时间区间为：" + totalTime + "毫秒";
+                    document.getElementById("download-time").innerText = "线性时间记录：" + totalTime + "毫秒";
 
                     // Calculate download speed in MB/s
                     var downloadSpeed = (fileSize / 1024 / 1024) / (totalTime / 1000); // MB per second
-                    document.getElementById("download-speed").innerText = "反馈下行速率为：" + downloadSpeed.toFixed(2) + " MB/秒";
+                    document.getElementById("download-speed").innerText = "下行反馈速率：" + downloadSpeed.toFixed(2) + " MB/秒";
 
                     // Determine result category based on download speed
                     categorizeDownloadSpeed(downloadSpeed);
