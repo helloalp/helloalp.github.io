@@ -9,26 +9,10 @@
     <link rel="stylesheet" href="/cdn/stylesheet/index/index.css" type='text/css' />
 </head>
 <body>
-<script>
-function setAdvFlag() {
-    // 设置本地存储标记
-    localStorage.setItem('advFlag', 'true');
-    alert('高级主页已设置！');
-}
-
-// 在页面加载时检查本地存储标记
-document.addEventListener('DOMContentLoaded', function () {
-    var advFlag = localStorage.getItem('advFlag');
-    if (advFlag === 'true') {
-        // 如果有标记，则跳转到高级主页
-        window.location.href = '/indexadv.html';
-    }
-});
-</script>
     <div class="header">
     <div class="nav-container">
     </div>
-        <h1 class="site-title">Helloalp的网站│让我们一诊加油!│&#128512;│<a href="#" onclick="setAdvFlag()">点我改为默认访问新版主页</a>
+        <h1 class="site-title">Helloalp的网站│让我们一诊加油!│&#128512;│
 </h1>
     </div>
     <div class="input-container">
@@ -189,11 +173,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 <td>NAU组织内部官网</td>
                 <td><button class="jump-button" onclick="location.href='/teaminsideindex.html'">跳转</button></td>
                 <td>20230819上线</td>
-            </tr>
-			    <tr>
-                <td>音乐厅-维护中</td>
-                <td><button class="jump-button" onclick="location.href='/lab.html'">跳转</button></td>
-                <td>20230822上线</td>
             </tr>
 			    <tr>
                 <td>更多项目总目录</td>
