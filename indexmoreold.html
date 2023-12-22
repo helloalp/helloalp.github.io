@@ -40,38 +40,52 @@
       color: #666;
     }
   </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    var pageLinks = {
+      'page1': 'musichall.html',
+      'page2': 'exa.html'
+      // 添加更多页面和链接
+    };
+
+    $(document).ready(function() {
+      // 给所有带有 data-page 属性的元素添加点击事件
+      $('.link[data-page]').on('click', function() {
+        var selectedPage = $(this).data('page');
+        navigateTo(selectedPage);
+      });
+    });
+
+    function navigateTo(page) {
+      // 添加实际的页面导航逻辑
+      console.log('Navigating to page ' + page);
+
+      // 在页面链接列表中查找对应的链接
+      var targetLink = pageLinks[page];
+
+      if (targetLink) {
+        // 执行跳转
+        window.location.href = targetLink;
+      } else {
+        // 如果找不到对应链接，可以添加默认处理逻辑或者提示信息
+        console.error('No link found for page ' + page);
+      }
+    }
+  </script>
 </head>
 <body>
 
 <div id="container">
-  <div class="link" onclick="navigateTo('page1')">
-    <div>页面1</div>
-    <div class="date">2023-01-01</div>
+  <div class="link" data-page="page1">
+    <div>音乐厅-暂时停止维护</div>
+    <div class="date">2023-08-22</div>
   </div>
-  <div class="link" onclick="navigateTo('page2')">
+  <div class="link" data-page="page2">
     <div>页面2</div>
     <div class="date">2023-02-15</div>
   </div>
-  <div class="link" onclick="navigateTo('page3')">
-    <div>页面3</div>
-    <div class="date">2023-03-22</div>
-  </div>
-  <div class="link" onclick="navigateTo('page4')">
-    <div>页面4</div>
-    <div class="date">2023-04-10</div>
-  </div>
   <!-- Add more links as needed -->
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-  var isAnimationEnabled = true;
-
-  function navigateTo(page) {
-    // Add your logic for page navigation here
-    console.log('Navigating to ' + page);
-  }
-</script>
 
 </body>
 </html>
