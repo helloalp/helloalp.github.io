@@ -4,7 +4,7 @@ body, html {
 }
 
 .background {
-    background-image: url('your-background-image.jpg'); /* 替换成你的背景图片路径 */
+    background-image: url('https://i.postimg.cc/RVC9xv79/bg.jpg');
     background-size: cover;
     height: 100%;
     display: flex;
