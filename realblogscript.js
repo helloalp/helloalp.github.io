@@ -23,23 +23,6 @@ const pageInput = document.getElementById('page-number');
 const goToPageButton = document.getElementById('go-to-page');
 const displayCountSelect = document.getElementById('display-count');
 
-// 获取全屏确认框和同意按钮状态
-const confirmModal = document.getElementById('confirm-modal');
-const acceptBtn = document.getElementById('accept-btn');
-
-// 用户点击同意按钮后的操作
-acceptBtn.addEventListener('click', () => {
-    confirmModal.style.display = 'none'; // 隐藏确认框
-    document.body.style.overflow = 'auto'; // 显示页面内容
-});
-
-// 页面加载时显示全屏确认框
-window.addEventListener('load', () => {
-    // 隐藏页面内容
-    document.body.style.overflow = 'hidden';
-    confirmModal.style.display = 'block'; // 显示确认框
-});
-
 // 更新页面内容
 function updateContent(page) {
     const startIndex = (page - 1) * itemsPerPage;
