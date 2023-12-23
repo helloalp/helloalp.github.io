@@ -113,13 +113,13 @@ b {
 	-moz-transition: .2s ease;
 	-o-transition: .2s ease;
 	transition: .2s ease;
-	background-image: url(img/topBG.jpg);
+	background-image: url(https://i.postimg.cc/13PrZ6hY/main.jpg);
 	background-color: #121925;
 	background-size: cover;
 	background-position: 50% 50%;
 	background-attachment: fixed
 }
-
+// 备用图片在/sstf/cdn里面
 #top {
 	width: 100%;
 	height: 100%;
@@ -132,7 +132,7 @@ b {
 	width: 100%;
 	height: 100%;
 	position: relative;
-	background-image: url(img/topBG.jpg);
+	background-image: url(https://i.postimg.cc/13PrZ6hY/main.jpg);
 	background-color: #121925;
 	background-size: cover;
 	background-position: 50% 50%;
