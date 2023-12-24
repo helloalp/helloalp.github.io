@@ -21,6 +21,7 @@
       font-family: Microsoft YaHei, sans-serif;
       line-height: 1.5;
       font-weight: 300;
+      overflow: hidden; /* 隐藏滚动条 */
     }
 
     #directory {
@@ -31,6 +32,10 @@
       color: #fff;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+      overflow-y: auto; /* 添加滚动条 */
+      max-height: calc(100% - 100px); /* 设置最大高度，保证底部按钮可见 */
     }
 
     .top_hr_style02 {
@@ -76,42 +81,39 @@
       border-top: 1px solid #fff;
       padding-top: 10px;
       margin-top: 20px;
-    }
-
-    #page_navigation {
       text-align: center;
-      margin-top: 20px;
     }
 
-    #page_navigation button {
-      background-color: rgba(0, 0, 0, 0.7);
-      color: #fff;
-      border: 1px solid #fff;
+    #homepage_link {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      text-decoration: none;
+      font-size: 16px;
+      color: #ffcc00;
+      border: 1px solid #ffcc00;
       padding: 5px 10px;
       border-radius: 5px;
-      margin: 0 5px;
-      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 2; /* 确保按钮在前景 */
     }
 
-    #page_input {
-      width: 40px;
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: #fff;
-      border: 1px solid #fff;
-      padding: 5px;
-      border-radius: 5px;
-      margin: 0 5px;
+    #homepage_link:hover {
+      border-radius: 3px;
+      background-color: #fff;
+      color: #121925;
     }
   </style>
 </head>
 <body>
+  <a href="/sstf/home" id="homepage_link">返回主页</a>
   <div id="directory">
     <h1>石室天府学生门户文章目录</h1>
     <hr class="top_hr_style02">
     <ul id="top_navlist">
       <a class="top_nav" href="/sstf/post/the_first_essay.html"><li>这是第一篇文章</li></a>
       <a class="top_nav" href="/sstf/post/note"><li>关于本站什么时候正式运行</li></a>
+      <!-- 这里可以添加更多文章链接 -->
     </ul>
     <hr class="top_hr_style02">
     <footer id="top_footer">
@@ -119,61 +121,6 @@
         <a href='/sstf/home'>石室天府学生门户网站 </a>Copyright &copy; 2023 SSTFSGW(SSTF Students' Gateway) All Rights Reserved.
       </span>
     </footer>
-    <div id="page_navigation">
-      <button id="prev_page" onclick="prevPage()">上一页</button>
-      <span>当前页：1</span>
-      <button id="next_page" onclick="nextPage()">下一页</button>
-      <input id="page_input" type="text" placeholder="跳转页数">
-      <button onclick="jumpToPage()">跳转</button>
-    </div>
   </div>
-
-  <script>
-    let currentPage = 1;
-
-    function prevPage() {
-      if (currentPage > 1) {
-        currentPage--;
-        updatePageNumber();
-        updatePageLink();
-      }
-    }
-
-    function nextPage() {
-      // 检查下一页是否存在，假设最多有3页
-      if (currentPage < 3) {
-        currentPage++;
-        updatePageNumber();
-        updatePageLink();
-      }
-    }
-
-    function jumpToPage() {
-      const input = document.getElementById('page_input');
-      const targetPage = parseInt(input.value);
-      
-      // 检查输入是否合法，假设最多有3页
-      if (!isNaN(targetPage) && targetPage >= 1 && targetPage <= 3) {
-        currentPage = targetPage;
-        updatePageNumber();
-        updatePageLink();
-      } else {
-        alert('请输入合法页数');
-      }
-
-      // 清空输入框
-      input.value = '';
-    }
-
-    function updatePageNumber() {
-      document.querySelector('#page_navigation span').innerText = `当前页：${currentPage}`;
-    }
-
-    function updatePageLink() {
-      const pageLink = `/sstf/menu${currentPage}.html`;
-      document.querySelectorAll('.top_nav')[0].href = pageLink;
-      document.querySelectorAll('.top_nav')[1].href = pageLink; // 如果有多个链接，逐一更新
-    }
-  </script>
 </body>
 </html>
