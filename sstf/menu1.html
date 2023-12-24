@@ -77,6 +77,32 @@
       padding-top: 10px;
       margin-top: 20px;
     }
+
+    #page_navigation {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #page_navigation button {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    #page_input {
+      width: 40px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 5px;
+      border-radius: 5px;
+      margin: 0 5px;
+    }
   </style>
 </head>
 <body>
@@ -93,6 +119,52 @@
         <a href='/sstf/home'>石室天府学生门户网站 </a>Copyright &copy; 2023 SSTFSGW(SSTF Students' Gateway) All Rights Reserved.
       </span>
     </footer>
+    <div id="page_navigation">
+      <button id="prev_page" onclick="prevPage()">上一页</button>
+      <span>当前页：1</span>
+      <button id="next_page" onclick="nextPage()">下一页</button>
+      <input id="page_input" type="text" placeholder="跳转页数">
+      <button onclick="jumpToPage()">跳转</button>
+    </div>
   </div>
+
+  <script>
+    let currentPage = 1;
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        updatePageNumber();
+      }
+    }
+
+    function nextPage() {
+      // 检查下一页是否存在，假设最多有3页
+      if (currentPage < 3) {
+        currentPage++;
+        updatePageNumber();
+      }
+    }
+
+    function jumpToPage() {
+      const input = document.getElementById('page_input');
+      const targetPage = parseInt(input.value);
+      
+      // 检查输入是否合法，假设最多有3页
+      if (!isNaN(targetPage) && targetPage >= 1 && targetPage <= 3) {
+        currentPage = targetPage;
+        updatePageNumber();
+      } else {
+        alert('请输入合法页数');
+      }
+
+      // 清空输入框
+      input.value = '';
+    }
+
+    function updatePageNumber() {
+      document.querySelector('#page_navigation span').innerText = `当前页：${currentPage}`;
+    }
+  </script>
 </body>
 </html>
