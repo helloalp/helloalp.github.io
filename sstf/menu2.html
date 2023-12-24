@@ -121,7 +121,7 @@
     </footer>
     <div id="page_navigation">
       <button id="prev_page" onclick="prevPage()">上一页</button>
-      <span>当前页：1</span>
+      <span>当前页：2</span>
       <button id="next_page" onclick="nextPage()">下一页</button>
       <input id="page_input" type="text" placeholder="跳转页数">
       <button onclick="jumpToPage()">跳转</button>
@@ -135,6 +135,7 @@
       if (currentPage > 1) {
         currentPage--;
         updatePageNumber();
+        updatePageLink();
       }
     }
 
@@ -143,6 +144,7 @@
       if (currentPage < 3) {
         currentPage++;
         updatePageNumber();
+        updatePageLink();
       }
     }
 
@@ -154,6 +156,7 @@
       if (!isNaN(targetPage) && targetPage >= 1 && targetPage <= 3) {
         currentPage = targetPage;
         updatePageNumber();
+        updatePageLink();
       } else {
         alert('请输入合法页数');
       }
@@ -165,7 +168,12 @@
     function updatePageNumber() {
       document.querySelector('#page_navigation span').innerText = `当前页：${currentPage}`;
     }
+
+    function updatePageLink() {
+      const pageLink = `/sstf/menu${currentPage}.html`;
+      document.querySelectorAll('.top_nav')[0].href = pageLink;
+      document.querySelectorAll('.top_nav')[1].href = pageLink; // 如果有多个链接，逐一更新
+    }
   </script>
 </body>
 </html>
-
