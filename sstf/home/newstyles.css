@@ -79,11 +79,15 @@ body {
 }
 
 a {
-	color: #04202c
+  color: #ffcc00; /* 链接文字颜色 */
+  text-decoration: none; /* 去除下划线 */
+  transition: color 0.2s ease; /* 添加过渡效果 */
 }
 
+/* 鼠标悬停时的效果 */
 a:hover {
-	color: #00b3ba
+  color: #121925; /* 链接文字颜色变化 */
+  background-color: #ffcc00; /* 悬停时的背景颜色，可根据需要调整 */
 }
 
 b {
