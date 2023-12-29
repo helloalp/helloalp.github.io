@@ -20,6 +20,14 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
 	display: block
 }
 
+blockquote,q {
+	quotes: none
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+	content: '';
+	content: none
+}
 
 input,textarea {
 	margin: 0;
@@ -37,10 +45,6 @@ table {
 
 caption,th {
 	text-align: left
-}
-
-#directory h1 {
-  margin-bottom: 20px; /* 适当调整下边距的值 */
 }
 
 a:focus {
@@ -71,15 +75,11 @@ body {
 }
 
 a {
-  color: #ffcc00; /* 链接文字颜色 */
-  text-decoration: none; /* 去除下划线 */
-  transition: color 0.2s ease; /* 添加过渡效果 */
+	color: #04202c
 }
 
-/* 鼠标悬停时的效果 */
 a:hover {
-  color: #121925; /* 链接文字颜色变化 */
-  background-color: #ffcc00; /* 悬停时的背景颜色，可根据需要调整 */
+	color: #00b3ba
 }
 
 b {
@@ -102,9 +102,8 @@ b {
 }
 
 .top_hr_style02 {
-  border: 0;
-  border-bottom: 1px dashed #858585;
-  margin: 25px 0; /* 调整此处的数值 */
+	border: 0;
+	border-bottom: 1px dashed #858585
 }
 
 .slider {
@@ -251,19 +250,18 @@ b {
 }
 
 #top_footer {
-  padding: 4px 10px 0 10px;
-  background-color: #04202c;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 12;
-  -webkit-transition: .2s linear;
-  -moz-transition: .2s linear;
-  -o-transition: .2s linear;
-  transition: .2s linear;
+	padding: 4px 10px 4px 10px;
+	background-color: #04202c;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 12;
+	-webkit-transition: .2s linear;
+	-moz-transition: .2s linear;
+	-o-transition: .2s linear;
+	transition: .2s linear
 }
-
 
 #top_copyright {
 	display: block;
@@ -287,4 +285,10 @@ b {
 		letter-spacing: 0;
 		text-align: center
 	}
+}
+
+/* 鼠标悬停时的效果 */
+a:hover {
+  color: #121925; /* 链接文字颜色变化 */
+  background-color: #ffcc00; /* 悬停时的背景颜色，可根据需要调整 */
 }
