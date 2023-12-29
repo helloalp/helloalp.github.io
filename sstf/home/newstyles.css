@@ -47,6 +47,10 @@ caption,th {
 	text-align: left
 }
 
+#directory h1 {
+  margin-bottom: 20px; /* 适当调整下边距的值 */
+}
+
 a:focus {
 	outline: 0
 }
@@ -104,6 +108,7 @@ b {
 .top_hr_style02 {
 	border: 0;
 	border-bottom: 1px dashed #858585
+	margin-top: 20px; /* 适当调整上边距的值 */
 }
 
 .slider {
