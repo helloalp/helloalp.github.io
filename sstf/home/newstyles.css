@@ -110,9 +110,9 @@ b {
 }
 
 .top_hr_style02 {
-	border: 0;
-	border-bottom: 1px dashed #858585
-	margin-top: 20px; /* 适当调整上边距的值 */
+  border: 0;
+  border-bottom: 1px dashed #858585;
+  margin: 25px 0; /* 调整此处的数值 */
 }
 
 .slider {
