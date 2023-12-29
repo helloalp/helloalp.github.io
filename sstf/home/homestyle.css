@@ -20,14 +20,6 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
 	display: block
 }
 
-blockquote,q {
-	quotes: none
-}
-
-blockquote:before,blockquote:after,q:before,q:after {
-	content: '';
-	content: none
-}
 
 input,textarea {
 	margin: 0;
@@ -259,7 +251,7 @@ b {
 }
 
 #top_footer {
-	padding: 4px 10px 4px 10px;
+	padding: 4px 0px 4px 10px;
 	background-color: #04202c;
 	position: fixed;
 	bottom: 0;
