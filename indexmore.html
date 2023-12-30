@@ -51,7 +51,7 @@
     };
 
     $(document).ready(function() {
-      // 给所有带有 data-page 属性的元素添加点击事件
+      // 给带有data-page属性的元素添加点击事件
       $('.link[data-page]').on('click', function() {
         var selectedPage = $(this).data('page');
         navigateTo(selectedPage);
@@ -59,17 +59,17 @@
     });
 
     function navigateTo(page) {
-      // 添加实际的页面导航逻辑
+      
       console.log('Navigating to page ' + page);
 
       // 在页面链接列表中查找对应的链接
       var targetLink = pageLinks[page];
 
       if (targetLink) {
-        // 执行跳转
+        // 跳转
         window.location.href = targetLink;
       } else {
-        // 如果找不到对应链接，可以添加默认处理逻辑或者提示信息
+        // 找不到对应链接
         console.error('No link found for page ' + page);
       }
     }
