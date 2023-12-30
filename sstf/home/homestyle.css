@@ -120,11 +120,16 @@ b {
 	
 }
 #top {
-	width: 100%;
-	height: 100%;
-	position: relative;
-	margin: auto;
-	z-index: 11
+  width: 100%;
+  height: 100%;
+  position: fixed; /* 修改为 fixed */
+  margin: auto;
+  z-index: 11;
+  background-image: url(/sstf/cdn/homepage/main.jpeg);
+  background-color: #121925;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-attachment: fixed; /* 添加这行 */
 }
 
 #top_img {
