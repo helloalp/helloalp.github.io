@@ -62,7 +62,7 @@ html {
 	background-color: #121925;
 	background-size: cover;
 	background-position: 50% 50%;
-	background-attachment: fixed;
+	
 	font-weight: 300
 }
 
@@ -117,7 +117,7 @@ b {
 	background-color: #121925;
 	background-size: cover;
 	background-position: 50% 50%;
-	background-attachment: fixed
+	
 }
 #top {
 	width: 100%;
@@ -135,7 +135,7 @@ b {
 	background-color: #121925;
 	background-size: cover;
 	background-position: 50% 50%;
-	background-attachment: fixed;
+	
 	z-index: 11
 }
 
