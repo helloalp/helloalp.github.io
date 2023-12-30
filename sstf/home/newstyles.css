@@ -228,7 +228,8 @@ b {
 .top_nav {
 	display: block;
 	width: 100%;
-	max-height: 40px;
+	white-space: nowrap;
+	max-height: 50px;
 	min-height: 10px;
 	margin-top: 15px;
 	text-decoration: none;
