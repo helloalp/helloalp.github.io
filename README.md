@@ -2,7 +2,6 @@
 # You Can Also Use Https://sstf.pages.dev As A Backup Site,It is a 100% mirror site(Maybe Something Isn't Completely Same)
 Helloalp's Personal Project
 Powered by Helloalp
-E-Mail@2827264223@qq.com
+E-Mail:realfrancis2022@gmail.com
 #HELLOALP
-# 为了无法学习的奥义
 # For the Unreachable Truth
