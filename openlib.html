@@ -19,11 +19,10 @@
     <address>由Helloalp提供,严禁滥用</address>
 <button onclick="showIframe()">加载查询页面</button>
 <iframe id="myIframe" width="100%" height="500px" style="display: none;oncopy="return false;" oncut="return false;" onpaste="return false;"></iframe>
-
 <script>
 function showIframe() {
     const iframe = document.getElementById('myIframe');
-    iframe.src = 'https://lib.scjyzb.net/school/publicQuery?schoolId=C3F646D3B072EA5B63D15E5714A15F76'; 
+    iframe.src = '/openlib/libsys64'; 
     iframe.style.display = 'block';
 }
 </script>
