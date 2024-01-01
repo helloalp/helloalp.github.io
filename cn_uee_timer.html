@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh_CN">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/icon.ico">
   <title>多种倒计时和顺向计时</title>
+  <meta name='description' content='Helloalp网站提供的多种倒计时显示，提醒人们时间的价值'>
+
   <style>
     body {
       margin: 0;
@@ -13,7 +16,7 @@
       flex-direction: column;
       align-items: center;
       padding: 20px;
-      height: 100vh; /* 设置容器高度，可根据需要调整 */
+      height: 100vh; 
     }
     .timer {
       font-family: 'Love Ya Like A Sister', cursive;
@@ -30,13 +33,13 @@
 </head>
 <body>
   <div class="timer-container">
-    <div class="timer" id="countUpTimer" data-time="2023/12/29 12:00" data-direction="up" data-message="距离2023/12/29已经过去" data-ending="石室天府高三某班加油">
+    <div class="timer" id="countUpTimer" data-time="2023/12/31 24:00" data-direction="up" data-message="2024年已经开始了" data-ending="愿我们珍惜当下，奋力逐梦！">
       <span class="timer-text"></span>
     </div>
-    <div class="timer" id="countDownTimer" data-time="2024/6/6 09:00" data-direction="down" data-message="距离2024/6/6还有" data-ending="祝XXX生日快乐">
+    <div class="timer" id="countDownTimer" data-time="2024/6/6 09:00" data-direction="down" data-message="距离2024届高考还有" data-ending="石室天府高三加油！">
       <span class="timer-text"></span>
     </div>
-    <!-- 添加更多计时器 -->
+    
   </div>
 
   <script>
