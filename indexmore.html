@@ -47,6 +47,10 @@
       'page2': '/testsite/index.html'
       'page3': '/aesencrypt.html'
     'page4': '/404.html'
+    'page5': '/teamoutsideindex.html',
+      'page6': '/teaminsideindex.html'
+      'page7': '/downloadunlockcode.html'
+    'page8': '/archive/home.html'
       
     };
 
@@ -60,9 +64,7 @@
 
     function navigateTo(page) {
       
-      console.log('Navigating to page ' + page);
-
-      // 在页面链接列表中查找对应的链接
+      console.log('Navigating to page ' + page) 
       var targetLink = pageLinks[page];
 
       if (targetLink) {
@@ -98,7 +100,23 @@
     <div>尚未开放</div>
     <div class="date">2023-??-??</div>
   </div>
-</div>
 
+  <div class="link" data-page="page5">
+    <div>NAU组织对外官网</div>
+    <div class="date">2023-08-20</div>
+  </div>
+  <div class="link" data-page="page6">
+    <div>NAU组织对内官网</div>
+    <div class="date">2023-08-19</div>
+  </div>
+  <div class="link" data-page="page7">
+    <div>下载解锁码</div>
+    <div class="date">2023-09-24</div>
+  </div>
+  <div class="link" data-page="page8">
+    <div>公开档案库</div>
+    <div class="date">2023-08-21</div>
+  </div>
+</div>
 </body>
 </html>
