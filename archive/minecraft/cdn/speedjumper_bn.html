@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正在前往......</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    #progress-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+    }
+
+    #progress {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 8px solid #3498db;
+      border-top: 8px solid #f0f0f0;
+      animation: spin 5s linear forwards;
+    }
+
+    #countdown {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      color: #333;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-container">
+    <div id="progress"></div>
+    <div id="countdown">3</div>
+  </div>
+
+  <script>
+    let countdown = 3;
+
+    function updateCountdown() {
+      countdown -= 1;
+      document.getElementById('countdown').textContent = countdown;
+
+      if (countdown === 0) {
+        window.location.href = '';
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
