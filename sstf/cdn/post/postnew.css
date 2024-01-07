@@ -160,3 +160,13 @@ a:hover {
   background-color: rgba(255, 255, 255, 0.5);
   color: #121925;
 }
+
+::selection {
+  background-color: #00b3ba;
+  color: #fff;
+}
+
+::-moz-selection {
+  background-color: #00b3ba;
+  color: #fff;
+}
