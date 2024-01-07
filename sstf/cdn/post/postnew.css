@@ -139,3 +139,12 @@ html,body {
   margin-left: 10px;
   z-index: 2;
 }
+
+a {
+  color: #ffcc00;
+}
+
+a:hover {
+  color: #121925;
+  background-color: #ffcc00;
+}
