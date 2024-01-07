@@ -125,6 +125,21 @@ html,body {
   text-align: center;
 }
 
+
+
+a {
+  color: #ffcc00;
+}
+
+a:hover {
+  color: #121925;
+  background-color: #ffcc00;
+}
+
+#article_content p + p {
+  margin-top: 1.5em; 
+}
+
 #menu_link {
   position: fixed;
   top: 20px;
@@ -138,17 +153,10 @@ html,body {
   background-color: rgba(0, 0, 0, 0.7);
   margin-left: 10px;
   z-index: 2;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-a {
-  color: #ffcc00;
-}
-
-a:hover {
+#menu_link:hover {
+  background-color: rgba(255, 255, 255, 0.5);
   color: #121925;
-  background-color: #ffcc00;
-}
-
-#article_content p + p {
-  margin-top: 1.5em; 
 }
