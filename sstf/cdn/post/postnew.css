@@ -148,3 +148,7 @@ a:hover {
   color: #121925;
   background-color: #ffcc00;
 }
+
+#article_content p + p {
+  margin-top: 1.5em; 
+}
