@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helloalp的魔方工具箱</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .toolbox {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .section {
+      margin: 20px;
+    }
+
+    .button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    #scramble-code {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    #scramble-code span {
+      color: red;
+    }
+
+    #timer {
+      font-size: 36px;
+    }
+
+    #milliseconds {
+      font-size: 18px;
+    }
+
+    #time-records {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    #time-records p {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Helloalp的魔方工具箱</h1>
+  <h3>来挑战自己吧，虽然马上就要放寒假了</h3>
+  <div class="toolbox">
+    <div class="section">
+      <h2>计时器</h2>
+      <div id="timer">0:00:00</div>
+      <div id="milliseconds">00</div>
+      <button class="button" onclick="startTimer()">开始计时</button>
+      <button class="button" onclick="stopTimer()">停止计时</button>
+      <button class="button" onclick="recordTime()">记录时间</button>
+      <button class="button" onclick="resetTimer()">重置计时</button>
+    </div>
+
+    <div class="section">
+      <h2>随机打乱</h2>
+      <label for="scramble-count">生成个数:</label>
+      <input type="number" id="scramble-count" value="5" min="1">
+      <label for="scramble-steps">步骤数:</label>
+      <input type="number" id="scramble-steps" value="20" min="1">
+      <button class="button" onclick="generateScrambles()">生成打乱</button>
+      <p id="scramble-code"></p>
+    </div>
+  </div>
+
+  <div class="toolbox">
+    <div class="section">
+      <h2>计次记录</h2>
+      <div id="time-records"></div>
+    </div>
+  </div>
+
+  <script>
+    let timerInterval;
+    let startTime;
+    let timeRecords = [];
+    let milliseconds = 0;
+    let recordNumber = 1;
+
+    function startTimer() {
+      stopTimer();
+      startTime = new Date().getTime() - milliseconds;
+      timerInterval = setInterval(updateTimer, 10);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+    }
+
+    function resetTimer() {
+      stopTimer();
+      milliseconds = 0;
+      updateTimerDisplay();
+    }
+
+    function updateTimer() {
+      milliseconds = new Date().getTime() - startTime;
+      updateTimerDisplay();
+    }
+
+    function updateTimerDisplay() {
+      const totalSeconds = Math.floor(milliseconds / 1000);
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      const formattedTime = `${minutes}:${String(seconds).padStart(2, '0')}`;
+      const formattedMilliseconds = String(milliseconds % 1000).padStart(3, '0');
+      
+      document.getElementById("timer").innerHTML = formattedTime;
+      document.getElementById("milliseconds").innerHTML = formattedMilliseconds;
+    }
+
+    function recordTime() {
+      if (milliseconds > 0) {
+        const recordTime = formatMilliseconds(milliseconds);
+        const timeRecordsElement = document.getElementById("time-records");
+        timeRecordsElement.innerHTML += `<p>${recordNumber}. ${recordTime}</p>`;
+        recordNumber++;
+      }
+    }
+
+    function formatMilliseconds(milliseconds) {
+      const totalSeconds = Math.floor(milliseconds / 1000);
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      const formattedTime = `${minutes}:${String(seconds).padStart(2, '0')}`;
+      const formattedMilliseconds = String(milliseconds % 1000).padStart(3, '0');
+      return `${formattedTime}.${formattedMilliseconds}`;
+    }
+
+    function generateScrambles() {
+      const scrambleCount = document.getElementById("scramble-count").value;
+      const scrambleSteps = document.getElementById("scramble-steps").value;
+      let scrambles = [];
+
+      for (let i = 0; i < scrambleCount; i++) {
+        scrambles.push(generateSingleScramble(scrambleSteps));
+      }
+
+      document.getElementById("scramble-code").innerHTML = "打乱算法序列:<br>" + scrambles.join("<br>");
+    }
+
+    function generateSingleScramble(steps) {
+      const moves = ["R", "U", "L", "D", "F", "B"];
+      const modifiers = ["", "'", "2"];
+      let scrambleSequence = [];
+
+      let lastMove = "";
+
+      for (let i = 0; i < steps; i++) {
+        let randomMove;
+        
+        do {
+          randomMove = moves[Math.floor(Math.random() * moves.length)];
+        } while (randomMove[0] === lastMove[0]); // Ensure consecutive same-axis moves are not allowed
+
+        const randomModifier = modifiers[Math.floor(Math.random() * modifiers.length)];
+        const moveNotation = randomMove + randomModifier;
+
+        scrambleSequence.push(moveNotation);
+        lastMove = moveNotation;
+      }
+
+      return scrambleSequence.map(move => {
+        if (move.includes("'")) {
+          return `<span>${move}</span>`;
+        }
+        return move;
+      }).join(" ");
+    }
+  </script>
+</body>
+</html>
