@@ -8,6 +8,21 @@
 
 
         <div class="update-day">
+            <h2 class="day-title">2023年2月18日</h2>
+            <div class="update-content">
+                <h3 class="content-title">新增内容</h3>
+                <p>测试页面Gemini pro在线，效果一般</p>
+            </div>
+            <div class="update-content">
+                <h3 class="content-title">修改内容</h3>
+                <p>index极致优化，彻底完成修复了日志页面栏目重叠问题</p>
+            </div>
+            <div class="update-content">
+                <h3 class="content-title">删除内容</h3>
+                <p>无</p>
+            </div></div>
+
+        <div class="update-day">
             <h2 class="day-title">2023年2月17日</h2>
             <div class="update-content">
                 <h3 class="content-title">新增内容</h3>
@@ -240,42 +255,7 @@
             </div>
             
         </div>
-        
-    </div>
-<script>
-    const dayTitles = document.querySelectorAll(".day-title");
-
-    dayTitles.forEach(dayTitle => {
-        dayTitle.addEventListener("click", () => {
-            const modal = document.createElement("div");
-            modal.className = "modal";
-            const modalContent = document.createElement("div");
-            modalContent.className = "modal-content";
-
-            const closeButton = document.createElement("span");
-            closeButton.className = "close-button";
-            // Use your custom close button image here
-            closeButton.innerHTML = '<img src="/close-button-image.png" alt="Close">';
-            closeButton.addEventListener("click", () => {
-                modal.remove();
-            });
-
-            const content = dayTitle.parentElement.cloneNode(true);
-            content.querySelector(".day-title").style.display = "none";
-            content.style.border = "none";
-            content.style.marginBottom = "0";
-            content.style.backgroundColor = "transparent";
-            content.querySelectorAll(".update-content").forEach(update => {
-                update.style.display = "block";
-            });
-
-            modalContent.appendChild(closeButton);
-            modalContent.appendChild(content);
-            modal.appendChild(modalContent);
-            document.body.appendChild(modal);
-        });
-    });
-</script>
-
+    </div><script>
+const dayTitles=document.querySelectorAll(".day-title");dayTitles.forEach(dayTitle=>{dayTitle.addEventListener("click",()=>{const modal=document.createElement("div");modal.className="modal";const modalContent=document.createElement("div");modalContent.className="modal-content";const closeButton=document.createElement("span");closeButton.className="close-button";closeButton.innerHTML='<img src="/close-button-image.png" alt="Close">';closeButton.addEventListener("click",()=>{modal.remove()});const content=dayTitle.parentElement.cloneNode(!0);content.querySelector(".day-title").style.display="none";content.style.border="none";content.style.marginBottom="0";content.style.backgroundColor="transparent";content.querySelectorAll(".update-content").forEach(update=>{update.style.display="block"});modalContent.appendChild(closeButton);modalContent.appendChild(content);modal.appendChild(modalContent);document.body.appendChild(modal)})});</script>
 </body>
 </html>
