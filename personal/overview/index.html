@@ -1,1 +1,86 @@
-
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务主菜单</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header, footer {
+            background: #2C3E50;
+            color: #ecf0f1;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            color: #34495E;
+        }
+        .menu-item {
+            display: block;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #ecf0f1;
+            color: #2C3E50;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        .menu-item:hover {
+            background-color: #bdc3c7;
+        }
+        .back-button {
+            display: block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #2C3E50;
+            color: #ecf0f1;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .back-button:hover {
+            background-color: #34495E;
+        }
+        @media (max-width: 600px) {
+            .menu-item {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>服务主菜单</h1>
+        <a href="super-main.html" class="back-button">返回上级菜单</a>
+    </header>
+    <main>
+        <a href="biology-tutoring.html" class="menu-item">高中生物线上辅导</a>
+        <a href="math-tutoring.html" class="menu-item">高中数学线上辅导</a>
+        <a href="english-tutoring.html" class="menu-item">高中英语线上辅导</a>
+        <a href="physics-tutoring.html" class="menu-item">高中物理线上辅导</a>
+        <a href="chemistry-tutoring.html" class="menu-item">高中化学线上辅导</a>
+    </main>
+    <footer>
+        <p>联系方式：</p>
+        <p>邮箱：example@example.com</p>
+        <p>闲鱼链接：[闲鱼](https://www.xianyu.com)</p>
+    </footer>
+</body>
+</html>
