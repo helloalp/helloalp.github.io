@@ -10,17 +10,22 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
         }
         header, footer {
-            background: #f4f4f4;
+            background: #2C3E50;
+            color: #ecf0f1;
             padding: 20px;
             text-align: center;
         }
         main {
             padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
         h1, h2 {
-            color: #333;
+            color: #34495E;
         }
         ul {
             list-style-type: none;
@@ -28,6 +33,9 @@
         }
         ul li {
             margin: 10px 0;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
         }
         .section {
             margin-bottom: 20px;
@@ -42,7 +50,33 @@
             text-align: left;
         }
         .pricing-table th {
-            background-color: #f2f2f2;
+            background-color: #95a5a6;
+            color: #ecf0f1;
+        }
+        .pricing-table td {
+            background-color: #ecf0f1;
+        }
+        .platforms {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+        }
+        .back-button {
+            display: block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #2C3E50;
+            color: #ecf0f1;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .back-button:hover {
+            background-color: #34495E;
         }
     </style>
 </head>
@@ -50,6 +84,7 @@
     <header>
         <h1>2024年暑假高中生物线上辅导预订</h1>
         <p>全方位提升高中生物成绩</p>
+        <a href="index.html" class="back-button">返回主菜单</a>
     </header>
     <main>
         <section class="section">
@@ -126,9 +161,15 @@
             <p>视频连线方式自由选择：钉钉，腾讯会议，zoom，可以加联系方式了解更多。</p>
             <p>近期最晚回复间隔不超过一天。</p>
         </section>
+        <section class="section platforms">
+            <h2>授课平台</h2>
+            <p>视频连线方式自由选择：钉钉，腾讯会议，Zoom。</p>
+        </section>
     </main>
     <footer>
-        <p>联系方式：钉钉、腾讯会议、Zoom</p>
+        <p>联系方式：</p>
+        <p>邮箱：example@example.com</p>
+        <p>闲鱼链接：[闲鱼](https://www.xianyu.com)</p>
     </footer>
 </body>
 </html>
