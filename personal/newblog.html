@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <title>每日一语│Powered By Helloalp</title>
+    <style>
+        .date {
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+		margin-top: 5px;
+        }
+        .content {
+            display: none;
+            margin-left: 20px;
+		text-align: center;
+        }
+    </style>
+    <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".date").click(function() {
+                $(this).next(".content").slideToggle(500);
+            });
+        });
+    </script>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="icon" type="image/x-icon" href="/icon.ico">
+	<link rel="stylesheet" href="/copyaddon.css" type='text/css' />
+</head>
+<body>
+	<button class="jump-button" onclick="location.href='/index.html'">返回网站主页</button>
+    <h1>每日一语│单击日期展开内容</h1>
+  
+    <div class="date">2024-06-29</div>
+    <div class="content">“凡事先完成，再完善。”</div>
+  <div class="date">2023-08-19至2024-06-28</div>
+    <div class="content"><a href="/personal/newblog1.html></a></div>
+    
+  <address>Powered by Helloalp</address>
+	 <script src="/copyaddon.min.js"></script>
+<script>document.body.oncopy = function() {swal("复制完毕 ", "若要转载请务必保留原文链接，写清楚来源!By Helloalp","success");};</script>
+</body>
+</html>
