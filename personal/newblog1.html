@@ -8,47 +8,38 @@
             font-weight: bold;
             cursor: pointer;
             text-align: center;
-		margin-top: 5px;
+            margin-top: 5px;
         }
         .content {
             display: none;
             margin-left: 20px;
-		text-align: center;
+            text-align: center;
         }
     </style>
     <script src="/global/jquery.js"></script>
-	<script src="/copyaddon.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".date").click(function() {
-                $(this).next(".content").slideToggle(500);
-            });
-        });
-    </script>
+    <script src="/copyaddon.min.js"></script>
+    <!-- jQuery 依赖代码不再需要在这里执行 -->
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<link rel="icon" type="image/x-icon" href="/icon.ico">
-	<link rel="stylesheet" href="/copyaddon.css" type="text/css" />
+    <link rel="icon" type="image/x-icon" href="/icon.ico">
+    <link rel="stylesheet" href="/copyaddon.css" type="text/css" />
 </head>
 <body>
-	<button class="jump-button" onclick="location.href='/index.html'">返回网站主页</button>
+    <button class="jump-button" onclick="location.href='/index.html'">返回网站主页</button>
     <h1>每日一语│单击日期展开内容</h1>
-
-	<div class="date">2024-01-20</div>
+    <div class="date">2024-01-20</div>
     <div class="content">花无重开日，人无再少年。</div>
-	<div class="date">2023-12-30</div>
+    <div class="date">2023-12-30</div>
     <div class="content">“我们在想象回到过去时，<br>总是担心做的一件小事可以影响未来。<br>可是，反过来看，这不是意味着，<br>我们现在做的每一件小事都可能改变未来。”</div>
-	<div class="date">2023-12-16</div>
+    <div class="date">2023-12-16</div>
     <div class="content">“人一生能去的地方很多，能回去的地方很少。”</div>
-	<div class="date">2023-12-02</div>
+    <div class="date">2023-12-02</div>
     <div class="content">“圆规为什么能画圆?<br>因为脚在走，心不变<br>你为什么不能圆梦?<br>因为心在变，脚不动。”</div>
-	<div class="date">2023-12-02</div>
+    <div class="date">2023-12-02</div>
     <div class="content">“那些为了玫瑰寻死觅活的人，必然也能将玫瑰冷淡地抛弃。”</div>
-	<div class="date">2023-11-29</div>
+    <div class="date">2023-11-29</div>
     <div class="content">“凯歌而行，不以山河为远。乘势而上，不以日月为限。”</div>
-	<div class="date">2023-11-19</div>
+    <div class="date">2023-11-19</div>
     <div class="content">“不要让其他人定义了你的一天”</div>
     <div class="date">2023-11-18</div>
     <div class="content">“人生没有彩排，每一天都是现场直播。”</div>
@@ -56,7 +47,7 @@
     <div class="content">“不要让昨天的悔恨，毁了今天的幸福。”</div>
     <div class="date">2023-11-16</div>
     <div class="content">“不要等待机会，而要创造机会。”</div>
-  <div class="date">2023-10-29</div>
+    <div class="date">2023-10-29</div>
     <div class="content">“为什么明明不如别人也还不肯承认？因为在人生的长跑中，如果已经提前认输了，就永远没有机会跑赢了”</div>
     <div class="date">2023-10-10</div>
     <div class="content">“生命在于折腾”</div>
@@ -64,12 +55,13 @@
     <div class="content">“未遭拒绝的成功，绝不长久”</div>
     <div class="date">2023-08-19</div>
     <div class="content">“生活的意义在于不断探寻，不断成长。”</div>
-<div class="date">返回上一页</div>
+    <div class="date">返回上一页</div>
     <div class="content"><a href="/personal/new blog.html">返回上一页</a></div>
-    
-  <address>Powered by Helloalp</address>
-	 
-<script>document.body.oncopy = function() {swal("复制完毕 ", "若要转载请务必保留原文链接，写清楚来源!By Helloalp","success");};
-	   </script>
+    <address>Powered by Helloalp</address>
+    <script>document.body.oncopy = function() {
+        swal("复制完毕", "若要转载请务必保留原文链接，写清楚来源! By Helloalp", "success");
+    };
+    </script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"89b2c2dce9f7b993","r":1,"version":"2024.4.1","token":"902b869f996441a9b7ea4a31980496f4"}' crossorigin="anonymous"></script>
 </body>
 </html>
