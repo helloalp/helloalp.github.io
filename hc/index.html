@@ -3,9 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>主页 Hello Client</title> 
+    <title>主页 Hello Client</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="/icon.ico">
+    <style>
+        /* 新增弹窗样式 - 覆盖在原有内容之上 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .overlay.show {
+            opacity: 1;
+        }
+        
+        .modal {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 3px solid #00ffcc;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 480px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.6);
+            color: #fff;
+            font-family: "Microsoft YaHei", system-ui, sans-serif;
+        }
+        
+        .modal h2 {
+            margin: 0 0 15px 0;
+            color: #00ffcc;
+            font-size: 1.8rem;
+        }
+        
+        .modal p {
+            margin: 15px 0;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        
+        .countdown {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffcc00;
+            margin: 20px 0;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .modal-btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 14px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .jump-btn {
+            background: #00ff88;
+            color: #000;
+        }
+        
+        .jump-btn:hover {
+            background: #00cc66;
+            transform: translateY(-3px);
+        }
+        
+        .contact-btn {
+            background: #ffaa00;
+            color: #000;
+        }
+        
+        .contact-btn:hover {
+            background: #ff8800;
+            transform: translateY(-3px);
+        }
+        
+        .modal small {
+            display: block;
+            margin-top: 20px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 600px) {
+            .modal {
+                padding: 25px 20px;
+                margin: 15px;
+            }
+            .modal h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -18,7 +129,7 @@
             <b>下载方式在页面最下方</b>
             <p>亲爱的玩家你好，<br>欢迎使用Hello Client！本客户端从2022年08月开始更新迭代，一直由NAU组织首领/2B2T.xin论坛版主 Helloalp操刀打造，迄今已有60+独立版本。</p>
             <p>本客户端的定位是一款舒适、易于理解、方便、愉悦的生存辅助客户端，可能含有少量PVP功能，我们尽可能使得客户端体验极其舒适简便，谢谢你！</p>
-            <h2>最新版本为<b>7.5</b></h2><br><h3>在维护和支持的版本为<b>7.1,7.2,7.3,7.4</b></h3>&nbsp;&nbsp;<h3>即将过期的版本为<b>7.1,7.2,7.3</b></b></h3>&nbsp;&nbsp;
+            <h2>最新版本为<b>7.5</b></h2><br><h3>在维护和支持的版本为<b>7.1,7.2,7.3,7.4</b></h3>&nbsp;&nbsp;<h3>即将过期的版本为<b>7.1,7.2,7.3</b></h3>&nbsp;&nbsp;
             Hello Client的第七个版本代,期待和你有更多奇妙的邂逅<br>
             <p>-------由于我进入大学学习，学业繁忙，同时重心不在2B2T上，客户端将保持基本与经典的功能，不会考虑在PVP方面进行强化，只会保证功能的可用性，但是用于生存没有问题，烦请各位提出问题和bug以修复，
 另外，我现在也在捣鼓公众号等内容，欢迎向我的网站投稿，以及向公众号投稿，或者加入我们，公众号是 弗朗西斯之家 网站是helloalp.top 请联系master@helloalp.top
@@ -42,8 +153,8 @@
                 <li>J-秒挖:点击开启，再次点击关闭。默认关闭。打开后物品栏放置一把镐子，手持任意物品左键单击方块即可挖掘，挖掘之后该方块所在的位置成为秒挖区，任何方块放进去都会瞬间挖掉。(此功能开启关闭没有提示，需要自行注意)</li>
                 <li>Y-活塞推人:点击开启，再次点击关闭。物品栏放置普通活塞和红石，自动将旁边的在坑里面的人用活塞挤出来，深坑无效。</li>
                 <li>O-自动黏人:点击开启，再次点击关闭。默认关闭。打开后在物品栏放置蜘蛛网，会自动在半径5-6格以内的人的脚下放置蜘蛛网黏住TA</li>
-                <li>逗号(就是键盘上的<符号)-活塞水晶:点击开启，再次点击关闭。在物品栏放置普通活塞，红石块，水晶，自动地在旁边放置活塞将水晶推进坑里面造成伤害</li>
-                <li>点号(就是键盘上的<b>></b>符号)-凋灵杀手:点击开启，再次点击关闭。在物品栏放置灵魂沙和凋灵骷髅头颅自动拼装凋灵并且给凋灵使用物品栏的命名牌命名(组装凋灵功能出现问题)</li>
+                <li>逗号(就是键盘上的&lt;符号)-活塞水晶:点击开启，再次点击关闭。在物品栏放置普通活塞，红石块，水晶，自动地在旁边放置活塞将水晶推进坑里面造成伤害</li>
+                <li>点号(就是键盘上的&gt;符号)-凋灵杀手:点击开启，再次点击关闭。在物品栏放置灵魂沙和凋灵骷髅头颅自动拼装凋灵并且给凋灵使用物品栏的命名牌命名(组装凋灵功能出现问题)</li>
                 <li>L-挂机平飞:当你已经开启了F键平飞后，并且处于一个合适高度合适方向，单击L按键开启，开启后针对持续飞行产生优化，同时支持自动更换鞘翅</li>
                 <li>右Alt-望远镜:点击开启，再次点击关闭。将朝向方向景物放大</li>
             </ul>
@@ -79,5 +190,72 @@
             <button onclick="window.location.href='/'">返回网站总主页</button>
         </footer>
     </div>
+
+    <!-- 迁移提示弹窗 -->
+    <div class="overlay" id="redirectOverlay">
+        <div class="modal">
+            <h2>🚀 网站已迁移</h2>
+            <p><strong>Hello Client 官网已正式迁移至新地址</strong></p>
+            <p>为获得更好的体验和最新信息，请访问新站点。</p>
+            
+            <div class="countdown" id="countdown">5</div>
+            
+            <div class="btn-group">
+                <button class="modal-btn jump-btn" onclick="jumpNow()">立即跳转新站点</button>
+                <button class="modal-btn contact-btn" onclick="contactUs()">联系作者</button>
+            </div>
+            
+            <small>几秒后将自动跳转 • 如遇问题请联系 master@helloalp.top</small>
+        </div>
+    </div>
+
+    <script>
+        // 显示弹窗
+        function showModal() {
+            const overlay = document.getElementById('redirectOverlay');
+            overlay.classList.add('show');
+        }
+
+        // 立即跳转
+        function jumpNow() {
+            window.location.href = "https://helloalp.top/hc";
+        }
+
+        // 联系作者（打开邮件客户端）
+        function contactUs() {
+            window.location.href = "mailto:master@helloalp.top?subject=Hello%20Client%20咨询&body=您好，我来自旧官网...";
+        }
+
+        // 倒计时自动跳转
+        let timeLeft = 5;
+        const countdownEl = document.getElementById('countdown');
+        
+        function startCountdown() {
+            const timer = setInterval(() => {
+                timeLeft--;
+                countdownEl.textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    jumpNow();
+                }
+            }, 1000);
+        }
+
+        // 页面加载完成后显示弹窗
+        window.onload = function() {
+            // 延迟一点显示，避免闪烁
+            setTimeout(() => {
+                showModal();
+                startCountdown();
+            }, 800);
+        };
+
+        // 防止用户通过浏览器后退按钮绕过（可选）
+        window.history.pushState(null, null, window.location.href);
+        window.addEventListener('popstate', function() {
+            window.history.pushState(null, null, window.location.href);
+        });
+    </script>
 </body>
 </html>
