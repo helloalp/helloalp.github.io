@@ -1,0 +1,15 @@
+.git/
+.gitignore
+.dockerignore
+README.md
+LICENSE
+*.bak
+*.old
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.torrent
+new 1.txt
+archivepasswords.txt
+250gift.zip
