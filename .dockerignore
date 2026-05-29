@@ -1,0 +1,12 @@
+.git/
+.gitignore
+.dockerignore
+README.md
+*.bak
+*.old
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.torrent
+
